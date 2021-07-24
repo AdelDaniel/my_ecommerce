@@ -1,0 +1,9 @@
+{
+    "@@locale": "ar",
+    "@language": {
+        "description": "The Arabic Language"
+    },
+    "cart": "سلة المشتريات",
+    "language": "العربية",
+    "title": "My eCommerce"
+}

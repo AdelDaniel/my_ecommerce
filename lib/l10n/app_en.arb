@@ -1,0 +1,9 @@
+{
+    "@@locale": "en",
+    "@language": {
+        "description": "The Main Language"
+    },
+    "cart": "Cart",
+    "language": "English",
+    "title": "My eCommerce"
+}
