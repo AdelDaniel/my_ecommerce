@@ -1,9 +1,15 @@
 {
-    "@@locale": "ar",
-    "@language": {
-        "description": "The Arabic Language"
-    },
-    "cart": "سلة المشتريات",
-    "language": "العربية",
-    "title": "My eCommerce"
+  "@@locale": "ar",
+  "@language": {
+    "description": "The Arabic Language"
+  },
+  "blueDark": "أزرق ليلى",
+  "blueLight": "أزرق نهارى ",
+  "cart": "سلة المشتريات",
+  "darkTheme": "الوضع الليلى",
+  "greenDark": "أخضر ليلى",
+  "greenLight": "أخضر نهارى ",
+  "language": "اللغة",
+  "language_name": "العربية",
+  "title": "My eCommerce"
 }

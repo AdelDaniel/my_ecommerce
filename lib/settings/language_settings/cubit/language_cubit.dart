@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:my_ecommerce/l10n/l10n.dart';
+import '../../../l10n/l10n.dart';
 
 part 'language_state.dart';
 

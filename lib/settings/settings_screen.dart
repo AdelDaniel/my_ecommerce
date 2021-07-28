@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_ecommerce/l10n/l10n.dart';
-import 'language_settings/language_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_ecommerce/settings/theme_settings/cubit/theme_cubit.dart';
+import '../l10n/l10n.dart';
+import 'language_settings/change_language_widget.dart';
+import 'theme_settings/change_theme_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -9,11 +12,15 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: LanguageWidget(
-          locale: Localizations.localeOf(context),
-          flag: L10n.getFlag(Localizations.localeOf(context).languageCode),
-          // provider : Provider.of<LanguageChangeProvider>(context),
-        ),
+        child: Column(children: [
+          ChangeLanguageWidget(
+            locale: Localizations.localeOf(context),
+            flag: L10n.getFlag(Localizations.localeOf(context).languageCode),
+          ),
+          ChangeThemeWidget(
+            themeCubit: BlocProvider.of<ThemeCubit>(context),
+          )
+        ]),
       ),
     );
   }

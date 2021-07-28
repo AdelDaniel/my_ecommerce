@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'cubit/language_cubit.dart';
 import '../../l10n/l10n.dart';
 
-class LanguageWidget extends StatelessWidget {
+class ChangeLanguageWidget extends StatelessWidget {
   final Locale locale;
   final String flag;
-  const LanguageWidget({
+  const ChangeLanguageWidget({
     Key? key,
     required this.locale,
     required this.flag,

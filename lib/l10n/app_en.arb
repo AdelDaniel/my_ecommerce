@@ -1,9 +1,15 @@
 {
-    "@@locale": "en",
-    "@language": {
-        "description": "The Main Language"
-    },
-    "cart": "Cart",
-    "language": "English",
-    "title": "My eCommerce"
+  "@@locale": "en",
+  "@language": {
+    "description": "The Main Language"
+  },
+  "blueDark": "Blue Dark ",
+  "blueLight": "Blue Light",
+  "cart": "Cart",
+  "darkTheme": "Dark Theme",
+  "greenDark": "Green  Dark  ",
+  "greenLight": "Green Light",
+  "language": "Language",
+  "language_name": "English",
+  "title": "My eCommerce"
 }
