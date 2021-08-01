@@ -27,7 +27,7 @@ class MainScreenProductCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 160,
+      width: 170,
       child: Card(
         elevation: 5,
         child: ClipRRect(
