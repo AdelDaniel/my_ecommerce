@@ -31,6 +31,11 @@ dependencies:
   hydrated_bloc: ^7.0.1
   intl:
   path_provider:
+  carousel_slider:
+  flutter_staggered_grid_view:
+  transparent_image:
+  flutter_rating_bar:
+  # smooth_star_rating:
 
 dev_dependencies:
   flutter_test:

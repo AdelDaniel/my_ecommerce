@@ -3,13 +3,21 @@
   "@language": {
     "description": "The Arabic Language"
   },
+  "addToCart": "اضف الى العربة",
   "blueDark": "أزرق ليلى",
   "blueLight": "أزرق نهارى ",
   "cart": "سلة المشتريات",
   "darkTheme": "الوضع الليلى",
+  "discount": "خصم",
+  "egp": "جنية",
   "greenDark": "أخضر ليلى",
   "greenLight": "أخضر نهارى ",
+  "inStock": "متاح ",
   "language": "اللغة",
   "language_name": "العربية",
+  "mostPopular": "الأكثر شهرة",
+  "notAvalibale": "غير متاح",
+  "recommended": "موصى بها ",
+  "settings": "الاعدادات",
   "title": "My eCommerce"
 }

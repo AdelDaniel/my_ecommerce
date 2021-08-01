@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:my_ecommerce/wishList_screen.dart';
 
 import '../settings/settings_screen.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const CustomAppBar({
-    Key? key,
-  }) : super(key: key);
+  final String title;
+  const CustomAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +19,15 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       elevation: 25,
       actions: [
         IconButton(
-          onPressed: () => {},
+          onPressed: () =>
+              Navigator.pushNamed(context, WishListScreen.routeName),
           icon: Icon(Icons.favorite),
         )
       ],
-      title: Text(AppLocalizations.of(context).title),
+      title: Text(title),
     );
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(5);
+  Size get preferredSize => Size.fromHeight(50.0);
 }

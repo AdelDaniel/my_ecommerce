@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:my_ecommerce/config/app_routing.dart';
 import 'package:my_ecommerce/home_screen.dart';
 import 'package:my_ecommerce/settings/theme_settings/cubit/theme_cubit.dart';
 import 'settings/language_settings/cubit/language_cubit.dart';
@@ -38,10 +39,10 @@ class MyApp extends StatelessWidget {
                 // supportedLocales: AppLocalizations.supportedLocales,
                 supportedLocales: L10n.all,
                 locale: languageState.locale,
-
+                onGenerateRoute: AppRoute.onGenerateRoute,
+                initialRoute: HomeScreen.routeName,
                 theme: themeState.themeData,
                 title: "My eCommerce",
-                home: HomeScreen(),
               );
             },
           );

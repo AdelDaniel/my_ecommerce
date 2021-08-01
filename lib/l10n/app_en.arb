@@ -3,13 +3,21 @@
   "@language": {
     "description": "The Main Language"
   },
+  "addToCart": "Add To Cart",
   "blueDark": "Blue Dark ",
   "blueLight": "Blue Light",
   "cart": "Cart",
   "darkTheme": "Dark Theme",
+  "discount": "Discount",
+  "egp": "EGP",
   "greenDark": "Green  Dark  ",
   "greenLight": "Green Light",
+  "inStock": "In Stock",
   "language": "Language",
   "language_name": "English",
+  "mostPopular": "Most Popular",
+  "notAvalibale": "Not Avalibale",
+  "recommended": "Recommended",
+  "settings": "Settings",
   "title": "My eCommerce"
 }
