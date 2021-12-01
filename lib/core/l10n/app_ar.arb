@@ -16,8 +16,10 @@
   "language": "اللغة",
   "language_name": "العربية",
   "mostPopular": "الأكثر شهرة",
+  "mostRated": "الأعلى تقيم",
   "notAvalibale": "غير متاح",
   "recommended": "موصى بها ",
   "settings": "الاعدادات",
-  "title": "My eCommerce"
+  "title": "My eCommerce",
+  "wishlist": "المفضلة"
 }

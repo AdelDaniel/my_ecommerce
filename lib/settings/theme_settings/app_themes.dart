@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 enum AppTheme {
-  GreenLight,
-  GreenDark,
-  BlueLight,
-  BlueDark,
-  DarkTheme,
+  greenLight,
+  greenDark,
+  blueLight,
+  blueDark,
+  darkTheme,
 }
 
 const TextStyle headLine1TextStyle = TextStyle(
@@ -24,48 +24,44 @@ const TextStyle bodyText1TextStyle = TextStyle(
 );
 
 final avalibeAppTheme = <AppTheme, ThemeData>{
-  AppTheme.GreenLight: ThemeData(
+  AppTheme.greenLight: ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.green,
-    accentColor: Colors.black,
     iconTheme: iconTheme,
     textTheme: TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: bodyText1TextStyle.copyWith(color: Colors.green),
     ),
   ),
-  AppTheme.GreenDark: ThemeData(
+  AppTheme.greenDark: ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.green[700],
-    accentColor: Colors.white,
     iconTheme: iconTheme,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: bodyText1TextStyle,
     ),
   ),
-  AppTheme.BlueLight: ThemeData(
+  AppTheme.blueLight: ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.blue,
-    accentColor: Colors.black,
     iconTheme: iconTheme,
     textTheme: TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: bodyText1TextStyle.copyWith(color: Colors.blue),
     ),
   ),
-  AppTheme.BlueDark: ThemeData(
+  AppTheme.blueDark: ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.blue[700],
-    accentColor: Colors.white,
     iconTheme: iconTheme,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: bodyText1TextStyle,
     ),
   ),
-  AppTheme.DarkTheme: ThemeData.dark().copyWith(
-    textTheme: TextTheme(
+  AppTheme.darkTheme: ThemeData.dark().copyWith(
+    textTheme: const TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: bodyText1TextStyle,
     ),
@@ -73,9 +69,9 @@ final avalibeAppTheme = <AppTheme, ThemeData>{
 };
 
 const Map<AppTheme, String> appThemeNames = <AppTheme, String>{
-  AppTheme.GreenLight: "Green Light",
-  AppTheme.GreenDark: "Green Dark",
-  AppTheme.BlueLight: "Blue Light",
-  AppTheme.BlueDark: "Blue Dark",
-  AppTheme.DarkTheme: "Dark Theme",
+  AppTheme.greenLight: "Green Light",
+  AppTheme.greenDark: "Green Dark",
+  AppTheme.blueLight: "Blue Light",
+  AppTheme.blueDark: "Blue Dark",
+  AppTheme.darkTheme: "Dark Theme",
 };

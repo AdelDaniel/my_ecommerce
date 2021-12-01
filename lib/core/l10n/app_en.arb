@@ -16,8 +16,10 @@
   "language": "Language",
   "language_name": "English",
   "mostPopular": "Most Popular",
+  "mostRated": "Most Rated",
   "notAvalibale": "Not Avalibale",
   "recommended": "Recommended",
   "settings": "Settings",
-  "title": "My eCommerce"
+  "title": "My eCommerce",
+  "wishlist": "Wishlist"
 }

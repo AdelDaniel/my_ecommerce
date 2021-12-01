@@ -1,34 +1,36 @@
+// import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:transparent_image/transparent_image.dart';
+
+import '../get_network_image_widget.dart';
 
 class ProductCardImageAndDiscount extends StatelessWidget {
   const ProductCardImageAndDiscount(
-      {Key? key, required this.imgUrl, this.discount = 0})
+      {Key? key,
+      required this.imgUrl,
+      this.discount = 0,
+      this.imageShimmerHeight})
       : super(key: key);
 
   final String imgUrl;
   final double discount;
-
+  final double? imageShimmerHeight;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Align(
-          alignment: Alignment.center,
-          child: FadeInImage.memoryNetwork(
-              fit: BoxFit.fill, placeholder: kTransparentImage, image: imgUrl),
-        ),
+            child: GetNetworkImageWidget(
+                imgUrl: imgUrl, shimmerHeight: imageShimmerHeight)),
         Align(
           alignment: Alignment.topLeft,
           child: Transform.rotate(
-            angle: 0,
-            // origin: Offset(10, 10),
+            angle: -0.3,
+            // origin: const Offset(-10, -5),
             child: discount == 0
-                ? SizedBox()
+                ? const SizedBox()
                 : Container(
                     padding:
                         const EdgeInsets.symmetric(vertical: 1, horizontal: 3),
@@ -36,7 +38,7 @@ class ProductCardImageAndDiscount extends StatelessWidget {
                     child: RotatedBox(
                         quarterTurns: 0,
                         child: Text(
-                          '${AppLocalizations.of(context).discount} \n ${discount.toStringAsFixed(2)}%',
+                          '${AppLocalizations.of(context).discount} \n ${discount.toStringAsFixed(1)}%',
                           textAlign: TextAlign.center,
                         )),
                   ),

@@ -1,29 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:intl/intl.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-String _converPricetToString(double number) {
-  RegExp reg = new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
-  final mathFunc = (Match match) => '${match[1]},';
+import 'package:my_ecommerce/core/utils/curreny_converter.dart';
 
-  return number.toString().replaceAllMapped(reg, mathFunc);
-  // return NumberFormat().format(number);
-}
-
-String _currencyName(BuildContext context) {
-  Locale locale = Localizations.localeOf(context);
-  var format = NumberFormat.simpleCurrency(locale: locale.toString());
-  return format.currencyName ?? 'USD';
-  // print("CURRENCY SYMBOL ${format.currencySymbol}"); // $
-  // print("CURRENCY NAME ${format.currencyName}"); // USD
-}
+import '../../all_injection_containers.dart';
 
 class PriceWidget extends StatelessWidget {
-  const PriceWidget({Key? key, required this.productPrice}) : super(key: key);
+  const PriceWidget({
+    Key? key,
+    required this.productPrice,
+  }) : super(key: key);
   final double productPrice;
+  // final CurrencyConverter currencyConverter = sl<CurrencyConverter>() ;
+  // this.currencyConverter = sl<CurrencyConverter>()
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +25,11 @@ class PriceWidget extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: _converPricetToString(productPrice),
+                    text: sl<CurrencyConverter>()
+                        .converPricetToString(productPrice),
                     style: Theme.of(context).textTheme.bodyText1),
                 TextSpan(
-                    text:
-                        ' ${_currencyName(context) == 'EGP' ? AppLocalizations.of(context).egp : _currencyName(context)}',
+                    text: sl<CurrencyConverter>().currencyName(context),
                     style: Theme.of(context).textTheme.bodyText2),
               ],
             ),
@@ -61,7 +52,7 @@ class OldPriceWidget extends StatelessWidget {
       alignment: AlignmentDirectional.centerStart,
       child: FittedBox(
         child: Text(
-          '${_converPricetToString(oldPrice)} ${_currencyName(context)}',
+          '${sl<CurrencyConverter>().converPricetToString(oldPrice)} ${sl<CurrencyConverter>().currencyName(context)}',
           textAlign: TextAlign.end,
           style: TextStyle(
               decoration: TextDecoration.lineThrough,

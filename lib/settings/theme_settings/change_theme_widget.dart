@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_ecommerce/settings/theme_settings/app_themes.dart';
-import 'package:my_ecommerce/settings/theme_settings/cubit/theme_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'app_themes.dart';
+import 'cubit/theme_cubit.dart';
 
 import 'app_themes.dart';
 
@@ -33,15 +34,15 @@ class ChangeThemeWidget extends StatelessWidget {
 
   String _getThemeName(BuildContext context, AppTheme item) {
     switch (item) {
-      case AppTheme.BlueDark:
+      case AppTheme.blueDark:
         return AppLocalizations.of(context).blueDark;
-      case AppTheme.BlueLight:
+      case AppTheme.blueLight:
         return AppLocalizations.of(context).blueLight;
-      case AppTheme.DarkTheme:
+      case AppTheme.darkTheme:
         return AppLocalizations.of(context).darkTheme;
-      case AppTheme.GreenDark:
+      case AppTheme.greenDark:
         return AppLocalizations.of(context).greenDark;
-      case AppTheme.GreenLight:
+      case AppTheme.greenLight:
         return AppLocalizations.of(context).greenLight;
     }
   }

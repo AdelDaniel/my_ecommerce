@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-class ProductRating extends StatelessWidget {
+class ProductRatingInCard extends StatelessWidget {
   final double rating;
-  const ProductRating({Key? key, this.rating = 0}) : super(key: key);
+  const ProductRatingInCard({Key? key, this.rating = 0}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,6 @@ class ProductRating extends StatelessWidget {
             Icons.star,
             color: Colors.yellowAccent[400],
           ),
-          direction: Axis.horizontal,
-          itemCount: 5,
           itemPadding: const EdgeInsets.symmetric(horizontal: 1.0),
         ),
       ),

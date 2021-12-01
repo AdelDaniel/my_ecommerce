@@ -12,9 +12,9 @@ class ProductFirstCategoryName extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: AlignmentDirectional.centerStart,
-      child: Text('$categoryName',
+      child: Text(categoryName,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(fontSize: 11, color: Colors.grey)),
+          style: const TextStyle(fontSize: 11, color: Colors.grey)),
     );
   }
 }

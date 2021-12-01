@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_ecommerce/wishList_screen.dart';
+import '../screens/wish_list_screen.dart';
 
 import '../settings/settings_screen.dart';
 
@@ -11,9 +11,8 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        onPressed: () => Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SettingsScreen())),
-        icon: Icon(Icons.settings),
+        onPressed: () => Navigator.pushNamed(context, SettingsScreen.routeName),
+        icon: const Icon(Icons.settings),
       ),
       centerTitle: true,
       elevation: 25,
@@ -21,7 +20,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         IconButton(
           onPressed: () =>
               Navigator.pushNamed(context, WishListScreen.routeName),
-          icon: Icon(Icons.favorite),
+          icon: const Icon(Icons.favorite),
         )
       ],
       title: Text(title),
@@ -29,5 +28,5 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(50.0);
+  Size get preferredSize => const Size.fromHeight(50.0);
 }

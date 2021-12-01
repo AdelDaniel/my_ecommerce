@@ -10,12 +10,12 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   ThemeCubit()
       : super(
           ThemeState(
-            themeData: avalibeAppTheme[AppTheme.BlueLight]!,
-            themeName: appThemeNames[AppTheme.BlueLight]!,
+            themeData: avalibeAppTheme[AppTheme.blueLight]!,
+            themeName: appThemeNames[AppTheme.blueLight]!,
           ),
         );
 
-  changeTheme(AppTheme appTheme) {
+  void changeTheme(AppTheme appTheme) {
     emit(ThemeState(
       themeData: avalibeAppTheme[appTheme]!,
       themeName: appThemeNames[appTheme]!,
@@ -28,11 +28,12 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   @override
   ThemeState? fromJson(Map<String, dynamic> json) {
     // if no Stored It will return the initial theme
-    if (json['value'] == null)
+    if (json['value'] == null) {
       return ThemeState(
-        themeData: avalibeAppTheme[AppTheme.BlueLight]!,
-        themeName: appThemeNames[AppTheme.BlueLight]!,
+        themeData: avalibeAppTheme[AppTheme.blueLight]!,
+        themeName: appThemeNames[AppTheme.blueLight]!,
       );
+    }
 
     late AppTheme storedTheme;
     appThemeNames.forEach((key, value) {

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/l10n/l10n.dart';
+
 import 'cubit/language_cubit.dart';
-import '../../l10n/l10n.dart';
+
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChangeLanguageWidget extends StatelessWidget {
   final Locale locale;
@@ -20,13 +23,15 @@ class ChangeLanguageWidget extends StatelessWidget {
           Title(
               color: Colors.black,
               child: Text(
-                  'current Language code is: ${locale.languageCode} \n and its Flag is $flag')),
+                  ' ${AppLocalizations.of(context).language}: ${locale.languageCode} $flag')),
           for (Locale item in L10n.all)
             TextButton(
               onPressed: () =>
                   BlocProvider.of<LanguageCubit>(context).changeLanguage(item),
               child: Text(
-                  '${L10n.getFlag(item.languageCode)}\n ${item.languageCode}'),
+                '${L10n.getFlag(item.languageCode)}: ${L10n.getLanguageName(item.languageCode)} ${item.languageCode}',
+                textDirection: TextDirection.ltr,
+              ),
             ),
         ],
       ),

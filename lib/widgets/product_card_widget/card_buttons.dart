@@ -5,9 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CardButtons extends StatelessWidget {
-  const CardButtons({
-    Key? key,
-  }) : super(key: key);
+  const CardButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +17,8 @@ class CardButtons extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 onPressed: () {},
                 child: FittedBox(
-                    child: Text(
-                  '${AppLocalizations.of(context).addToCart}',
-                  softWrap: true,
-                )))),
+                    child: Text(AppLocalizations.of(context).addToCart,
+                        softWrap: true)))),
         InkWell(
             onTap: () {},
             child: Container(
@@ -31,7 +27,7 @@ class CardButtons extends StatelessWidget {
                   border: Border.all(color: Colors.pink),
                   color: Colors.transparent),
               padding: const EdgeInsets.all(3),
-              child: Icon(
+              child: const Icon(
                 Icons.favorite,
                 color: Colors.pink,
                 size: 24.0,

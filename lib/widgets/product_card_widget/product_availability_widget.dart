@@ -11,15 +11,18 @@ class ProductAvailabilityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isAvalible
-        ? Text(
-            AppLocalizations.of(context).inStock,
-            style: TextStyle(fontSize: 11, color: Colors.greenAccent[400]),
-          )
-        : Text(
-            '😞\n${AppLocalizations.of(context).notAvalibale}',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 11, color: Colors.grey),
-          );
+    return Align(
+      alignment: Alignment.topRight,
+      child: isAvalible
+          ? Text(
+              AppLocalizations.of(context).inStock,
+              style: TextStyle(fontSize: 11, color: Colors.greenAccent[400]),
+            )
+          : Text(
+              '😞\n${AppLocalizations.of(context).notAvalibale}',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 11, color: Colors.grey),
+            ),
+    );
   }
 }
