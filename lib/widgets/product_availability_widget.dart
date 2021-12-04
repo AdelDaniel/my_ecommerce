@@ -6,13 +6,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductAvailabilityWidget extends StatelessWidget {
   final bool isAvalible;
-  const ProductAvailabilityWidget({Key? key, required this.isAvalible})
+  const ProductAvailabilityWidget(
+      {Key? key, required this.isAvalible, this.alignment = Alignment.topRight})
       : super(key: key);
-
+  final Alignment alignment;
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.topRight,
+      alignment: alignment,
       child: isAvalible
           ? Text(
               AppLocalizations.of(context).inStock,

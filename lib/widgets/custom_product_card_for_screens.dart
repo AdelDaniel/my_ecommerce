@@ -4,8 +4,7 @@ import 'package:flutter/widgets.dart';
 
 import '../models/models.dart';
 import '../screens/product_details_screen.dart';
-
-import 'product_card_widget/product_card_widget.dart';
+import '../widgets/widgets.dart';
 
 class CustomProductCardWidget extends StatelessWidget {
   const CustomProductCardWidget({Key? key, required this.currentProduct})
@@ -31,7 +30,7 @@ class CustomProductCardWidget extends StatelessWidget {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
                 alignment: AlignmentDirectional.centerStart,
-                child: ProductNameInCard(productName: currentProduct.name),
+                child: ProductName(productName: currentProduct.name),
               ),
               Container(
                   height: 70,

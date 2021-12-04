@@ -39,6 +39,8 @@ dependencies:
   get_it: ^7.2.0
   # fancy_shimmer_image: ^2.0.0+3
   cached_network_image:
+  readmore:
+  expandable: ^5.0.1
   # smooth_star_rating:
 
 dev_dependencies:

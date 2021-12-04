@@ -2,11 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class ProductNameInCard extends StatelessWidget {
-  const ProductNameInCard({Key? key, required this.productName})
+class ProductName extends StatelessWidget {
+  const ProductName(
+      {Key? key,
+      required this.productName,
+      this.fontSize = 18,
+      this.fontWeight = FontWeight.w500})
       : super(key: key);
 
   final String productName;
+  final double fontSize;
+  final FontWeight fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +20,8 @@ class ProductNameInCard extends StatelessWidget {
       productName,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
-      style: const TextStyle(
-          fontSize: 18, fontWeight: FontWeight.w500, wordSpacing: 2),
+      style:
+          TextStyle(fontSize: fontSize, fontWeight: fontWeight, wordSpacing: 2),
     );
   }
 }

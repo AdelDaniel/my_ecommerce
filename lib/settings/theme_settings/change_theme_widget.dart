@@ -4,8 +4,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'app_themes.dart';
 import 'cubit/theme_cubit.dart';
 
-import 'app_themes.dart';
-
 class ChangeThemeWidget extends StatelessWidget {
   final ThemeCubit themeCubit;
   const ChangeThemeWidget({Key? key, required this.themeCubit})
@@ -34,16 +32,16 @@ class ChangeThemeWidget extends StatelessWidget {
 
   String _getThemeName(BuildContext context, AppTheme item) {
     switch (item) {
-      case AppTheme.blueDark:
-        return AppLocalizations.of(context).blueDark;
       case AppTheme.blueLight:
         return AppLocalizations.of(context).blueLight;
       case AppTheme.darkTheme:
         return AppLocalizations.of(context).darkTheme;
-      case AppTheme.greenDark:
-        return AppLocalizations.of(context).greenDark;
-      case AppTheme.greenLight:
-        return AppLocalizations.of(context).greenLight;
+      // case AppTheme.greenDark:
+      //   return AppLocalizations.of(context).greenDark;
+      // case AppTheme.greenLight:
+      //   return AppLocalizations.of(context).greenLight;
+      // case AppTheme.blueDark:
+      //   return AppLocalizations.of(context).blueDark;
     }
   }
 }

@@ -134,7 +134,6 @@ class Product extends Equatable {
         ],
         price: 1700,
         oldPrice: 2000.0,
-        rating: 0,
         category: const [
           Category(
             name:
@@ -200,7 +199,7 @@ class Product extends Equatable {
           'http://cdn.shopify.com/s/files/1/1696/6039/products/LA08115Lollipop-1oz-RainbowBlast_edit.jpg?v=1615239686'
         ],
         price: 1,
-        oldPrice: 0,
+
         // rating: 1,
         category: const [
           Category(
@@ -225,7 +224,6 @@ class Product extends Equatable {
           'https://www.techinn.com/f/13787/137870852_2/apple-macbook-pro-13-m1-8gb-512gb-ssd-laptop.jpg'
         ],
         price: 2392500,
-        oldPrice: 0,
         rating: 4.3,
         category: const [
           Category(
@@ -246,7 +244,15 @@ Processor M1
 8 GB RAM
 512 GB SSD
 Graphics Controller Model: GPU 8-Core
-Height: 1.56 CM *Length: 21.24 cm *Weight: 1.4 kg *Width: 30.41 cm'''),
+Height: 1.56 CM *Length: 21.24 cm *Weight: 1.4 kg *Width: 30.41 cm
+RE GPU,8GB,512GB SSD SPACE GREY MYD92AB/A
+Reference: MYD92AB/A
+Processor M1
+8 GB RAM
+512 GB SSD
+Graphics Controller Model: GPU 8-Core
+Height: 1.56 CM *Length: 21.24 cm *Weight: 1.4 kg *Width: 30.41 cm
+'''),
   ];
 
   @override

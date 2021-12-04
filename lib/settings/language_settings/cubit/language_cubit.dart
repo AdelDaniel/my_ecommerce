@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import '../../../core/l10n/l10n.dart';
+import '../../../l10n/l10n.dart';
 
 part 'language_state.dart';
 

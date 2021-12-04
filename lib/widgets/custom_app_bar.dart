@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/wish_list_screen.dart';
 
+import '../screens/wish_list_screen.dart';
 import '../settings/settings_screen.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {

@@ -2,8 +2,11 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:my_ecommerce/widgets/get_network_image_widget.dart';
+
+import '../../core/constants.dart';
+
 import '../../models/models.dart';
+import '../../widgets/get_network_image_widget.dart';
 
 class HomeScreenCategoryCarouselSlider extends StatelessWidget {
   final List<Category> categories;
@@ -53,7 +56,8 @@ class HomeScreenCategoryCarouselSlider extends StatelessWidget {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 10.0, horizontal: 20.0),
+                              vertical: 10.0,
+                              horizontal: constMarginHerizontal),
                           child: Text(
                             '${categories.indexOf(item)} ${item.name}',
                             style: const TextStyle(

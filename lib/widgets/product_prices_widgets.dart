@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
-import 'package:my_ecommerce/core/utils/curreny_converter.dart';
 
 import '../../all_injection_containers.dart';
+import '../../core/utils/curreny_converter.dart';
 
 class PriceWidget extends StatelessWidget {
   const PriceWidget({
@@ -48,18 +46,20 @@ class OldPriceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: AlignmentDirectional.centerStart,
-      child: FittedBox(
-        child: Text(
-          '${sl<CurrencyConverter>().converPricetToString(oldPrice)} ${sl<CurrencyConverter>().currencyName(context)}',
-          textAlign: TextAlign.end,
-          style: TextStyle(
-              decoration: TextDecoration.lineThrough,
-              fontSize: 12,
-              color: Colors.grey[500]),
-        ),
-      ),
-    );
+    return oldPrice == 0
+        ? const SizedBox()
+        : Align(
+            alignment: AlignmentDirectional.centerStart,
+            child: FittedBox(
+              child: Text(
+                '${sl<CurrencyConverter>().converPricetToString(oldPrice)} ${sl<CurrencyConverter>().currencyName(context)}',
+                textAlign: TextAlign.end,
+                style: TextStyle(
+                    decoration: TextDecoration.lineThrough,
+                    fontSize: 12,
+                    color: Colors.grey[500]),
+              ),
+            ),
+          );
   }
 }

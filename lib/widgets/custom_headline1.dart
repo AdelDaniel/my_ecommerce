@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import '../core/constants.dart';
 
 class CustomHeadLine1 extends StatelessWidget {
   final String text;
@@ -9,7 +10,8 @@ class CustomHeadLine1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 7.0),
+      padding: const EdgeInsets.symmetric(
+          vertical: 5.0, horizontal: constMarginHerizontal),
       alignment: AlignmentDirectional.centerStart,
       child: Text(
         text,

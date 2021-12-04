@@ -5,9 +5,9 @@ import 'package:flutter/widgets.dart';
 
 import 'get_network_image_widget.dart';
 
-class ProductCardCarouselSlider extends StatefulWidget {
+class ProductDetailsCarouselSlider extends StatefulWidget {
   final List<String> imgUrls;
-  const ProductCardCarouselSlider({Key? key, required this.imgUrls})
+  const ProductDetailsCarouselSlider({Key? key, required this.imgUrls})
       : super(key: key);
 
   @override
@@ -16,13 +16,13 @@ class ProductCardCarouselSlider extends StatefulWidget {
   }
 }
 
-class _ProductCardCarouselSlider extends State<ProductCardCarouselSlider> {
+class _ProductCardCarouselSlider extends State<ProductDetailsCarouselSlider> {
   int _current = 0;
   final CarouselController _controller = CarouselController();
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
+    return Column(children: [
       CarouselSlider(
         items: widget.imgUrls
             .map((item) => SizedBox(
@@ -30,7 +30,7 @@ class _ProductCardCarouselSlider extends State<ProductCardCarouselSlider> {
                   height: double.infinity,
                   child: GetNetworkImageWidget(
                     imgUrl: item,
-                    fit: BoxFit.fill,
+                    fit: BoxFit.contain,
                   ),
                 ))
             .toList(),
@@ -41,32 +41,31 @@ class _ProductCardCarouselSlider extends State<ProductCardCarouselSlider> {
             viewportFraction: 0.7,
             onPageChanged: (index, reason) => setState(() => _current = index)),
       ),
-      Positioned(
-        bottom: 0.0,
-        left: 0.0,
-        right: 0.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: widget.imgUrls.asMap().entries.map((entry) {
-            return GestureDetector(
-              onTap: () => _controller.animateToPage(entry.key),
-              child: Container(
-                width: 30.0,
-                height: 30.0,
-                margin:
-                    const EdgeInsets.symmetric(vertical: 2.0, horizontal: 2.0),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                      color: Colors.grey
-                          .withOpacity(_current == entry.key ? 1 : 0.3),
-                      width: 3.5),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: widget.imgUrls.asMap().entries.map((entry) {
+          return GestureDetector(
+            onTap: () => _controller.animateToPage(entry.key),
+            child: Container(
+              width: 40.0,
+              height: 40.0,
+              margin:
+                  const EdgeInsets.symmetric(vertical: 4.0, horizontal: 2.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: Colors.red.withOpacity(_current == entry.key ? 1 : 0),
+                  width: 2,
                 ),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
                 child: GetNetworkImageWidget(
                     imgUrl: entry.value, fit: BoxFit.fill),
               ),
-            );
-          }).toList(),
-        ),
+            ),
+          );
+        }).toList(),
       ),
     ]);
   }

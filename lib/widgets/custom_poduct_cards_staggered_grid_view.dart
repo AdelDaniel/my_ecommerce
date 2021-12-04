@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../models/models.dart';
 
+import '../models/models.dart';
 import 'custom_product_card_for_screens.dart';
 
 class CustomPoductCardsStaggeredGridView extends StatelessWidget {

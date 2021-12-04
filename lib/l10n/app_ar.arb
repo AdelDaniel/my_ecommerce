@@ -7,7 +7,9 @@
   "blueDark": "أزرق ليلى",
   "blueLight": "أزرق نهارى ",
   "cart": "سلة المشتريات",
+  "customerReviews": "تقيمات المستخدمين",
   "darkTheme": "الوضع الليلى",
+  "datePublished": "تاريخ النشر",
   "discount": "خصم",
   "egp": "جنية",
   "greenDark": "أخضر ليلى",
@@ -18,8 +20,12 @@
   "mostPopular": "الأكثر شهرة",
   "mostRated": "الأعلى تقيم",
   "notAvalibale": "غير متاح",
+  "productDescription": "وصف المنتج ",
+  "productDetails": " تفاصيل المنتج",
   "recommended": "موصى بها ",
   "settings": "الاعدادات",
+  "showLess": "عرض أقل",
+  "showMore": "إظهار المزيد ",
   "title": "My eCommerce",
   "wishlist": "المفضلة"
 }

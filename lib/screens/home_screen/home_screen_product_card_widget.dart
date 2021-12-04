@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../models/models.dart';
-import '../../widgets/product_card_widget/product_card_widget.dart';
 
+import '../../models/models.dart';
+import '../../widgets/add_to_cart.dart';
+import '../../widgets/add_to_wish_list_button.dart';
+import '../../widgets/product_card_widget.dart';
+import '../../widgets/product_name_widget.dart';
 import '../product_details_screen.dart';
 
 class HomeScreenProductCardWidget extends StatelessWidget {
@@ -38,9 +41,9 @@ class HomeScreenProductCardWidget extends StatelessWidget {
                       const EdgeInsets.symmetric(horizontal: 5, vertical: 3),
                   height: 40,
                   alignment: AlignmentDirectional.centerStart,
-                  child: ProductNameInCard(productName: currentProduct.name),
+                  child: ProductName(productName: currentProduct.name),
                 ),
-                //? Product Availability Widget
+                //? Product Availability and price and wishlist button Widget
                 Container(
                   height: 70,
                   margin:
@@ -62,13 +65,19 @@ class HomeScreenProductCardWidget extends StatelessWidget {
                             ])),
                       ),
                       const SizedBox(width: 3),
-                      ProductAvailabilityWidget(
-                          isAvalible: currentProduct.isAvalible)
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ProductAvailabilityWidget(
+                              isAvalible: currentProduct.isAvalible),
+                          const AddToWishListButton(),
+                        ],
+                      )
                     ],
                   ),
                 ),
                 ProductRatingInCard(rating: currentProduct.rating),
-                const CardButtons()
+                const AddToCart()
               ],
             ),
           ),

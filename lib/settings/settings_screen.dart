@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../l10n/l10n.dart';
 
-import '../core/l10n/l10n.dart';
 import '../widgets/custom_app_bar.dart';
 import 'language_settings/change_language_widget.dart';
 import 'theme_settings/change_theme_widget.dart';

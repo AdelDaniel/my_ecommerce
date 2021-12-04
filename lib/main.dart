@@ -10,7 +10,8 @@ import 'package:path_provider/path_provider.dart';
 
 import 'all_injection_containers.dart' as di;
 import 'core/config/app_routing.dart';
-import 'core/l10n/l10n.dart';
+
+import 'l10n/l10n.dart';
 import 'screens/home_screen/home_screen.dart';
 import 'settings/language_settings/cubit/language_cubit.dart';
 import 'settings/theme_settings/cubit/theme_cubit.dart';

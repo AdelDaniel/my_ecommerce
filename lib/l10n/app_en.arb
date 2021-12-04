@@ -7,7 +7,9 @@
   "blueDark": "Blue Dark ",
   "blueLight": "Blue Light",
   "cart": "Cart",
+  "customerReviews": "Customer Reviews",
   "darkTheme": "Dark Theme",
+  "datePublished": "Date Published",
   "discount": "Discount",
   "egp": "EGP",
   "greenDark": "Green  Dark  ",
@@ -18,8 +20,12 @@
   "mostPopular": "Most Popular",
   "mostRated": "Most Rated",
   "notAvalibale": "Not Avalibale",
+  "productDescription": "Product Description",
+  "productDetails": "Product Details",
   "recommended": "Recommended",
   "settings": "Settings",
+  "showLess": "show less",
+  "showMore": "show more",
   "title": "My eCommerce",
   "wishlist": "Wishlist"
 }
