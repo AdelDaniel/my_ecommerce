@@ -28,7 +28,10 @@ class PriceWidget extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodyText1),
                 TextSpan(
                     text: sl<CurrencyConverter>().currencyName(context),
-                    style: Theme.of(context).textTheme.bodyText2),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText2!
+                        .copyWith(color: Colors.indigo)),
               ],
             ),
           ),

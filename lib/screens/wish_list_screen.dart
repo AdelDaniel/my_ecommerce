@@ -23,7 +23,7 @@ class WishListScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: AppLocalizations.of(context).wishlist),
       bottomNavigationBar: const CustomBottmAppBar(),
-      body: CustomPoductCardsStaggeredGridView(products: Product.products),
+      body: CustomPoductCardsUsingStaggeredGridView(products: Product.products),
     );
   }
 }

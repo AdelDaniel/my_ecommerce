@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import '../../models/models.dart';
 
-import 'home_screen_product_card_widget.dart';
+import '../../models/models.dart';
+import '../../widgets/widgets.dart';
 
 class VerticalProductsListView extends StatelessWidget {
   const VerticalProductsListView({Key? key, required this.products})
@@ -19,7 +19,12 @@ class VerticalProductsListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           final Product currentProduct = products[index];
-          return HomeScreenProductCardWidget(currentProduct: currentProduct);
+          return CustomProductCardWidget(
+            currentProduct: currentProduct,
+            isCardFixedHeight: true,
+            width: 170,
+            imageHeight: 100,
+          );
         },
       ),
     );

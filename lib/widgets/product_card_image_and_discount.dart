@@ -27,7 +27,7 @@ class ProductCardImageAndDiscount extends StatelessWidget {
         Align(
           alignment: Alignment.topLeft,
           child: Transform.rotate(
-            angle: -0.3,
+            angle: 0, // -0.3,
             // origin: const Offset(-10, -5),
             child: discount == 0
                 ? const SizedBox()

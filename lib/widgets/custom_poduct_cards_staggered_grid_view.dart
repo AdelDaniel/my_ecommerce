@@ -6,8 +6,9 @@ import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../models/models.dart';
 import 'custom_product_card_for_screens.dart';
 
-class CustomPoductCardsStaggeredGridView extends StatelessWidget {
-  const CustomPoductCardsStaggeredGridView({Key? key, required this.products})
+class CustomPoductCardsUsingStaggeredGridView extends StatelessWidget {
+  const CustomPoductCardsUsingStaggeredGridView(
+      {Key? key, required this.products})
       : super(key: key);
   final List<Product> products;
   @override
@@ -17,7 +18,10 @@ class CustomPoductCardsStaggeredGridView extends StatelessWidget {
       itemCount: products.length,
       itemBuilder: (BuildContext context, int index) {
         final Product currentProduct = products[index];
-        return CustomProductCardWidget(currentProduct: currentProduct);
+        return CustomProductCardWidget(
+          currentProduct: currentProduct,
+          isCardFixedHeight: false,
+        );
       },
       staggeredTileBuilder: (int index) => const StaggeredTile.fit(2),
       // shrinkWrap: true,
