@@ -7,7 +7,7 @@ import 'get_network_image_widget.dart';
 
 class ProductDetailsCarouselSlider extends StatefulWidget {
   final List<String> imgUrls;
-  final int productIdHeroAnimation;
+  final String productIdHeroAnimation;
   const ProductDetailsCarouselSlider(
       {Key? key, required this.imgUrls, required this.productIdHeroAnimation})
       : super(key: key);
