@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:my_ecommerce/core/constants.dart';
 
 import 'get_network_image_widget.dart';
 
@@ -11,6 +10,7 @@ class ProductCardImageAndDiscount extends StatelessWidget {
   const ProductCardImageAndDiscount(
       {Key? key,
       required this.imgUrl,
+      required this.productIdHeroAnimation,
       this.discount = 0,
       this.imageShimmerHeight})
       : super(key: key);
@@ -18,15 +18,15 @@ class ProductCardImageAndDiscount extends StatelessWidget {
   final String imgUrl;
   final double discount;
   final double? imageShimmerHeight;
+  final int productIdHeroAnimation;
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Align(
-          child: Hero(
-              tag: productImageHeroTag,
-              child: GetNetworkImageWidget(
-                  imgUrl: imgUrl, shimmerHeight: imageShimmerHeight)),
+          // ToDo :: Hero(tag: productIdHeroAnimation,
+          child: GetNetworkImageWidget(
+              imgUrl: imgUrl, shimmerHeight: imageShimmerHeight),
         ),
         Align(
           alignment: Alignment.topLeft,

@@ -29,9 +29,9 @@ final avalibeAppTheme = <AppTheme, ThemeData>{
     brightness: Brightness.light,
     primaryColor: Colors.blue,
     iconTheme: iconTheme,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: headLine1TextStyle,
-      bodyText1: newPricesTextStyle.copyWith(color: Colors.indigo),
+      bodyText1: newPricesTextStyle,
     ),
   ),
   AppTheme.darkTheme: ThemeData.dark().copyWith(

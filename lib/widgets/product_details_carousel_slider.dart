@@ -2,13 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:my_ecommerce/core/constants.dart';
 
 import 'get_network_image_widget.dart';
 
 class ProductDetailsCarouselSlider extends StatefulWidget {
   final List<String> imgUrls;
-  const ProductDetailsCarouselSlider({Key? key, required this.imgUrls})
+  final int productIdHeroAnimation;
+  const ProductDetailsCarouselSlider(
+      {Key? key, required this.imgUrls, required this.productIdHeroAnimation})
       : super(key: key);
 
   @override
@@ -24,27 +25,24 @@ class _ProductCardCarouselSlider extends State<ProductDetailsCarouselSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Hero(
-        tag: productImageHeroTag,
-        child: CarouselSlider(
-          items: widget.imgUrls
-              .map((item) => SizedBox(
-                    width: double.infinity,
-                    height: double.infinity,
-                    child: GetNetworkImageWidget(
-                      imgUrl: item,
-                      fit: BoxFit.contain,
-                    ),
-                  ))
-              .toList(),
-          carouselController: _controller,
-          options: CarouselOptions(
-              enlargeCenterPage: true,
-              enableInfiniteScroll: widget.imgUrls.length > 1,
-              viewportFraction: 0.7,
-              onPageChanged: (index, reason) =>
-                  setState(() => _current = index)),
-        ),
+      // ToDo :: Hero(tag: productIdHeroAnimation,
+      CarouselSlider(
+        items: widget.imgUrls
+            .map((item) => SizedBox(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: GetNetworkImageWidget(
+                    imgUrl: item,
+                    fit: BoxFit.contain,
+                  ),
+                ))
+            .toList(),
+        carouselController: _controller,
+        options: CarouselOptions(
+            enlargeCenterPage: true,
+            enableInfiniteScroll: widget.imgUrls.length > 1,
+            viewportFraction: 0.7,
+            onPageChanged: (index, reason) => setState(() => _current = index)),
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,

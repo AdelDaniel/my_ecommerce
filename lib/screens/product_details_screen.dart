@@ -37,6 +37,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       Align(
                           alignment: Alignment.topCenter,
                           child: ProductDetailsCarouselSlider(
+                              productIdHeroAnimation: product.id,
                               imgUrls: product.imgUrl)),
                       const CustomBackButton(),
                       Align(

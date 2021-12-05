@@ -39,6 +39,7 @@ class CustomProductCardWidget extends StatelessWidget {
                 SizedBox(
                   height: imageHeight,
                   child: ProductCardImageAndDiscount(
+                      productIdHeroAnimation: currentProduct.id,
                       imageShimmerHeight: 100,
                       imgUrl: currentProduct.imgUrl[0],
                       discount: currentProduct.discount),
