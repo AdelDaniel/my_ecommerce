@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'category_model.dart';
 
 class Product extends Equatable {
-  final int _id;
+  final String _id;
   final String _name;
   final String _dsecription;
   final List<String> _imgUrl;
@@ -14,10 +14,11 @@ class Product extends Equatable {
   final int _soldTimes;
   final bool _isRecommended;
   final bool _isAvalible;
+  final bool _isWishListed;
   final DateTime _publishedTime;
   final int _allQuentity;
   const Product(
-      {required int id,
+      {required String id,
       required String name,
       required String dsecription,
       required List<String> imgUrl,
@@ -28,6 +29,7 @@ class Product extends Equatable {
       required int soldTimes,
       required bool isRecommended,
       required bool isAvalible,
+      required bool isWishListed,
       required DateTime publishedTime,
       required int allQuentity})
       : _id = id,
@@ -39,13 +41,14 @@ class Product extends Equatable {
         _soldTimes = soldTimes,
         _isRecommended = isRecommended,
         _isAvalible = isAvalible,
+        _isWishListed = isWishListed,
         _publishedTime = publishedTime,
         _allQuentity = allQuentity,
         _dsecription = dsecription,
         _rating = rating,
         _discount = oldPrice <= 0 ? 0 : ((oldPrice - price) / oldPrice * 100);
 
-  int get id => _id;
+  String get id => _id;
   String get name => _name;
   List<String> get imgUrl => _imgUrl;
   double get price => _price;
@@ -55,6 +58,7 @@ class Product extends Equatable {
   List<Category> get category => _category;
   bool get isRecommended => _isRecommended;
   bool get isAvalible => _isAvalible;
+  bool get isWishListed => _isWishListed;
   DateTime get publishedTime => _publishedTime;
   int get soldTimes => _soldTimes;
   int get allQuentity => _allQuentity;
@@ -62,7 +66,8 @@ class Product extends Equatable {
 
   static List<Product> products = [
     Product(
-        id: 1,
+        id: '1',
+        isWishListed: false,
         name: 'laser Jacket',
         imgUrl: const [
           'https://images-na.ssl-images-amazon.com/images/I/61bHcEu5JGL._AC_UL1024_.jpg'
@@ -83,7 +88,8 @@ class Product extends Equatable {
         allQuentity: 13,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        id: 2,
+        isWishListed: false,
+        id: '2',
         name: 'laser Jacket',
         imgUrl: const [
           'https://ae01.alicdn.com/kf/H2680be17338d422e9805864eb8c8e0d33/Punk-skulls-motorcycle-leather-jacket-men-Laser-engraving-wings-moto-biker-jacket-men-s-Reticulate-embroidery.jpg'
@@ -104,7 +110,8 @@ class Product extends Equatable {
         allQuentity: 10,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        id: 3,
+        isWishListed: false,
+        id: '3',
         name: 'colored pens',
         imgUrl: const [
           'https://stormbuildingproducts.com/app/uploads/2019/08/Picture5.jpg'
@@ -126,7 +133,8 @@ class Product extends Equatable {
         allQuentity: 5,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        id: 4,
+        isWishListed: true,
+        id: '4',
         name:
             'The Chair Kings the neow ama pro gfor th e dking night danm with his man on the roofka; fkayses it is',
         imgUrl: const [
@@ -149,7 +157,8 @@ class Product extends Equatable {
         allQuentity: 3,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        id: 5,
+        isWishListed: false,
+        id: '5',
         name: 'pen',
         imgUrl: const [
           'https://penworld.sirv.com/media/catalog/product/1/9/1931673_1.jpg'
@@ -171,7 +180,8 @@ class Product extends Equatable {
         allQuentity: 7,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        id: 6,
+        isWishListed: true,
+        id: '6',
         name: 'Tv',
         imgUrl: const [
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTk9S0Wy7KCpFFArNscrNt679yovTWPZpbQ5w&usqp=CAU'
@@ -193,7 +203,8 @@ class Product extends Equatable {
         allQuentity: 5,
         dsecription: 'futue tv'),
     Product(
-        id: 7,
+        isWishListed: false,
+        id: '7',
         name: 'lollipop',
         imgUrl: const [
           'http://cdn.shopify.com/s/files/1/1696/6039/products/LA08115Lollipop-1oz-RainbowBlast_edit.jpg?v=1615239686'
@@ -215,7 +226,8 @@ class Product extends Equatable {
         allQuentity: 5,
         dsecription: 'how to make the baby happy in five minutes'),
     Product(
-        id: 8,
+        id: '8',
+        isWishListed: false,
         name: 'Apple MacBook Pro 13´´ M1/8GB/512GB SSD Laptop',
         imgUrl: const [
           'https://www.panaromabd.com/wp-content/uploads/2021/03/apple-macbook-pro-133-inch-retina-display-8-core-apple-m1-chip-with-8gb-ram-256gb-ssd-myd82-space-gray-3.jpg',

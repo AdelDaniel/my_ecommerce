@@ -1,15 +1,39 @@
 # my_ecommerce
-A new Flutter project.
+An E-Commerce App Developed by Flutter.
 
-## Getting Started
+---
+## Dependencies 
+### State Management Dependencies 
+- flutter_bloc:
 
-This project is a starting point for a Flutter application.
+### Main Dependencies
+ - flutter_localizations:
+ - equatable:
+ - intl:
+ - path_provider:
+ - carousel_slider:
+ - flutter_staggered_grid_view:
+ - transparent_image:
+ - flutter_rating_bar:
+ - shimmer:
+ - get_it: ^7.2.0
+ - cached_network_image:
+ - readmore:
+ - expandable: ^5.0.1
+ - dartz: ^0.10.1
+ - cupertino_icons: ^1.0.2
 
-A few resources to get you started if this is your first Flutter project:
+  ### Storage Dependencies
+- hydrated_bloc: 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### dev_dependencies: (linting and testing)
+- flutter_lints: ^1.0.4
+- lint: ^1.0.0
+- mockito:
+- build_runner:
+- bloc_test: 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Ignored Files
+- *.mocks.dart
+
+

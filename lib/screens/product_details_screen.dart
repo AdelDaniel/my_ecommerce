@@ -76,9 +76,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                     categoryName: product.category.first.name),
                               ]),
                         ),
-                        const Align(
+                        Align(
                             alignment: Alignment.topRight,
-                            child: AddToWishListButton(size: 40)),
+                            child: AddToWishListButton(
+                                size: 40, isWishListed: product.isWishListed)),
                       ],
                     ),
                   ),

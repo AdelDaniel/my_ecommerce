@@ -84,7 +84,9 @@ class CustomProductCardWidget extends StatelessWidget {
                           children: [
                             ProductAvailabilityWidget(
                                 isAvalible: currentProduct.isAvalible),
-                            const AddToWishListButton(),
+                            AddToWishListButton(
+                              isWishListed: currentProduct.isWishListed,
+                            ),
                           ],
                         ),
                       ],

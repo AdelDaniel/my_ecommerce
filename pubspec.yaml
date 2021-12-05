@@ -41,6 +41,7 @@ dependencies:
   cached_network_image:
   readmore:
   expandable: ^5.0.1
+  dartz: ^0.10.1
   # smooth_star_rating:
 
 dev_dependencies:
@@ -48,6 +49,10 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^1.0.4
   lint: ^1.0.0
+  mockito:
+  build_runner:
+  bloc_test: 
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
