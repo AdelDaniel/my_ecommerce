@@ -18,7 +18,7 @@ class ProductCardImageAndDiscount extends StatelessWidget {
   final String imgUrl;
   final double discount;
   final double? imageShimmerHeight;
-  final int productIdHeroAnimation;
+  final String productIdHeroAnimation;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -44,6 +44,7 @@ class ProductCardImageAndDiscount extends StatelessWidget {
                         child: Text(
                           '${AppLocalizations.of(context).discount} \n ${discount.toStringAsFixed(1)}%',
                           textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white),
                         )),
                   ),
           ),
