@@ -11,3 +11,5 @@ const double constMarginHerizontal = 15;
 /// TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Colors.white);
 const TextStyle constLabelTextStyle =
     TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: Colors.white);
+
+const String productImageHeroTag = "product Image Hero Tag";
