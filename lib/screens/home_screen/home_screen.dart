@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
-
 import 'home_screen_category_carousel_slider.dart';
 import 'vertical_products_list_view.dart';
 

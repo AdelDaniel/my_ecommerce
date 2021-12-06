@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:my_ecommerce/core/error/failure.dart';
+
+import '../error/failure.dart';
 
 /// The useCase only function:
 /// Future<Either<Failure, T>> call({required Params params});

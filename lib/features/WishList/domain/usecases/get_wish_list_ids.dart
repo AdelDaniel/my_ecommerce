@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_ecommerce/core/error/failure.dart';
-import 'package:my_ecommerce/core/usecase/usecase.dart';
-import 'package:my_ecommerce/features/WishList/domain/repositories/wish_list_repo.dart';
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../entities/wish_list_ids.dart';
+import '../repositories/wish_list_repo.dart';
 
-class GetWishListIdsUseCase extends UseCase<List<String>, NoParams> {
+class GetWishListIdsUseCase extends UseCase<WishListIds, NoParams> {
   final WishListRepo repo;
   const GetWishListIdsUseCase(this.repo);
   @override
-  Future<Either<Failure, List<String>>> call(
+  Future<Either<Failure, WishListIds>> call(
       {NoParams params = const NoParams()}) {
     return repo.getWishListIds();
   }

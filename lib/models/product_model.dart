@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
+
 import 'category_model.dart';
 
 class Product extends Equatable {
@@ -63,6 +66,53 @@ class Product extends Equatable {
   int get soldTimes => _soldTimes;
   int get allQuentity => _allQuentity;
   String get dsecription => _dsecription;
+
+  factory Product.fromJson(String str) =>
+      Product.fromMap(json.decode(str) as Map<String, dynamic>);
+  String toJson() => json.encode(toMap());
+
+  factory Product.fromMap(Map<String, dynamic> json) {
+    final List<Category> canvertCategoriesFromMap = [];
+    if (json["category"] != null) {
+      json["category"].forEach((String value) {
+        canvertCategoriesFromMap.add(Category.fromJson(value));
+      });
+    }
+    return Product(
+      id: (json["id"] ?? " ") as String,
+      name: (json["name"] ?? " ") as String,
+      dsecription: (json["dsecription"] ?? " ") as String,
+      imgUrl: (json["imgUrl"] != null ? json["imgUrl"].cast<String>() : [])
+          as List<String>,
+      price: (json["price"] ?? " ") as double,
+      oldPrice: (json["oldPrice"] ?? 0) as double,
+      rating: (json["rating"] ?? " ") as double,
+      category: canvertCategoriesFromMap,
+      soldTimes: (json["soldTimes"] ?? 0) as int,
+      isRecommended: (json["isRecommended"] ?? false) as bool,
+      isAvalible: (json["isAvalible"] ?? false) as bool,
+      isWishListed: (json["isWishListed"] ?? false) as bool,
+      publishedTime: (json["publishedTime"] ?? DateTime.now()) as DateTime,
+      allQuentity: (json["allQuentity"] ?? 0) as int,
+    );
+  }
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "name": name,
+        "dsecription": dsecription,
+        "imgUrl": imgUrl,
+        "price": price,
+        "oldPrice": oldPrice,
+        "rating": rating,
+        "category": category,
+        "soldTimes": soldTimes,
+        "isRecommended": isRecommended,
+        "isAvalible": isAvalible,
+        "isWishListed": isWishListed,
+        "publishedTime": publishedTime,
+        "allQuentity": allQuentity,
+      };
 
   static List<Product> products = [
     Product(

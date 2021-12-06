@@ -7,7 +7,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../all_injection_containers.dart';
 import '../core/constants.dart';
 import '../core/utils/date_coverter.dart';
-
 import '../models/product_model.dart';
 import '../widgets/widgets.dart';
 

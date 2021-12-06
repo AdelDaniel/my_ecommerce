@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:my_ecommerce/core/error/failure.dart';
+import 'package:my_ecommerce/features/WishList/domain/entities/wish_list_ids.dart';
 import 'package:my_ecommerce/features/WishList/domain/repositories/wish_list_repo.dart';
 import 'package:my_ecommerce/features/WishList/domain/usecases/get_wish_list_ids.dart';
 import '../../../../test_constants.dart';
@@ -43,14 +44,15 @@ void main() {
     expect(actualResult, const Left(CacheFailure()));
   });
 
-  test('Should return Right(tIdsList) when call getWishListIdsUseCase.call()',
+  test(
+      'Should return Right(WishListIds(tIdsList)) when call getWishListIdsUseCase.call()',
       () async {
     // arrange
     when(mockWishListRepo.getWishListIds())
-        .thenAnswer((_) async => const Right(tIdsList));
+        .thenAnswer((_) async => const Right(WishListIds(ids: tIdsList)));
     // act
     final actualResult = await getWishListIdsUseCase();
     // assertion
-    expect(actualResult, const Right(tIdsList));
+    expect(actualResult, const Right(WishListIds(ids: tIdsList)));
   });
 }

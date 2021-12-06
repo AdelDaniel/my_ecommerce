@@ -7,13 +7,13 @@ import 'check_connection_using_url.dart';
 // todo:: connection_check_cubit
 // import '../../features/connection_check/cubit/connection_check_cubit.dart';
 
-abstract class AbstactNetworkInfo {
-  const AbstactNetworkInfo();
+abstract class AbstractNetworkInfo {
+  const AbstractNetworkInfo();
   Future<bool> get isConnected;
   void checkConnectionStream();
 }
 
-class ConnectivityPlusNetworkInfoImpl implements AbstactNetworkInfo {
+class ConnectivityPlusNetworkInfoImpl implements AbstractNetworkInfo {
   final Connectivity connectivity;
   final CheckConnectionUsingUrl checkConnectionUsingUrl;
   // todo:: connection_check_cubit

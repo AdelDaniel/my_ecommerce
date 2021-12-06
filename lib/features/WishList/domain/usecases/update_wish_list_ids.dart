@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:my_ecommerce/core/error/failure.dart';
-import 'package:my_ecommerce/core/usecase/usecase.dart';
-import 'package:my_ecommerce/features/WishList/domain/repositories/wish_list_repo.dart';
+
+import '../../../../core/error/failure.dart';
+import '../../../../core/usecase/usecase.dart';
+import '../repositories/wish_list_repo.dart';
 
 class UpdateWishListIdsUseCase extends UseCase<bool, WishListIdParams> {
   final WishListRepo repo;

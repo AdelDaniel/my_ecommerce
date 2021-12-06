@@ -1,5 +1,5 @@
-import 'package:my_ecommerce/models/models.dart';
-import 'package:my_ecommerce/widgets/widgets.dart';
+import '../../models/models.dart';
+import '../../widgets/widgets.dart';
 
 // todo :: this method will help us to make only one card for the singel product
 /// if the product card will be appear at many listviews it will get the same product

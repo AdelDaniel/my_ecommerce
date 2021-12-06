@@ -1,20 +1,31 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 class Category extends Equatable {
   final String _name;
   final String _imgUrl;
-  final List<Category> _subCategories;
   const Category({
     required String name,
     required String imgUrl,
-    List<Category> subCategories = const [],
   })  : _name = name,
-        _imgUrl = imgUrl,
-        _subCategories = subCategories;
+        _imgUrl = imgUrl;
 
   String get name => _name;
   String get imgUrl => _imgUrl;
-  List<Category> get subCategories => _subCategories;
+
+  factory Category.fromJson(String str) =>
+      Category.fromMap(json.decode(str) as Map<String, dynamic>);
+  String toJson() => json.encode(toMap());
+
+  factory Category.fromMap(Map<String, dynamic> json) => Category(
+      name: (json["name"] ?? " ") as String,
+      imgUrl: (json["imgUrl"] ?? " ") as String);
+
+  Map<String, dynamic> toMap() => {
+        "name": name,
+        "imgUrl": imgUrl,
+      };
 
   static const List<Category> list = [
     Category(
