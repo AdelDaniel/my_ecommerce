@@ -31,3 +31,11 @@ class CacheFailure extends Failure {
   @override
   String get message => _mesage;
 }
+
+class NoInternetFailure extends Failure {
+  static const String _mesage = "Oops! No Internet Connection!";
+  const NoInternetFailure();
+
+  @override
+  String get message => _mesage;
+}
