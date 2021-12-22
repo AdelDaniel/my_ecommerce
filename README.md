@@ -18,6 +18,7 @@ An E-Commerce App Developed by Flutter.
 - build_runner:
 - bloc_test: 
 - hive_generator:
+- flutter_native_splash:
 
 ### Main Dependencies
  - flutter_localizations:
