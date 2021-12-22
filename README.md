@@ -6,6 +6,19 @@ An E-Commerce App Developed by Flutter.
 ### State Management Dependencies 
 - flutter_bloc:
 
+### Storage Dependencies
+- hydrated_bloc: 
+- hive:
+- hive_flutter:
+
+### dev_dependencies: (linting and testing)
+- flutter_lints: ^1.0.4
+- lint: ^1.0.0
+- mockito:
+- build_runner:
+- bloc_test: 
+- hive_generator:
+
 ### Main Dependencies
  - flutter_localizations:
  - equatable:
@@ -23,15 +36,7 @@ An E-Commerce App Developed by Flutter.
  - dartz: ^0.10.1
  - cupertino_icons: ^1.0.2
 
-  ### Storage Dependencies
-- hydrated_bloc: 
 
-### dev_dependencies: (linting and testing)
-- flutter_lints: ^1.0.4
-- lint: ^1.0.0
-- mockito:
-- build_runner:
-- bloc_test: 
 
 ## Ignored Files
 - *.mocks.dart

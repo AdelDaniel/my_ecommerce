@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../screens/cart_screen.dart';
+
+import 'cart_badge.dart';
 
 class CustomBottmAppBar extends StatelessWidget {
   const CustomBottmAppBar({
@@ -16,13 +19,16 @@ class CustomBottmAppBar extends StatelessWidget {
           children: [
             IconButton(
               onPressed: () {},
-              icon: Icon(
-                Icons.home,
-                color: Theme.of(context).iconTheme.color,
-              ),
+              icon: const Icon(Icons.home, color: Colors.white),
             ),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
+            ElevatedButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, CartScreen.routeName),
+                child:
+                    const CartBadge()), // const Icon(Icons.shopping_cart, color: Colors.white)),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.person, color: Colors.white)),
           ],
         ),
       ),

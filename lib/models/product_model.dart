@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-
+import '../all_injection_containers.dart';
+import '../features/wish_list/presentation/bloc/wishlist_bloc.dart';
 import 'category_model.dart';
 
-class Product extends Equatable {
+class Product {
   final String _id;
   final String _name;
   final String _dsecription;
@@ -13,14 +13,15 @@ class Product extends Equatable {
   final double _oldPrice;
   final double _discount;
   final double _rating;
-  final List<Category> _category;
+  final List<Category> _categories;
   final int _soldTimes;
   final bool _isRecommended;
   final bool _isAvalible;
-  final bool _isWishListed;
+  bool isWishListed;
   final DateTime _publishedTime;
   final int _allQuentity;
-  const Product(
+  final WishlistBloc _blocValue;
+  Product(
       {required String id,
       required String name,
       required String dsecription,
@@ -28,26 +29,27 @@ class Product extends Equatable {
       required double price,
       double oldPrice = 0,
       double rating = 0,
-      required List<Category> category,
+      required List<Category> categories,
       required int soldTimes,
       required bool isRecommended,
       required bool isAvalible,
-      required bool isWishListed,
-      required DateTime publishedTime,
+      this.isWishListed = false,
+      DateTime? publishedTime,
+      WishlistBloc? blocValue,
       required int allQuentity})
       : _id = id,
         _name = name,
         _imgUrl = imgUrl,
         _price = price,
         _oldPrice = oldPrice,
-        _category = category,
+        _categories = categories,
         _soldTimes = soldTimes,
         _isRecommended = isRecommended,
         _isAvalible = isAvalible,
-        _isWishListed = isWishListed,
-        _publishedTime = publishedTime,
+        _publishedTime = publishedTime ?? DateTime.now(),
         _allQuentity = allQuentity,
         _dsecription = dsecription,
+        _blocValue = blocValue ?? sl<WishlistBloc>(),
         _rating = rating,
         _discount = oldPrice <= 0 ? 0 : ((oldPrice - price) / oldPrice * 100);
 
@@ -58,27 +60,28 @@ class Product extends Equatable {
   double get oldPrice => _oldPrice;
   double get discount => _discount;
   double get rating => _rating;
-  List<Category> get category => _category;
+  List<Category> get category => _categories;
   bool get isRecommended => _isRecommended;
   bool get isAvalible => _isAvalible;
-  bool get isWishListed => _isWishListed;
   DateTime get publishedTime => _publishedTime;
   int get soldTimes => _soldTimes;
   int get allQuentity => _allQuentity;
   String get dsecription => _dsecription;
+  WishlistBloc get blocValue => _blocValue;
 
   factory Product.fromJson(String str) =>
       Product.fromMap(json.decode(str) as Map<String, dynamic>);
   String toJson() => json.encode(toMap());
 
-  factory Product.fromMap(Map<String, dynamic> json) {
+  factory Product.fromMap(Map<dynamic, dynamic> json) {
     final List<Category> canvertCategoriesFromMap = [];
     if (json["category"] != null) {
-      json["category"].forEach((String value) {
-        canvertCategoriesFromMap.add(Category.fromJson(value));
+      json["category"].forEach((value) {
+        canvertCategoriesFromMap.add(Category.fromJson(value as String));
       });
     }
     return Product(
+      blocValue: (json["blocValue"] ?? sl<WishlistBloc>()) as WishlistBloc,
       id: (json["id"] ?? " ") as String,
       name: (json["name"] ?? " ") as String,
       dsecription: (json["dsecription"] ?? " ") as String,
@@ -87,37 +90,80 @@ class Product extends Equatable {
       price: (json["price"] ?? " ") as double,
       oldPrice: (json["oldPrice"] ?? 0) as double,
       rating: (json["rating"] ?? " ") as double,
-      category: canvertCategoriesFromMap,
+      categories: canvertCategoriesFromMap,
       soldTimes: (json["soldTimes"] ?? 0) as int,
       isRecommended: (json["isRecommended"] ?? false) as bool,
       isAvalible: (json["isAvalible"] ?? false) as bool,
       isWishListed: (json["isWishListed"] ?? false) as bool,
-      publishedTime: (json["publishedTime"] ?? DateTime.now()) as DateTime,
+      publishedTime: json["publishedTime"] != null
+          ? DateTime.parse(json["publishedTime"] as String)
+          : DateTime.now(),
       allQuentity: (json["allQuentity"] ?? 0) as int,
     );
   }
 
-  Map<String, dynamic> toMap() => {
-        "id": id,
-        "name": name,
-        "dsecription": dsecription,
-        "imgUrl": imgUrl,
-        "price": price,
-        "oldPrice": oldPrice,
-        "rating": rating,
-        "category": category,
-        "soldTimes": soldTimes,
-        "isRecommended": isRecommended,
-        "isAvalible": isAvalible,
-        "isWishListed": isWishListed,
-        "publishedTime": publishedTime,
-        "allQuentity": allQuentity,
-      };
+  Map<String, dynamic> toMap() {
+    //     if (_categories != null) {
+    //   map["digest"] =;
+    // }
+    return {
+      "id": _id,
+      "name": _name,
+      "dsecription": _dsecription,
+      "imgUrl": _imgUrl,
+      "price": _price,
+      "oldPrice": _oldPrice,
+      "rating": _rating,
+      "category": _categories.map((category) => category.toJson()).toList(),
+      "soldTimes": _soldTimes,
+      "isRecommended": _isRecommended,
+      "isAvalible": _isAvalible,
+      "isWishListed": isWishListed,
+      "publishedTime": _publishedTime.toIso8601String(),
+      "allQuentity": _allQuentity,
+    };
+  }
 
   static List<Product> products = [
     Product(
+      id: "0",
+      name: "Classic Watch Bronson Chronograph Brown Eco Leather Watch",
+      dsecription: '''
+   Sku: FS5855
+Case Size: 44MM
+Movement: Quartz Chronograph
+Platform: 44MM BRONSON
+Strap Material: Leather
+Water Resistance: 5 ATM
+Case Color: Smoke
+Case Material: Stainless Steel
+Dial Color: Gray
+Strap Fashion Color: Brown
+Interchangeable Compatibility: 22MM
+Strap Width: 22MM
+Closure: Single Prong Strap Buckle
+Strap Inner Circumference: 200+/- 5MM Battery Type: SR920SW
+''',
+      imgUrl: [
+        "https://fossil.scene7.com/is/image/FossilPartners/FS5855_main?\$sfcc_fos_large\$",
+        "https://fossil.scene7.com/is/image/FossilPartners/FS5855_onwrist?\$sfcc_fos_large\$",
+        "https://fossil.scene7.com/is/image/FossilPartners/FS5855_9L?\$sfcc_lifestyle_large\$",
+      ],
+      price: 149.00,
+      categories: [
+        const Category(
+            name: "watch ",
+            imgUrl:
+                "https://hips.hearstapps.com/amv-prod-gp.s3.amazonaws.com/gearpatrol/wp-content/uploads/2018/02/10-Great-Horween-Watch-Straps-gear-patrol-lead-full-1.jpg?crop=1.00xw:0.749xh;0,0.131xh&resize=1200:*")
+      ],
+      soldTimes: 5,
+      isRecommended: true,
+      isAvalible: true,
+      allQuentity: 120,
+    ),
+    Product(
+        blocValue: sl<WishlistBloc>(),
         id: '1',
-        isWishListed: false,
         name: 'laser Jacket',
         imgUrl: const [
           'https://images-na.ssl-images-amazon.com/images/I/61bHcEu5JGL._AC_UL1024_.jpg'
@@ -125,7 +171,7 @@ class Product extends Equatable {
         price: 500.0,
         oldPrice: 700.0,
         rating: 2,
-        category: const [
+        categories: const [
           Category(
               name: 'clothes',
               imgUrl:
@@ -138,7 +184,7 @@ class Product extends Equatable {
         allQuentity: 13,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        isWishListed: false,
+        blocValue: sl<WishlistBloc>(),
         id: '2',
         name: 'laser Jacket',
         imgUrl: const [
@@ -147,7 +193,7 @@ class Product extends Equatable {
         price: 850.0,
         oldPrice: 1200.0,
         rating: 3,
-        category: const [
+        categories: const [
           Category(
               name: 'clothes',
               imgUrl:
@@ -160,7 +206,7 @@ class Product extends Equatable {
         allQuentity: 10,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        isWishListed: false,
+        blocValue: sl<WishlistBloc>(),
         id: '3',
         name: 'colored pens',
         imgUrl: const [
@@ -169,7 +215,7 @@ class Product extends Equatable {
         price: 2.5,
         oldPrice: 3.0,
         rating: 5,
-        category: const [
+        categories: const [
           Category(
             name: 'colored pens',
             imgUrl:
@@ -183,7 +229,7 @@ class Product extends Equatable {
         allQuentity: 5,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        isWishListed: true,
+        blocValue: sl<WishlistBloc>(),
         id: '4',
         name:
             'The Chair Kings the neow ama pro gfor th e dking night danm with his man on the roofka; fkayses it is',
@@ -192,7 +238,7 @@ class Product extends Equatable {
         ],
         price: 1700,
         oldPrice: 2000.0,
-        category: const [
+        categories: const [
           Category(
             name:
                 'The Chair Kings the neow ama pro gfor th e dking night danm with his man on the roofka; fkayses it is',
@@ -207,7 +253,7 @@ class Product extends Equatable {
         allQuentity: 3,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        isWishListed: false,
+        blocValue: sl<WishlistBloc>(),
         id: '5',
         name: 'pen',
         imgUrl: const [
@@ -216,7 +262,7 @@ class Product extends Equatable {
         price: 50.0,
         oldPrice: 60.0,
         rating: 1,
-        category: const [
+        categories: const [
           Category(
             name: 'pen',
             imgUrl:
@@ -230,7 +276,7 @@ class Product extends Equatable {
         allQuentity: 7,
         dsecription: 'very Bad ;af;teh the onfa foertnt;afaf'),
     Product(
-        isWishListed: true,
+        blocValue: sl<WishlistBloc>(),
         id: '6',
         name: 'Tv',
         imgUrl: const [
@@ -239,7 +285,7 @@ class Product extends Equatable {
         price: 350.0,
         oldPrice: 400.0,
         rating: 6,
-        category: const [
+        categories: const [
           Category(
             name: 'Tv',
             imgUrl:
@@ -253,7 +299,7 @@ class Product extends Equatable {
         allQuentity: 5,
         dsecription: 'futue tv'),
     Product(
-        isWishListed: false,
+        blocValue: sl<WishlistBloc>(),
         id: '7',
         name: 'lollipop',
         imgUrl: const [
@@ -262,7 +308,7 @@ class Product extends Equatable {
         price: 1,
 
         // rating: 1,
-        category: const [
+        categories: const [
           Category(
             name: 'kid food',
             imgUrl:
@@ -276,8 +322,8 @@ class Product extends Equatable {
         allQuentity: 5,
         dsecription: 'how to make the baby happy in five minutes'),
     Product(
+        blocValue: sl<WishlistBloc>(),
         id: '8',
-        isWishListed: false,
         name: 'Apple MacBook Pro 13´´ M1/8GB/512GB SSD Laptop',
         imgUrl: const [
           'https://www.panaromabd.com/wp-content/uploads/2021/03/apple-macbook-pro-133-inch-retina-display-8-core-apple-m1-chip-with-8gb-ram-256gb-ssd-myd82-space-gray-3.jpg',
@@ -287,7 +333,7 @@ class Product extends Equatable {
         ],
         price: 2392500,
         rating: 4.3,
-        category: const [
+        categories: const [
           Category(
             name: 'Laptops',
             imgUrl:
@@ -317,6 +363,6 @@ Height: 1.56 CM *Length: 21.24 cm *Weight: 1.4 kg *Width: 30.41 cm
 '''),
   ];
 
-  @override
-  List<Object?> get props => [_id];
+  // @override
+  // List<String> get props => [_id];
 }
