@@ -1,4 +1,4 @@
-export 'add_to_cart.dart';
+export 'add_to_cart_button.dart';
 export 'add_to_wish_list_button.dart';
 export 'circular_icon_button.dart';
 export 'circular_rating_number.dart';

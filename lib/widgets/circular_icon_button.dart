@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'product_aligment_circular_widget.dart';
@@ -22,6 +21,7 @@ class CircularIconButton extends StatelessWidget {
         width: 40,
         boxShape: BoxShape.circle,
         child: IconButton(
+          iconSize: 40,
           icon: icon,
           onPressed: onPressed,
         ));

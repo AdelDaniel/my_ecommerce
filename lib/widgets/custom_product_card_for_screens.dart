@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../models/models.dart';
 import '../screens/product_details_screen.dart';
@@ -28,7 +26,7 @@ class CustomProductCardWidget extends StatelessWidget {
       onTap: () => Navigator.pushNamed(context, ProductDetailsScreen.routeName,
           arguments: currentProduct),
       child: SizedBox(
-        width: width, //Todo
+        width: width, //TODO
         child: Card(
           elevation: 5,
           child: ClipRRect(
@@ -53,6 +51,7 @@ class CustomProductCardWidget extends StatelessWidget {
                       alignment: AlignmentDirectional.centerStart,
                       child: ProductName(productName: currentProduct.name),
                     )),
+                const SizedBox(height: 3),
                 //? Product Availability and price and wishlist button Widget
                 Container(
                     height: 70,
@@ -70,8 +69,8 @@ class CustomProductCardWidget extends StatelessWidget {
                               children: [
                                 ProductFirstCategoryName(
                                     categoryName:
-                                        currentProduct.category.first.name),
-                                PriceWidget(productPrice: currentProduct.price),
+                                        currentProduct.categories.first.name),
+                                PriceWidget(price: currentProduct.price),
                                 OldPriceWidget(
                                     oldPrice: currentProduct.oldPrice),
                               ],
@@ -84,16 +83,13 @@ class CustomProductCardWidget extends StatelessWidget {
                           children: [
                             ProductAvailabilityWidget(
                                 isAvalible: currentProduct.isAvalible),
-                            AddToWishListButton(
-                              isWishListed: currentProduct.isWishListed,
-                            ),
+                            AddToWishListButton(product: currentProduct),
                           ],
                         ),
                       ],
                     )),
                 ProductRatingInCard(rating: currentProduct.rating),
-                const AddToCart(),
-                const SizedBox(height: 3),
+                AddToCartButton(product: currentProduct),
               ],
             ),
           ),

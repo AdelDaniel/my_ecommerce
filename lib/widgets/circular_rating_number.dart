@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../core/constants.dart';
+import '../core/constants/constants.dart';
 import 'product_aligment_circular_widget.dart';
 
 class CircularRatingNumber extends StatelessWidget {

@@ -1,7 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'get_network_image_widget.dart';
 
@@ -25,7 +23,7 @@ class _ProductCardCarouselSlider extends State<ProductDetailsCarouselSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      // ToDo :: Hero(tag: productIdHeroAnimation,
+      // TODO :: Hero(tag: productIdHeroAnimation,
       CarouselSlider(
         items: widget.imgUrls
             .map((item) => SizedBox(

@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-import '../core/constants.dart';
+import '../core/constants/constants.dart';
 
 class CustomHeadLine1 extends StatelessWidget {
   final String text;

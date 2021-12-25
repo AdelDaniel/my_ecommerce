@@ -1,7 +1,5 @@
 // import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'get_network_image_widget.dart';
@@ -24,7 +22,7 @@ class ProductCardImageAndDiscount extends StatelessWidget {
     return Stack(
       children: [
         Align(
-          // ToDo :: Hero(tag: productIdHeroAnimation,
+          // TODO :: Hero(tag: productIdHeroAnimation,
           child: GetNetworkImageWidget(
               imgUrl: imgUrl, shimmerHeight: imageShimmerHeight),
         ),

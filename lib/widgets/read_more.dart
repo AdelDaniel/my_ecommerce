@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:readmore/readmore.dart';
 
-import '../core/constants.dart';
+import '../core/constants/constants.dart';
 
 class ReadMore extends StatelessWidget {
   const ReadMore({required this.text, Key? key}) : super(key: key);

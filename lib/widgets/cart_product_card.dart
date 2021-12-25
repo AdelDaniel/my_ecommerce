@@ -59,7 +59,7 @@ class CartProductCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        constraints: BoxConstraints(maxWidth: 120),
+                        constraints: const BoxConstraints(maxWidth: 120),
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text(

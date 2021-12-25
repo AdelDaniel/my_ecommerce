@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../all_injection_containers.dart';
 import '../../core/utils/curreny_converter.dart';
@@ -8,12 +6,13 @@ import '../../core/utils/curreny_converter.dart';
 class PriceWidget extends StatelessWidget {
   const PriceWidget({
     Key? key,
-    required this.productPrice,
+    required this.price,
+    this.priceTheme,
+    this.currencyTheme,
   }) : super(key: key);
-  final double productPrice;
-  // final CurrencyConverter currencyConverter = sl<CurrencyConverter>() ;
-  // this.currencyConverter = sl<CurrencyConverter>()
-
+  final double price;
+  final TextStyle? priceTheme;
+  final TextStyle? currencyTheme;
   @override
   Widget build(BuildContext context) {
     return Align(
@@ -23,12 +22,12 @@ class PriceWidget extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                    text: sl<CurrencyConverter>()
-                        .converPricetToString(productPrice),
-                    style: Theme.of(context).textTheme.bodyText1),
+                    text: sl<CurrencyConverter>().converPricetToString(price),
+                    style: priceTheme ?? Theme.of(context).textTheme.bodyText1),
                 TextSpan(
                     text: sl<CurrencyConverter>().currencyName(context),
-                    style: Theme.of(context).textTheme.bodyText2),
+                    style:
+                        currencyTheme ?? Theme.of(context).textTheme.bodyText2),
               ],
             ),
           ),
