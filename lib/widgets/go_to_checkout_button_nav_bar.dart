@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../core/constants/constants.dart';
 
 import 'cart_screen_main_button.dart';
 
