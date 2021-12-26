@@ -1,9 +1,17 @@
 class ServerException implements Exception {
-  final String massege;
-  const ServerException([this.massege = "Server Exceptions"]) : super();
+  String get mainMessage => "Server Exceptions!";
+  final String detailedMsg;
+  const ServerException({this.detailedMsg = ""}) : super();
+}
+
+class LocalException implements Exception {
+  String get mainMessage => "Loacl Exceptions!";
+  final String detailedMsg;
+  const LocalException({this.detailedMsg = ""}) : super();
 }
 
 class CacheException implements Exception {
-  final String massege;
-  const CacheException([this.massege = "Cache Exceptions"]) : super();
+  String get mainMessage => "Cache Exceptions!";
+  final String detailedMsg;
+  const CacheException({this.detailedMsg = ""}) : super();
 }

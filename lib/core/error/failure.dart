@@ -4,12 +4,12 @@ abstract class Failure extends Equatable {
   // If the subclasses have some properties, they'll get passed to this constructor
   // so that Equatable can perform value comparison.
 
-  const Failure();
-
-  String get message;
+  const Failure([this.detailedMsg = ""]);
+  final String detailedMsg;
+  String get mainMessage;
 
   @override
-  List<Object?> get props => [message];
+  List<String> get props => [mainMessage, detailedMsg];
 }
 
 // Remember, the Repository will catch the Exceptions and return them using the Either type as Failures.
@@ -17,25 +17,29 @@ abstract class Failure extends Equatable {
 
 // General failures
 class ServerFailure extends Failure {
-  static const String _mesage = "Oops! Server Failure!";
-  const ServerFailure();
+  const ServerFailure({required String detailedMsg}) : super(detailedMsg);
 
   @override
-  String get message => _mesage;
+  String get mainMessage => "Oops! Server Failure!";
 }
 
 class CacheFailure extends Failure {
-  static const String _mesage = "Oops! Cache Failure!";
-  const CacheFailure();
+  const CacheFailure({String detailedMsg = ""}) : super(detailedMsg);
 
   @override
-  String get message => _mesage;
+  String get mainMessage => "Oops! Cache Failure!";
+}
+
+class LocalFailure extends Failure {
+  const LocalFailure({String detailedMsg = ""}) : super(detailedMsg);
+
+  @override
+  String get mainMessage => "Oops! Local Failure!";
 }
 
 class NoInternetFailure extends Failure {
-  static const String _mesage = "Oops! No Internet Connection!";
-  const NoInternetFailure();
+  const NoInternetFailure({String detailedMsg = ""}) : super(detailedMsg);
 
   @override
-  String get message => _mesage;
+  String get mainMessage => "Oops! No Internet eConnection!";
 }
