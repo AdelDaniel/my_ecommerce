@@ -10,6 +10,7 @@ An E-Commerce App Developed by Flutter.
 - hydrated_bloc: 
 - hive:
 - hive_flutter:
+- cloud_firestore:
 
 ### dev_dependencies: (linting and testing)
 - flutter_lints: ^1.0.4
@@ -30,12 +31,14 @@ An E-Commerce App Developed by Flutter.
  - transparent_image:
  - flutter_rating_bar:
  - shimmer:
- - get_it: ^7.2.0
+ - get_it: 
  - cached_network_image:
  - readmore:
- - expandable: ^5.0.1
- - dartz: ^0.10.1
- - cupertino_icons: ^1.0.2
+ - expandable: 
+ - dartz: 
+ - cupertino_icons: 
+ - firebase_core:
+ - firebase_auth:
 
 
 

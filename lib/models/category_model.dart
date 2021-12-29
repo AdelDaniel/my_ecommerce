@@ -1,14 +1,21 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Category extends Equatable {
+  static const String nameCol = "name";
+  static const String imageUrlCol = "imageUrl";
+  static const String idCol = "id";
+  final String _id;
   final String _name;
   final String _imgUrl;
   const Category({
     required String name,
     required String imgUrl,
-  })  : _name = name,
+    String id = "",
+  })  : _id = id,
+        _name = name,
         _imgUrl = imgUrl;
 
   String get name => _name;
@@ -19,13 +26,27 @@ class Category extends Equatable {
   String toJson() => json.encode(toMap());
 
   factory Category.fromMap(Map<String, dynamic> json) => Category(
-      name: (json["name"] ?? " ") as String,
-      imgUrl: (json["imgUrl"] ?? " ") as String);
+        name: (json[nameCol] ?? " ") as String,
+        imgUrl: (json[imageUrlCol] ?? " ") as String,
+      );
 
-  Map<String, dynamic> toMap() => {
-        "name": name,
-        "imgUrl": imgUrl,
-      };
+  factory Category.fromDocumentSnapshot(DocumentSnapshot json) => Category(
+        name: (json[nameCol] ?? " ") as String,
+        imgUrl: (json[imageUrlCol] ?? " ") as String,
+      );
+
+  Map<String, dynamic> toMap() => {nameCol: name, imageUrlCol: imgUrl};
+
+  Category copyWith({
+    String? id,
+    String? name,
+    String? imgUrl,
+  }) =>
+      Category(
+        id: id ?? _id,
+        name: name ?? _name,
+        imgUrl: imgUrl ?? _imgUrl,
+      );
 
   static const List<Category> list = [
     Category(
@@ -57,5 +78,5 @@ class Category extends Equatable {
   ];
 
   @override
-  List<Object?> get props => [_imgUrl, _name];
+  List<Object> get props => [_imgUrl, _id, _name];
 }

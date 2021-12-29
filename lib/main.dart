@@ -4,23 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:my_ecommerce/features/category/presentation/bloc/category_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'all_injection_containers.dart' as di;
 import 'core/config/app_routing.dart';
+import 'core/config/firebase_init.dart' as firebase;
 import 'core/config/hive_init.dart' as hive;
 import 'features/cart/bloc/cart_bloc.dart';
+import 'features/wish_list/presentation/bloc/wishlist_bloc.dart';
 import 'l10n/l10n.dart';
 import 'screens/home_screen/home_screen.dart';
 import 'settings/language_settings/cubit/language_cubit.dart';
 import 'settings/theme_settings/cubit/theme_cubit.dart';
 
 FutureOr<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // init
   await hive.hiveInit();
   await di.setup();
+  await firebase.firebaseInit();
 
-  WidgetsFlutterBinding.ensureInitialized();
   final storage = await HydratedStorage.build(
     storageDirectory: await getTemporaryDirectory(),
   );
@@ -37,7 +41,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<WishlistBloc>.value(value: di.sl<WishlistBloc>()),
         BlocProvider<CartBloc>.value(value: di.sl<CartBloc>()),
+        BlocProvider<CategoryBloc>.value(value: di.sl<CategoryBloc>()),
         BlocProvider<LanguageCubit>(create: (_) => LanguageCubit()),
         BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
       ],
@@ -63,43 +69,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class MyHomePage extends StatefulWidget {
-//   @override
-//   _MyHomePageState createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         centerTitle: true,
-//         actions: [
-//           IconButton(
-//               onPressed: () => Navigator.push(context,
-//                   MaterialPageRoute(builder: (context) => SettingsScreen())),
-//               icon: Icon(Icons.settings))
-//         ],
-//         title: Text(AppLocalizations.of(context).title),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Text(AppLocalizations.of(context).language),
-//             Text(
-//               '$_counter',
-//               style: Theme.of(context).textTheme.headline4,
-//             ),
-//           ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }

@@ -1,5 +1,7 @@
 # My Ignores
 *.mocks.dart
+test/features/wish_list
+android/app/google-services.json
 
 # Miscellaneous
 *.class
