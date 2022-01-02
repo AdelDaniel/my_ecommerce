@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 class CurrencyConverter {
   const CurrencyConverter();
-  String converPricetToString(double number) {
+  static String converPricetToString(double number) {
     final RegExp reg = RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))');
     String mathFunc(Match match) => '${match[1]},';
 
@@ -12,12 +12,18 @@ class CurrencyConverter {
     // return NumberFormat().format(number);
   }
 
-  String currencyName(BuildContext context) {
+  static String currencyName(BuildContext context) {
     final Locale locale = Localizations.localeOf(context);
     final format = NumberFormat.simpleCurrency(locale: locale.toString());
     if (format.currencyName == 'EGP') return AppLocalizations.of(context).egp;
     return format.currencyName ?? 'USD';
     // print("CURRENCY SYMBOL ${format.currencySymbol}"); // $
     // print("CURRENCY NAME ${format.currencyName}"); // USD
+  }
+
+  static String getCurrencySymbol(BuildContext context) {
+    final Locale locale = Localizations.localeOf(context);
+    final format = NumberFormat.simpleCurrency(locale: locale.toString());
+    return format.currencySymbol;
   }
 }

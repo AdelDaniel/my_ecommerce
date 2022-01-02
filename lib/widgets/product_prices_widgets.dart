@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../all_injection_containers.dart';
 import '../../core/utils/curreny_converter.dart';
 
 class PriceWidget extends StatelessWidget {
@@ -16,22 +15,23 @@ class PriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-        alignment: AlignmentDirectional.centerStart,
-        child: FittedBox(
-          child: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(
-                    text: sl<CurrencyConverter>().converPricetToString(price),
-                    style: priceTheme ?? Theme.of(context).textTheme.bodyText1),
-                TextSpan(
-                    text: sl<CurrencyConverter>().currencyName(context),
-                    style:
-                        currencyTheme ?? Theme.of(context).textTheme.bodyText2),
-              ],
-            ),
+      alignment: AlignmentDirectional.centerStart,
+      child: FittedBox(
+        child: RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                  text: CurrencyConverter.converPricetToString(price),
+                  style: priceTheme ?? Theme.of(context).textTheme.bodyText1),
+              TextSpan(
+                  text: CurrencyConverter.currencyName(context),
+                  style:
+                      currencyTheme ?? Theme.of(context).textTheme.bodyText2),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 
@@ -51,12 +51,13 @@ class OldPriceWidget extends StatelessWidget {
             alignment: AlignmentDirectional.centerStart,
             child: FittedBox(
               child: Text(
-                '${sl<CurrencyConverter>().converPricetToString(oldPrice)} ${sl<CurrencyConverter>().currencyName(context)}',
+                '${CurrencyConverter.converPricetToString(oldPrice)} ${CurrencyConverter.currencyName(context)}',
                 textAlign: TextAlign.end,
                 style: TextStyle(
-                    decoration: TextDecoration.lineThrough,
-                    fontSize: 12,
-                    color: Colors.grey[500]),
+                  decoration: TextDecoration.lineThrough,
+                  fontSize: 12,
+                  color: Colors.grey[500],
+                ),
               ),
             ),
           );

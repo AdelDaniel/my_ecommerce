@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../all_injection_containers.dart';
 import '../core/constants/constants.dart';
 import '../core/utils/curreny_converter.dart';
 import '../features/cart/bloc/cart_bloc.dart';
@@ -63,7 +62,7 @@ class CartProductCard extends StatelessWidget {
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text(
-                            'Total: ${sl<CurrencyConverter>().converPricetToString(cartItem.quantity * cartItem.product.price)}',
+                            'Total: ${CurrencyConverter.converPricetToString(cartItem.quantity * cartItem.product.price)}',
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),

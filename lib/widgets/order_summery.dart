@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../core/constants/constants.dart';
+import '../core/utils/curreny_converter.dart';
 import '../features/cart/bloc/cart_bloc.dart';
 
 class OrderSummary extends StatelessWidget {
@@ -22,7 +24,8 @@ class OrderSummary extends StatelessWidget {
                   children: [
                     Text('SUBTOTAL',
                         style: Theme.of(context).textTheme.headline5),
-                    Text('\$${state.cart.subTotalString}',
+                    Text(
+                        "${CurrencyConverter.getCurrencySymbol(context)} ${CurrencyConverter.converPricetToString(state.cart.subTotal)}",
                         style: Theme.of(context).textTheme.headline5),
                   ],
                 ),
@@ -35,7 +38,8 @@ class OrderSummary extends StatelessWidget {
                   children: [
                     Text('DELIVERY FEE',
                         style: Theme.of(context).textTheme.headline5),
-                    Text('\$${state.cart.deliveryFeeString}',
+                    Text(
+                        "${CurrencyConverter.getCurrencySymbol(context)} ${CurrencyConverter.converPricetToString(state.cart.deliveryFee)}",
                         style: Theme.of(context).textTheme.headline5),
                   ],
                 ),
@@ -69,7 +73,7 @@ class OrderSummary extends StatelessWidget {
                                 .copyWith(color: Colors.white),
                           ),
                           Text(
-                            '\$${state.cart.totalString}',
+                            "${CurrencyConverter.getCurrencySymbol(context)} ${CurrencyConverter.converPricetToString(state.cart.total)}",
                             style: Theme.of(context)
                                 .textTheme
                                 .headline5!
