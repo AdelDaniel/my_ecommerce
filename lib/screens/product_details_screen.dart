@@ -1,11 +1,9 @@
 import 'package:expandable/expandable.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../all_injection_containers.dart';
-import '../core/constants.dart';
+import '../core/constants/constants.dart';
 import '../core/utils/date_coverter.dart';
 import '../models/product_model.dart';
 import '../widgets/widgets.dart';
@@ -46,7 +44,8 @@ class ProductDetailsScreen extends StatelessWidget {
                             CircularIconButton(
                                 alignment: Alignment.topRight,
                                 icon: const Icon(Icons.more_vert_outlined),
-                                onPressed: () {}),
+                                onPressed:
+                                    () {}), //TODO :: the three dot impelementation //share & seeTheOwner
                             CircularRatingNumber(rating: product.rating),
                           ],
                         ),
@@ -71,14 +70,17 @@ class ProductDetailsScreen extends StatelessWidget {
                                   fontSize: 28,
                                   fontWeight: FontWeight.w700,
                                 ),
-                                ProductFirstCategoryName(
-                                    categoryName: product.category.first.name),
+
+                                // TODO :: get the product category by id
+                                // ProductFirstCategoryName(
+                                //     categoryName:
+                                //         product.categories.first.name),
                               ]),
                         ),
                         Align(
                             alignment: Alignment.topRight,
                             child: AddToWishListButton(
-                                size: 40, isWishListed: product.isWishListed)),
+                                product: product, size: 40)),
                       ],
                     ),
                   ),
@@ -100,7 +102,7 @@ class ProductDetailsScreen extends StatelessWidget {
                           ],
                         ),
                         Column(children: [
-                          PriceWidget(productPrice: product.price),
+                          PriceWidget(price: product.price),
                           OldPriceWidget(oldPrice: product.oldPrice),
                         ]),
                       ],
@@ -156,9 +158,11 @@ class ProductDetailsScreen extends StatelessWidget {
             //? fixed Add to cart Button
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.1,
-              child: const Center(
-                  child: AddToCart(
-                      horizontalMargin: constMarginHerizontal, height: 50)),
+              child: Center(
+                  child: AddToCartButton(
+                      product: product,
+                      horizontalMargin: constMarginHerizontal,
+                      height: 50)),
             )
           ],
         ),

@@ -67,9 +67,10 @@ class CustomProductCardWidget extends StatelessWidget {
                             alignment: AlignmentDirectional.centerStart,
                             child: Column(
                               children: [
-                                ProductFirstCategoryName(
-                                    categoryName:
-                                        currentProduct.categories.first.name),
+                                // TODO :: get the product category by id
+                                // ProductFirstCategoryName(
+                                //     categoryName:
+                                //         currentProduct.categories.first.name),
                                 PriceWidget(price: currentProduct.price),
                                 OldPriceWidget(
                                     oldPrice: currentProduct.oldPrice),

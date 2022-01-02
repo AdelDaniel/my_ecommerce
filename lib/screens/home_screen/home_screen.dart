@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:my_ecommerce/features/product/presentation/bloc/product_bloc.dart';
 
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
@@ -21,26 +23,38 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: AppLocalizations.of(context).title),
       bottomNavigationBar: const CustomBottmAppBar(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            CustomHeadLine1(text: AppLocalizations.of(context).mostPopular),
-            const HomeScreenCategoryCarouselSlider(categories: Category.list),
-            CustomHeadLine1(text: AppLocalizations.of(context).recommended),
-            VerticalProductsListView(
-              products: Product.products
-                  .where((product) => product.isRecommended)
-                  .toList(),
-            ),
-            CustomHeadLine1(text: AppLocalizations.of(context).mostRated),
-            VerticalProductsListView(
-              products: Product.products
-                  .where((product) => product.rating >= 5)
-                  .toList(),
-            ),
-          ],
-        ),
-      ),
+      body: SingleChildScrollView(child: BlocBuilder<ProductBloc, ProductState>(
+        builder: (context, state) {
+          //  LoadingProductState && LoadedProductState && ErrorProductState
+          if (state is LoadedProductState) {
+            return Column(
+              children: [
+                CustomHeadLine1(text: AppLocalizations.of(context).mostPopular),
+                const HomeScreenCategoryCarouselSlider(
+                    categories: Category.list),
+                const CustomHeadLine1(text: "all"),
+                VerticalProductsListView(products: state.products),
+                CustomHeadLine1(text: AppLocalizations.of(context).recommended),
+                VerticalProductsListView(
+                  products: state.products
+                      .where((product) => product.isRecommended)
+                      .toList(),
+                ),
+                CustomHeadLine1(text: AppLocalizations.of(context).mostRated),
+                VerticalProductsListView(
+                  products: state.products
+                      .where((product) => product.rating >= 5)
+                      .toList(),
+                ),
+              ],
+            );
+          } else if (state is LoadingProductState) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return const Text("someThing went wrong");
+          }
+        },
+      )),
     );
   }
 }

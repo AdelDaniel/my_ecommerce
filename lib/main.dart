@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:my_ecommerce/features/category/presentation/bloc/category_bloc.dart';
+import 'package:my_ecommerce/features/product/presentation/bloc/product_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'all_injection_containers.dart' as di;
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<WishlistBloc>.value(value: di.sl<WishlistBloc>()),
         BlocProvider<CartBloc>.value(value: di.sl<CartBloc>()),
         BlocProvider<CategoryBloc>.value(value: di.sl<CategoryBloc>()),
+        BlocProvider<ProductBloc>.value(value: di.sl<ProductBloc>()),
         BlocProvider<LanguageCubit>(create: (_) => LanguageCubit()),
         BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
       ],
