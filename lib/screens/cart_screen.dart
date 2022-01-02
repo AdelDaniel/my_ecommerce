@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../widgets/cart_badge.dart';
-import '../widgets/cart_list_widget.dart';
-import '../widgets/cart_screen_main_button.dart';
-import '../widgets/custom_app_bar.dart';
-import '../widgets/go_to_checkout_button_nav_bar.dart';
-import '../widgets/order_summery.dart';
+import '../widgets/widgets.dart';
 
 class CartScreen extends StatelessWidget {
   static const String routeName = '/cart';
@@ -20,7 +15,10 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: AppLocalizations.of(context).cart),
-        bottomNavigationBar: const GoToCheckoutButtonNavBar(),
+        bottomNavigationBar: CustomNavBar(
+          onPressed: () => Navigator.pushNamed(context, '/checkout'),
+          buttonText: 'GO TO CHECKOUT', //TODO: language
+        ),
         body: Column(
           children: [
             // ! Upper :: the row to add more items || see delivery fee
@@ -29,7 +27,7 @@ class CartScreen extends StatelessWidget {
               children: [
                 const CartBadge(),
                 // to order More Products
-                CartScreenMainButton(
+                MainNavBarButton(
                   onPressed: () => Navigator.popAndPushNamed(context, '/'),
                   buttonText: 'Add More Items 🛒', //TODO: langyage
                 ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'cart_screen_main_button.dart';
+import 'widgets.dart';
 
-class GoToCheckoutButtonNavBar extends StatelessWidget {
-  const GoToCheckoutButtonNavBar(
+class CustomNavBar extends StatelessWidget {
+  const CustomNavBar(
       {Key? key,
+      required this.onPressed,
+      required this.buttonText,
       this.height = 35,
       this.width = double.infinity,
       this.horizontalMargin = 10})
@@ -12,6 +14,8 @@ class GoToCheckoutButtonNavBar extends StatelessWidget {
   final double height;
   final double width;
   final double horizontalMargin;
+  final void Function() onPressed;
+  final String buttonText;
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -20,9 +24,9 @@ class GoToCheckoutButtonNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            CartScreenMainButton(
-              onPressed: () => Navigator.pushNamed(context, '/checkout'),
-              buttonText: 'GO TO CHECKOUT', //TODO: langyage
+            MainNavBarButton(
+              onPressed: onPressed,
+              buttonText: buttonText,
             )
           ],
         ),

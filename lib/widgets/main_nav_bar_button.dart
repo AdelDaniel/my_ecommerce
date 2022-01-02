@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../core/constants/constants.dart';
 
-class CartScreenMainButton extends StatelessWidget {
-  const CartScreenMainButton({
+class MainNavBarButton extends StatelessWidget {
+  const MainNavBarButton({
     Key? key,
     required this.onPressed,
     required this.buttonText,
