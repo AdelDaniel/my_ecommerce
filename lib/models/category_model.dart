@@ -30,10 +30,15 @@ class Category extends Equatable {
         imgUrl: (json[imageUrlCol] ?? " ") as String,
       );
 
-  factory Category.fromDocumentSnapshot(DocumentSnapshot json) => Category(
-        name: (json[nameCol] ?? " ") as String,
-        imgUrl: (json[imageUrlCol] ?? " ") as String,
-      );
+  factory Category.fromDocumentSnapshot(DocumentSnapshot doc) {
+    final Map<String, dynamic> data;
+    if (doc.data() != null) {
+      data = doc.data()! as Map<String, dynamic>;
+    } else {
+      data = <String, dynamic>{};
+    }
+    return Category.fromMap(data);
+  }
 
   Map<String, dynamic> toMap() => {nameCol: name, imageUrlCol: imgUrl};
 
@@ -47,35 +52,6 @@ class Category extends Equatable {
         name: name ?? _name,
         imgUrl: imgUrl ?? _imgUrl,
       );
-
-  static const List<Category> list = [
-    Category(
-      name: 'paf',
-      imgUrl:
-          'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    ),
-    Category(
-      name: 'adel',
-      imgUrl:
-          'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    ),
-    Category(
-      name: 'colored pens',
-      imgUrl:
-          'https://stormbuildingproducts.com/app/uploads/2019/08/Picture5.jpg',
-    ),
-    Category(
-      name:
-          'the neow ama pro gfor th e dking night danm with his man on the roofka; fkayses it is',
-      imgUrl:
-          'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    ),
-    Category(
-      name: 'pen',
-      imgUrl:
-          'https://penworld.sirv.com/media/catalog/product/1/9/1931673_1.jpg',
-    ),
-  ];
 
   @override
   List<Object> get props => [_imgUrl, _id, _name];

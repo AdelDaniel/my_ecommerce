@@ -30,8 +30,7 @@ class HomeScreen extends StatelessWidget {
             return Column(
               children: [
                 CustomHeadLine1(text: AppLocalizations.of(context).mostPopular),
-                const HomeScreenCategoryCarouselSlider(
-                    categories: Category.list),
+                const HomeScreenCategoryCarouselSlider(),
                 const CustomHeadLine1(text: "all"),
                 VerticalProductsListView(products: state.products),
                 CustomHeadLine1(text: AppLocalizations.of(context).recommended),

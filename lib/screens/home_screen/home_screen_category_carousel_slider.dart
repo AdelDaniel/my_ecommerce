@@ -10,9 +10,7 @@ import '../../models/models.dart';
 import '../../widgets/get_network_image_widget.dart';
 
 class HomeScreenCategoryCarouselSlider extends StatelessWidget {
-  final List<Category> categories;
-  const HomeScreenCategoryCarouselSlider({Key? key, required this.categories})
-      : super(key: key);
+  const HomeScreenCategoryCarouselSlider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
