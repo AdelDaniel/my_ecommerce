@@ -1,11 +1,47 @@
+import 'dart:convert';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 import 'models.dart';
 
 class CartItem {
+  static const String _quantityColumn = "quantity";
+  static const String _productColumn = "product";
   CartItem({this.quantity = 1, required this.product});
   int quantity;
   final Product product;
+
+  factory CartItem.fromJson(String str) =>
+      CartItem.fromMap(json.decode(str) as Map<String, dynamic>);
+  String toJson() => json.encode(toMap());
+
+  factory CartItem.fromMap(Map<String, dynamic> json) => CartItem(
+        quantity: (json[_quantityColumn] ?? 0) as int,
+        product: (json[_productColumn] ?? " ") as Product,
+      );
+
+  factory CartItem.fromDocumentSnapshot(DocumentSnapshot doc) {
+    final Map<String, dynamic> data;
+    if (doc.data() != null) {
+      data = doc.data()! as Map<String, dynamic>;
+    } else {
+      data = <String, dynamic>{};
+    }
+    return CartItem.fromMap(data);
+  }
+
+  Map<String, dynamic> toMap() =>
+      {_quantityColumn: quantity, _productColumn: product.toMap()};
+
+  CartItem copyWith({
+    int? quantity,
+    Product? product,
+  }) =>
+      CartItem(
+        quantity: quantity ?? this.quantity,
+        product: product ?? this.product,
+      );
 }
 
 class Cart extends Equatable {
