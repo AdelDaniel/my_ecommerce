@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_ecommerce/screens/checkout_screen.dart';
 
 import '../../models/models.dart';
 import '../../screens/cart_screen.dart';
@@ -24,6 +25,8 @@ Route onGenerateRoute(RouteSettings settings) {
       return WishListScreen.route();
     case SettingsScreen.routeName:
       return SettingsScreen.route();
+    case CheckoutScreen.routeName:
+      return CheckoutScreen.route();
 
     default:
       return _errorRoute();

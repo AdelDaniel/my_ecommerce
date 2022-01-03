@@ -7,6 +7,7 @@ import 'package:my_ecommerce/core/networking/check_connection_using_url.dart';
 import 'package:my_ecommerce/core/networking/network.dart';
 import 'package:my_ecommerce/core/utils/date_coverter.dart';
 import 'package:my_ecommerce/features/category/category_injection_containers.dart';
+import 'package:my_ecommerce/features/checkout/checkout_injection_container.dart';
 import 'package:my_ecommerce/features/product/product_injection_containers.dart';
 import 'package:my_ecommerce/features/wish_list/wish_list_injection_containers.dart';
 
@@ -40,4 +41,5 @@ Future<void> setup() async {
   await cartInjectionContainersetup(sl);
   await categoryInjectionContainersetup(sl);
   await productInjectionContainersetup(sl);
+  await checkoutInjectionContainersetup(sl);
 }

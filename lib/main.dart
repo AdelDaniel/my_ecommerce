@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:my_ecommerce/features/category/presentation/bloc/category_bloc.dart';
+import 'package:my_ecommerce/features/checkout/presentation/bloc/checkout_bloc.dart';
+import 'package:my_ecommerce/features/checkout/repositories/base_checkout_repository.dart';
 import 'package:my_ecommerce/features/product/presentation/bloc/product_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -46,6 +48,10 @@ class MyApp extends StatelessWidget {
         BlocProvider<CartBloc>.value(value: di.sl<CartBloc>()),
         BlocProvider<CategoryBloc>.value(value: di.sl<CategoryBloc>()),
         BlocProvider<ProductBloc>.value(value: di.sl<ProductBloc>()),
+        BlocProvider<CheckoutBloc>(
+            create: (newContext) => CheckoutBloc(
+                cartBloc: newContext.read<CartBloc>(),
+                repository: di.sl<CheckoutRepository>())),
         BlocProvider<LanguageCubit>(create: (_) => LanguageCubit()),
         BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
       ],
