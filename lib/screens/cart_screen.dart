@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:my_ecommerce/features/cart/bloc/cart_bloc.dart';
+import 'package:my_ecommerce/screens/checkout_screen.dart';
 
 import '../widgets/widgets.dart';
 
@@ -15,9 +18,19 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(title: AppLocalizations.of(context).cart),
-        bottomNavigationBar: CustomNavBar(
-          onPressed: () => Navigator.pushNamed(context, '/checkout'),
-          buttonText: 'GO TO CHECKOUT', //TODO: language
+        bottomNavigationBar: BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            if (state is CartLoadedState) {
+              return state.cart.cartItems.isEmpty
+                  ? const SizedBox()
+                  : CustomNavBar(
+                      onPressed: () => Navigator.pushNamed(
+                          context, CheckoutScreen.routeName),
+                      buttonText: 'GO TO CHECKOUT', //TODO: language
+                    );
+            }
+            return Container();
+          },
         ),
         body: Column(
           children: [

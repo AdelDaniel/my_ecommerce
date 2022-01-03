@@ -16,7 +16,9 @@ class CartListWidget extends StatelessWidget {
         if (state is CartLoadingState) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is CartLoadedState) {
-          log(" ${state.cart}");
+          if (state.cart.cartItems.isEmpty) {
+            return const Center(child: Text('No Porudcts In Your Cart!'));
+          }
           return ListView.separated(
               separatorBuilder: (_, __) => const Divider(),
               itemCount: state.cart.cartItems.length,
