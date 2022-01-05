@@ -16,7 +16,7 @@ import 'features/cart/cart_injection_container.dart';
 
 final GetIt sl = GetIt.instance;
 Future<void> setup() async {
-//! Features - Number Trivia
+//! Features
 // Bloc
 // useCases
 // Repository

@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:my_ecommerce/core/error/failure.dart';
 import 'package:my_ecommerce/features/product/data/repositories/product_repository_impl.dart';
+import 'package:my_ecommerce/features/wish_list/presentation/bloc/wishlist_bloc.dart';
 import 'package:my_ecommerce/models/models.dart';
 
 part 'product_event.dart';
@@ -14,29 +15,63 @@ part 'product_state.dart';
 /// states::  LoadingProductState &&  LoadedProductState &&  ErrorProductState
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductRepository _productRepository;
+  final WishlistBloc _wishlistBloc;
   StreamSubscription? productSubscription;
 
-  ProductBloc({required ProductRepository productRepository})
+  ProductBloc(
+      {required ProductRepository productRepository,
+      required WishlistBloc wishlistBloc})
       : _productRepository = productRepository,
+        _wishlistBloc = wishlistBloc,
         super(const LoadingProductState()) {
+    _wishlistBloc.stream.listen((WishlistState wihsListState) {
+      if (wihsListState is LoadedWishListIdsState ||
+          wihsListState is EmptyWishListState) {
+        if (state is LoadedProductState) {
+          add(
+            UpdateProductsEvent(
+                products: (state as LoadedProductState).products),
+          );
+        }
+      }
+    });
     on<LoadProductEvent>(_onLoadProductEvent);
     on<UpdateProductsEvent>(_onUpdateProductsEvent);
     on<AddProductEvent>(_onAddProductEvent);
   }
 
   void _onUpdateProductsEvent(UpdateProductsEvent event, Emitter emit) {
-    emit(LoadedProductState(products: event.products));
+    final List<Product> updatedProducts = [];
+    if (_wishlistBloc.state is LoadedWishListIdsState) {
+      final loadedWishListIds = _wishlistBloc.state as LoadedWishListIdsState;
+      for (final product in event.products) {
+        if (loadedWishListIds.ids.contains(product.id)) {
+          updatedProducts.add(product.copyWith(isWishListed: true));
+        } else if (!loadedWishListIds.ids.contains(product.id)) {
+          updatedProducts.add(product.copyWith(isWishListed: false));
+        }
+      }
+      emit(LoadedProductState(products: updatedProducts));
+    } else if (_wishlistBloc.state is EmptyWishListState) {
+      for (final product in event.products) {
+        updatedProducts.add(product.copyWith(isWishListed: false));
+      }
+
+      emit(LoadedProductState(products: updatedProducts));
+    } else {
+      emit(LoadedProductState(products: event.products));
+    }
   }
 
+// this is  called only in first time and when data added from the server
   FutureOr<void> _onLoadProductEvent(
       LoadProductEvent event, Emitter emit) async {
     try {
       await productSubscription?.cancel();
-      productSubscription = _productRepository.getAllProducts().listen(
-            (List<Product> products) => add(
-              UpdateProductsEvent(products: products),
-            ),
-          );
+      productSubscription =
+          _productRepository.getAllProducts().listen((List<Product> products) {
+        add(UpdateProductsEvent(products: products));
+      });
     } catch (e) {
       log('error is:$e');
       emit(const ErrorProductState(

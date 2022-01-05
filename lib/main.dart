@@ -7,6 +7,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:my_ecommerce/features/category/presentation/bloc/category_bloc.dart';
 import 'package:my_ecommerce/features/checkout/presentation/bloc/checkout_bloc.dart';
 import 'package:my_ecommerce/features/checkout/repositories/base_checkout_repository.dart';
+import 'package:my_ecommerce/features/product/data/repositories/product_repository_impl.dart';
 import 'package:my_ecommerce/features/product/presentation/bloc/product_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -47,7 +48,11 @@ class MyApp extends StatelessWidget {
         BlocProvider<WishlistBloc>.value(value: di.sl<WishlistBloc>()),
         BlocProvider<CartBloc>.value(value: di.sl<CartBloc>()),
         BlocProvider<CategoryBloc>.value(value: di.sl<CategoryBloc>()),
-        BlocProvider<ProductBloc>.value(value: di.sl<ProductBloc>()),
+        BlocProvider<ProductBloc>(
+            create: (newContext) => ProductBloc(
+                  wishlistBloc: newContext.read<WishlistBloc>(),
+                  productRepository: di.sl<ProductRepository>(),
+                )..add(const LoadProductEvent())),
         BlocProvider<CheckoutBloc>(
             create: (newContext) => CheckoutBloc(
                 cartBloc: newContext.read<CartBloc>(),
