@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:my_ecommerce/features/wish_list/presentation/bloc/wishlist_bloc.dart';
+import 'package:my_ecommerce/widgets/widgets.dart';
 
 import '../l10n/l10n.dart';
 import '../widgets/custom_app_bar.dart';
@@ -31,6 +33,12 @@ class SettingsScreen extends StatelessWidget {
           ),
           ChangeThemeWidget(
             themeCubit: BlocProvider.of<ThemeCubit>(context),
+          ),
+          MainNavBarButton(
+            onPressed: () =>
+                context.read<WishlistBloc>().add(const RemoveAllWishList()),
+            buttonText: "Remove All Products In WishList",
+            height: 40,
           )
         ]),
       ),
