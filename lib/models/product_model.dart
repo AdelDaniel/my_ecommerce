@@ -16,7 +16,7 @@ class Product {
   final int _soldTimes;
   final bool _isRecommended;
   final bool _isAvalible;
-  bool isWishListed;
+  final bool isWishListed;
   // final bool isWishListed;
   final DateTime _publishedTime;
   final int _allQuentity;
