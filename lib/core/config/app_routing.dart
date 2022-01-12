@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_ecommerce/screens/checkout_screen.dart';
+import 'package:my_ecommerce/screens/intro_choose_language_and_theme_screen.dart';
+import 'package:my_ecommerce/screens/intro_overboard_page.dart';
 
 import '../../models/models.dart';
 import '../../screens/cart_screen.dart';
@@ -27,6 +29,10 @@ Route onGenerateRoute(RouteSettings settings) {
       return SettingsScreen.route();
     case CheckoutScreen.routeName:
       return CheckoutScreen.route();
+    case IntroOverboardPage.routeName:
+      return IntroOverboardPage.route();
+    case IntroChooseLanguageAndThemeScreen.routeName:
+      return IntroChooseLanguageAndThemeScreen.route();
 
     default:
       return _errorRoute();

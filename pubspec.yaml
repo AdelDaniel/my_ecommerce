@@ -61,7 +61,8 @@ dev_dependencies:
   bloc_test:
   hive_generator:
   flutter_native_splash: ^1.3.2
-  
+  flutter_switch:
+  toggle_switch:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -9,6 +9,7 @@ import 'package:my_ecommerce/features/checkout/presentation/bloc/checkout_bloc.d
 import 'package:my_ecommerce/features/checkout/repositories/base_checkout_repository.dart';
 import 'package:my_ecommerce/features/product/data/repositories/product_repository_impl.dart';
 import 'package:my_ecommerce/features/product/presentation/bloc/product_bloc.dart';
+import 'package:my_ecommerce/screens/intro_choose_language_and_theme_screen.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'all_injection_containers.dart' as di;
@@ -71,7 +72,7 @@ class MyApp extends StatelessWidget {
                 supportedLocales: L10n.all,
                 locale: languageState.locale,
                 onGenerateRoute: onGenerateRoute,
-                initialRoute: HomeScreen.routeName,
+                initialRoute: IntroChooseLanguageAndThemeScreen.routeName,
                 theme: themeState.themeData,
                 title: "My eCommerce",
               );

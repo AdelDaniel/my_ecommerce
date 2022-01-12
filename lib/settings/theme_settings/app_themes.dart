@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 enum AppTheme {
   blueLight,
@@ -17,7 +15,7 @@ const TextStyle headLine1TextStyle = TextStyle(
   letterSpacing: 0.7,
   decorationStyle: TextDecorationStyle.double,
 );
-const IconThemeData iconTheme = IconThemeData(color: Colors.white);
+// const IconThemeData iconTheme = IconThemeData(color: Colors.white);
 
 const TextStyle newPricesTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
@@ -28,16 +26,18 @@ final avalibeAppTheme = <AppTheme, ThemeData>{
   AppTheme.blueLight: ThemeData(
     brightness: Brightness.light,
     primaryColor: Colors.blue,
-    iconTheme: iconTheme,
+    iconTheme: const IconThemeData(color: Colors.blue),
     textTheme: TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: newPricesTextStyle.copyWith(color: Colors.blue),
-      bodyText2:
-          ThemeData.light().textTheme.bodyText2!.copyWith(color: Colors.blue),
+      bodyText2: ThemeData.light().textTheme.bodyText2,
+      // bodyText2:
+      //     ThemeData.light().textTheme.bodyText2!.copyWith(color: Colors.blue),
     ),
   ),
   AppTheme.darkTheme: ThemeData.dark().copyWith(
     brightness: Brightness.dark,
+    iconTheme: const IconThemeData(color: Colors.white),
     textTheme: const TextTheme(
       headline1: headLine1TextStyle,
       bodyText1: newPricesTextStyle,

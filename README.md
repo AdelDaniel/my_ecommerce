@@ -39,6 +39,8 @@ An E-Commerce App Developed by Flutter.
  - cupertino_icons: 
  - firebase_core:
  - firebase_auth:
+ - flutter_switch:
+ - toggle_switch:
 
 
 
