@@ -22,7 +22,7 @@ class ChangeThemeWidget extends StatelessWidget {
               const SizedBox(height: 20.0),
               const Text("Choose App Theme."),
               Text(
-                "Current Theme Is: ${state.themeName}",
+                "Current Theme Is: ${_getThemeName(context, state.themeName)}",
                 style: const TextStyle(
                   fontSize: 12.0,
                   fontStyle: FontStyle.italic,
@@ -33,8 +33,7 @@ class ChangeThemeWidget extends StatelessWidget {
                 width: 100.0,
                 height: 55.0,
                 toggleSize: 45.0,
-                value:
-                    state.themeName != AppLocalizations.of(context).blueLight,
+                value: state.themeName != appThemeNames[AppTheme.blueLight],
                 borderRadius: 30.0,
                 padding: 2.0,
                 activeToggleColor: const Color(0xFF6E40C9),
@@ -72,5 +71,15 @@ class ChangeThemeWidget extends StatelessWidget {
         );
       },
     );
+  }
+
+  String _getThemeName(BuildContext context, String themeName) {
+    if (themeName == appThemeNames[AppTheme.blueLight]) {
+      return AppLocalizations.of(context).blueLight;
+    } else if (themeName == appThemeNames[AppTheme.darkTheme]) {
+      return AppLocalizations.of(context).darkTheme;
+    } else {
+      return "Wrong ";
+    }
   }
 }

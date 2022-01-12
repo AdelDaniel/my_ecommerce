@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_ecommerce/l10n/l10n.dart';
 import 'package:my_ecommerce/screens/home_screen/home_screen.dart';
+import 'package:my_ecommerce/settings/language_settings/change_language_widget.dart';
 
 import 'package:my_ecommerce/settings/theme_settings/change_theme_widget.dart';
 import 'package:my_ecommerce/settings/theme_settings/cubit/theme_cubit.dart';
@@ -23,6 +25,13 @@ class IntroChooseLanguageAndThemeScreen extends StatelessWidget {
             Expanded(
               child: ChangeThemeWidget(
                 themeCubit: BlocProvider.of<ThemeCubit>(context),
+              ),
+            ),
+            Expanded(
+              child: ChangeLanguageWidget(
+                locale: Localizations.localeOf(context),
+                flag:
+                    L10n.getFlag(Localizations.localeOf(context).languageCode),
               ),
             ),
             Padding(
