@@ -20,27 +20,29 @@ class GetNetworkImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      width: width,
-      height: height,
-      imageUrl: imgUrl,
-      fit: fit,
-      placeholder: (context, url) => Shimmer.fromColors(
-        baseColor: Colors.black12,
-        highlightColor: Colors.white,
-        child: Container(
-          height: shimmerHeight ?? double.infinity,
-          width: width ?? double.infinity,
-          decoration: const BoxDecoration(color: Colors.black26),
-        ),
-      ),
-      errorWidget: (context, url, error) =>
-          //  const SizedBox(
-          //     width: 30, height: 30, child: Center(child: Icon(Icons.error))),
+    return imgUrl.isEmpty || imgUrl.length < 6 || !Uri.parse(imgUrl).isAbsolute
+        ? Image.asset('assets/images/nia.jpg', fit: BoxFit.fill)
+        : CachedNetworkImage(
+            width: width,
+            height: height,
+            imageUrl: imgUrl,
+            fit: fit,
+            placeholder: (context, url) => Shimmer.fromColors(
+              baseColor: Colors.black12,
+              highlightColor: Colors.white,
+              child: Container(
+                height: shimmerHeight ?? double.infinity,
+                width: width ?? double.infinity,
+                decoration: const BoxDecoration(color: Colors.black26),
+              ),
+            ),
+            errorWidget: (context, url, error) =>
+                //  const SizedBox(
+                //     width: 30, height: 30, child: Center(child: Icon(Icons.error))),
 
-          Image.asset('assets/images/nia.jpg', fit: BoxFit.fill),
-      fadeOutDuration: const Duration(milliseconds: 1500),
-      fadeInDuration: const Duration(milliseconds: 1000),
-    );
+                Image.asset('assets/images/nia.jpg', fit: BoxFit.fill),
+            fadeOutDuration: const Duration(milliseconds: 1500),
+            fadeInDuration: const Duration(milliseconds: 1000),
+          );
   }
 }
