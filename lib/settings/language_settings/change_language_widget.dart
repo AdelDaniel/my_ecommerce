@@ -48,7 +48,7 @@ class ChangeLanguageWidget extends StatelessWidget {
                 .toList(),
             radiusStyle: true,
             onToggle: (index) {
-              final local = L10n.all[index];
+              final local = L10n.all[index!];
               BlocProvider.of<LanguageCubit>(context).changeLanguage(local);
             },
           ),
