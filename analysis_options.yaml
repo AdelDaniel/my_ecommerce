@@ -11,6 +11,13 @@
 # include: package:flutter_lints/flutter.yaml
 include: package:lint/analysis_options.yaml
 
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  # errors:
+  #   invalid_annotation_target: ignore
+
 linter:
   # The lint rules applied to this project can be customized in the
   # section below to disable rules from the `package:flutter_lints/flutter.yaml`
@@ -30,6 +37,6 @@ linter:
     eol_at_end_of_file: false
     depend_on_referenced_packages: false
     unnecessary_overrides: false
-
+    always_use_package_imports: false
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

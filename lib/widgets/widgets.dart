@@ -12,6 +12,7 @@ export 'custom_nav_bar.dart';
 export 'custom_poduct_cards_staggered_grid_view.dart';
 export 'custom_product_card_for_screens.dart';
 export 'get_network_image_widget.dart';
+export 'intro_overboard_carousel_slider.dart';
 export 'main_nav_bar_button.dart';
 export 'order_summery.dart';
 export 'product_aligment_circular_widget.dart';

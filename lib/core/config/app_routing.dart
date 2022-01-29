@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_ecommerce/features/auth/presentation/screens/login_screen.dart';
+import 'package:my_ecommerce/features/auth/presentation/screens/sign_up_screen.dart';
 import 'package:my_ecommerce/screens/checkout_screen.dart';
 import 'package:my_ecommerce/screens/intro_choose_language_and_theme_screen.dart';
-import 'package:my_ecommerce/screens/intro_overboard_page.dart';
+import 'package:my_ecommerce/screens/intro_overboard_screen.dart';
+import 'package:my_ecommerce/screens/splash_screen.dart';
 
 import '../../models/models.dart';
 import '../../screens/cart_screen.dart';
@@ -29,10 +32,16 @@ Route onGenerateRoute(RouteSettings settings) {
       return SettingsScreen.route();
     case CheckoutScreen.routeName:
       return CheckoutScreen.route();
-    case IntroOverboardPage.routeName:
-      return IntroOverboardPage.route();
+    case IntroOverboardScreen.routeName:
+      return IntroOverboardScreen.route();
     case IntroChooseLanguageAndThemeScreen.routeName:
       return IntroChooseLanguageAndThemeScreen.route();
+    case LoginScreen.routeName:
+      return LoginScreen.route();
+    case SignUpScreen.routeName:
+      return SignUpScreen.route();
+    case SplashScreen.routeName:
+      return SplashScreen.route();
 
     default:
       return _errorRoute();

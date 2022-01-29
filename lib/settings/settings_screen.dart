@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:my_ecommerce/features/auth/application/bloc/auth_bloc.dart';
+import 'package:my_ecommerce/features/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:my_ecommerce/features/wish_list/presentation/bloc/wishlist_bloc.dart';
 import 'package:my_ecommerce/widgets/widgets.dart';
 

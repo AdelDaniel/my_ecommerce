@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 
 import 'check_connection_using_url.dart';
 
-// todo:: connection_check_cubit
+// TODO:: connection_check_cubit
 // import '../../features/connection_check/cubit/connection_check_cubit.dart';
 
 abstract class AbstractNetworkInfo {
@@ -16,7 +16,7 @@ abstract class AbstractNetworkInfo {
 class ConnectivityPlusNetworkInfoImpl implements AbstractNetworkInfo {
   final Connectivity connectivity;
   final CheckConnectionUsingUrl checkConnectionUsingUrl;
-  // todo:: connection_check_cubit
+  // TODO:: connection_check_cubit
   // final ConnectionCheckCubit connectionCheckCubit;
   // const ConnectivityPlusNetworkInfoImpl(
   //     {required this.connectivity, required this.connectionCheckCubit});
@@ -35,7 +35,7 @@ class ConnectivityPlusNetworkInfoImpl implements AbstractNetworkInfo {
   @override
   void checkConnectionStream() {
     connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
-      // todo:: connection_check_cubit
+      // TODO:: connection_check_cubit
       // if (result == ConnectivityResult.none) {
       //   connectionCheckCubit.notConnected();
       // } else {

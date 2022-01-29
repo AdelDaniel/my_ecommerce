@@ -19,7 +19,8 @@ class MainNavBarButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
           fixedSize: Size(MediaQuery.of(context).size.width * 0.75, height),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           elevation: 3),
       child: Text(
         buttonText, //TODO: langyage

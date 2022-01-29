@@ -6,6 +6,7 @@ import 'package:get_it/get_it.dart';
 import 'package:my_ecommerce/core/networking/check_connection_using_url.dart';
 import 'package:my_ecommerce/core/networking/network.dart';
 import 'package:my_ecommerce/core/utils/date_coverter.dart';
+import 'package:my_ecommerce/features/auth/auth_injection_containers.dart';
 import 'package:my_ecommerce/features/category/category_injection_containers.dart';
 import 'package:my_ecommerce/features/checkout/checkout_injection_container.dart';
 import 'package:my_ecommerce/features/product/product_injection_containers.dart';
@@ -42,4 +43,5 @@ Future<void> setup() async {
   await categoryInjectionContainersetup(sl);
   await productInjectionContainersetup(sl);
   await checkoutInjectionContainersetup(sl);
+  await authInjectionContainerSetup(sl);
 }

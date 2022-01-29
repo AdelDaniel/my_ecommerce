@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_ecommerce/features/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:my_ecommerce/l10n/l10n.dart';
-import 'package:my_ecommerce/screens/home_screen/home_screen.dart';
+import 'package:my_ecommerce/screens/intro_overboard_screen.dart';
 import 'package:my_ecommerce/settings/language_settings/change_language_widget.dart';
 
 import 'package:my_ecommerce/settings/theme_settings/change_theme_widget.dart';
@@ -38,8 +39,12 @@ class IntroChooseLanguageAndThemeScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 40.0),
               child: MainNavBarButton(
                 height: 50,
-                onPressed: () =>
-                    Navigator.popAndPushNamed(context, HomeScreen.routeName),
+                onPressed: () {
+                  // the coming event will prevent the app to open this screen again
+                  context.read<AuthBloc>().add(const ContinuePressed());
+                  Navigator.popAndPushNamed(
+                      context, IntroOverboardScreen.routeName);
+                },
                 buttonText: "Continue",
               ),
             ),

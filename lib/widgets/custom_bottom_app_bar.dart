@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:my_ecommerce/features/auth/application/bloc/auth_bloc.dart';
+import 'package:my_ecommerce/features/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:my_ecommerce/features/auth/presentation/screens/login_screen.dart';
 
 import '../screens/cart_screen.dart';

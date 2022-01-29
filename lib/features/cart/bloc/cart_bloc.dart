@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../models/cart_model.dart';
 import '../../../models/models.dart';
 import '../repositories/cart_repository.dart';
 
@@ -21,17 +20,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<DecreaseProductQuantityEvent>(_onDecreaseProductQuantityEvent);
   }
 
-  Future<void> _onCreateCartEvent(event, emit) async {
+  Future<void> _onCreateCartEvent(event, Emitter emit) async {
     emit(const CartLoadingState());
     try {
       await Future<void>.delayed(const Duration(milliseconds: 800));
       emit(const CartLoadedState());
     } catch (_) {
       emit(const CartErrorState());
+      emit(const CartLoadedState());
     }
   }
 
-  void _onAddProductToCartEvent(AddProductToCartEvent event, emit) {
+  void _onAddProductToCartEvent(AddProductToCartEvent event, Emitter emit) {
     if (state is CartLoadedState) {
       try {
         cartRepository.addItemToCart(event.product);
@@ -40,11 +40,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ));
       } on Exception {
         emit(const CartErrorState());
+        emit(CartLoadedState(
+            cart: Cart(cartItems: List.from(cartRepository.cartItems))));
       }
     }
   }
 
-  void _onRemoveProductFromCartEvent(RemoveProductFromCartEvent event, emit) {
+  void _onRemoveProductFromCartEvent(
+      RemoveProductFromCartEvent event, Emitter emit) {
     if (state is CartLoadedState) {
       try {
         cartRepository.removeItemFromCart(event.cartItem);
@@ -53,12 +56,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ));
       } on Exception {
         emit(const CartErrorState());
+        emit(CartLoadedState(
+            cart: Cart(cartItems: List.from(cartRepository.cartItems))));
       }
     }
   }
 
   void _onIncreaseProductQuantityEvent(
-      IncreaseProductQuantityEvent event, emit) {
+      IncreaseProductQuantityEvent event, Emitter emit) {
     if (state is CartLoadedState) {
       try {
         emit(const CartLoadingState());
@@ -68,12 +73,14 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ));
       } on Exception {
         emit(const CartErrorState());
+        emit(CartLoadedState(
+            cart: Cart(cartItems: List.from(cartRepository.cartItems))));
       }
     }
   }
 
   void _onDecreaseProductQuantityEvent(
-      DecreaseProductQuantityEvent event, emit) {
+      DecreaseProductQuantityEvent event, Emitter emit) {
     if (state is CartLoadedState) {
       try {
         emit(const CartLoadingState());
@@ -83,6 +90,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         ));
       } on Exception {
         emit(const CartErrorState());
+        emit(CartLoadedState(
+            cart: Cart(cartItems: List.from(cartRepository.cartItems))));
       }
     }
   }

@@ -1,7 +1,7 @@
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
-// todo :: this method will help us to make only one card for the singel product
+// TODO :: this method will help us to make only one card for the singel product
 /// if the product card will be appear at many listviews it will get the same product
 /// and not create many of it.. so the same one for each list that appear at home screen
 ///

@@ -11,7 +11,7 @@ import 'network_test.mocks.dart';
 // class MockCheckConnectionUsingUrl extends Mock
 //     implements CheckConnectionUsingUrl {}
 
-// todo:: connection_check_cubit
+// TODO:: connection_check_cubit
 // class MockConnectionCheckCubit extends Mock implements ConnectionCheckCubit {}
 
 @GenerateMocks([Connectivity, CheckConnectionUsingUrl])
@@ -19,7 +19,7 @@ void main() {
   late ConnectivityPlusNetworkInfoImpl connectivityPlusNetworkInfoImpl;
   late MockConnectivity mockConnectivity;
   late MockCheckConnectionUsingUrl mockCheckConnectionUsingUrl;
-  // todo:: connection_check_cubit
+  // TODO:: connection_check_cubit
   // late MockConnectionCheckCubit mockConnectionCheckCubit;
   // final tConnectionFuture = Future.value(true);
 
