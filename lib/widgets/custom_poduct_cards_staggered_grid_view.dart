@@ -13,8 +13,12 @@ class CustomPoductCardsUsingStaggeredGridView extends StatelessWidget {
   final List<Product> products;
   @override
   Widget build(BuildContext context) {
-    return StaggeredGridView.countBuilder(
-      crossAxisCount: 4,
+    return MasonryGridView.builder(
+      gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+      // maxCrossAxisExtent: 4,
+      // crossAxisCount: 2,
       itemCount: products.length,
       itemBuilder: (BuildContext context, int index) {
         final Product currentProduct = products[index];
@@ -23,8 +27,8 @@ class CustomPoductCardsUsingStaggeredGridView extends StatelessWidget {
           isCardFixedHeight: false,
         );
       },
-      staggeredTileBuilder: (int index) => const StaggeredTile.fit(2),
-      // shrinkWrap: true,
+      // staggeredTileBuilder: (int index) => const StaggeredTile.fit(2),
+      shrinkWrap: true,
       mainAxisSpacing: 5.0,
       crossAxisSpacing: 5.0,
     );
