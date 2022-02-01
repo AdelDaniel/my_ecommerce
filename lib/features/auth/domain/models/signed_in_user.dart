@@ -37,6 +37,26 @@ class SignedInUser {
     };
   }
 
+  Map<String, dynamic> setToFireBase() {
+    return {
+      'name': name,
+      'email': email,
+      'phoneNumber': phoneNumber,
+    };
+  }
+
+  factory SignedInUser.fromFireStore({
+    required String id,
+    required Map<String, dynamic> map,
+  }) {
+    return SignedInUser(
+      id: id,
+      name: (map['name'] ?? '') as String,
+      email: (map['email'] ?? '') as String,
+      phoneNumber: (map['phoneNumber'] ?? '') as String,
+    );
+  }
+
   factory SignedInUser.fromMap(Map<String, dynamic> map) {
     return SignedInUser(
       name: (map['name'] ?? '') as String,

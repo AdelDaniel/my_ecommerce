@@ -24,17 +24,26 @@ class LogWithSocial extends StatelessWidget {
           const SizedBox(height: 10),
           Column(
             children: <Widget>[
-              FloatingActionButton.extended(
-                onPressed: () => context
-                    .read<SignInFormBloc>()
-                    .add(const SignInFormEvent.signInWithGooglePressed()),
-                icon: const CircleAvatar(
-                  radius: 15,
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage("assets/images/google_logo.png"),
-                ),
-                label: const Text("Continue With Google"),
+              BlocBuilder<SignInFormBloc, SignInFormState>(
+                builder: (context, state) {
+                  if (state.isSubmitting) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return FloatingActionButton.extended(
+                    onPressed: () => context
+                        .read<SignInFormBloc>()
+                        .add(const SignInFormEvent.signInWithGooglePressed()),
+                    icon: const CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.white,
+                      backgroundImage:
+                          AssetImage("assets/images/google_logo.png"),
+                    ),
+                    label: const Text("Continue With Google"),
+                  );
+                },
               ),
+
               const SizedBox(width: 10),
               // TODO :: login with fb and twitter
               // CircleAvatar(

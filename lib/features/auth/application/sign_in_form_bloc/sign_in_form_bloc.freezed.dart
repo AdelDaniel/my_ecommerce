@@ -52,6 +52,10 @@ class _$SignInFormEventTearOff {
   SignInWithGooglePressed signInWithGooglePressed() {
     return const SignInWithGooglePressed();
   }
+
+  SwitchBetweenSignInAndRegister switchBetweenSignInAndRegister() {
+    return const SwitchBetweenSignInAndRegister();
+  }
 }
 
 /// @nodoc
@@ -68,6 +72,7 @@ mixin _$SignInFormEvent {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +84,7 @@ mixin _$SignInFormEvent {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +96,7 @@ mixin _$SignInFormEvent {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +112,8 @@ mixin _$SignInFormEvent {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -118,6 +127,8 @@ mixin _$SignInFormEvent {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,6 +142,8 @@ mixin _$SignInFormEvent {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -233,6 +246,7 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return emailChanged(emailStr);
   }
@@ -247,6 +261,7 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return emailChanged?.call(emailStr);
   }
@@ -261,6 +276,7 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -282,6 +298,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return emailChanged(this);
   }
@@ -298,6 +316,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return emailChanged?.call(this);
   }
@@ -314,6 +334,8 @@ class _$EmailChanged with DiagnosticableTreeMixin implements EmailChanged {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -412,6 +434,7 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return nameChanged(nameStr);
   }
@@ -426,6 +449,7 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return nameChanged?.call(nameStr);
   }
@@ -440,6 +464,7 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (nameChanged != null) {
@@ -461,6 +486,8 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return nameChanged(this);
   }
@@ -477,6 +504,8 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return nameChanged?.call(this);
   }
@@ -493,6 +522,8 @@ class _$NameChanged with DiagnosticableTreeMixin implements NameChanged {
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (nameChanged != null) {
@@ -595,6 +626,7 @@ class _$PhoneNumberChanged
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return phoneNumberChanged(phoneNumberChangedStr);
   }
@@ -609,6 +641,7 @@ class _$PhoneNumberChanged
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return phoneNumberChanged?.call(phoneNumberChangedStr);
   }
@@ -623,6 +656,7 @@ class _$PhoneNumberChanged
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (phoneNumberChanged != null) {
@@ -644,6 +678,8 @@ class _$PhoneNumberChanged
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return phoneNumberChanged(this);
   }
@@ -660,6 +696,8 @@ class _$PhoneNumberChanged
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return phoneNumberChanged?.call(this);
   }
@@ -676,6 +714,8 @@ class _$PhoneNumberChanged
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (phoneNumberChanged != null) {
@@ -778,6 +818,7 @@ class _$PasswordChanged
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return passwordChanged(passwordStr);
   }
@@ -792,6 +833,7 @@ class _$PasswordChanged
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return passwordChanged?.call(passwordStr);
   }
@@ -806,6 +848,7 @@ class _$PasswordChanged
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -827,6 +870,8 @@ class _$PasswordChanged
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return passwordChanged(this);
   }
@@ -843,6 +888,8 @@ class _$PasswordChanged
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return passwordChanged?.call(this);
   }
@@ -859,6 +906,8 @@ class _$PasswordChanged
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -939,6 +988,7 @@ class _$RegisterWithEmailAndPasswordPressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return registerWithEmailAndPasswordPressed();
   }
@@ -953,6 +1003,7 @@ class _$RegisterWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return registerWithEmailAndPasswordPressed?.call();
   }
@@ -967,6 +1018,7 @@ class _$RegisterWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
@@ -988,6 +1040,8 @@ class _$RegisterWithEmailAndPasswordPressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return registerWithEmailAndPasswordPressed(this);
   }
@@ -1004,6 +1058,8 @@ class _$RegisterWithEmailAndPasswordPressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return registerWithEmailAndPasswordPressed?.call(this);
   }
@@ -1020,6 +1076,8 @@ class _$RegisterWithEmailAndPasswordPressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (registerWithEmailAndPasswordPressed != null) {
@@ -1096,6 +1154,7 @@ class _$SignInWithEmailAndPasswordPressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return signInWithEmailAndPasswordPressed();
   }
@@ -1110,6 +1169,7 @@ class _$SignInWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return signInWithEmailAndPasswordPressed?.call();
   }
@@ -1124,6 +1184,7 @@ class _$SignInWithEmailAndPasswordPressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
@@ -1145,6 +1206,8 @@ class _$SignInWithEmailAndPasswordPressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return signInWithEmailAndPasswordPressed(this);
   }
@@ -1161,6 +1224,8 @@ class _$SignInWithEmailAndPasswordPressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return signInWithEmailAndPasswordPressed?.call(this);
   }
@@ -1177,6 +1242,8 @@ class _$SignInWithEmailAndPasswordPressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (signInWithEmailAndPasswordPressed != null) {
@@ -1249,6 +1316,7 @@ class _$SignInWithGooglePressed
     required TResult Function() registerWithEmailAndPasswordPressed,
     required TResult Function() signInWithEmailAndPasswordPressed,
     required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
   }) {
     return signInWithGooglePressed();
   }
@@ -1263,6 +1331,7 @@ class _$SignInWithGooglePressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
   }) {
     return signInWithGooglePressed?.call();
   }
@@ -1277,6 +1346,7 @@ class _$SignInWithGooglePressed
     TResult Function()? registerWithEmailAndPasswordPressed,
     TResult Function()? signInWithEmailAndPasswordPressed,
     TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (signInWithGooglePressed != null) {
@@ -1298,6 +1368,8 @@ class _$SignInWithGooglePressed
         signInWithEmailAndPasswordPressed,
     required TResult Function(SignInWithGooglePressed value)
         signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
   }) {
     return signInWithGooglePressed(this);
   }
@@ -1314,6 +1386,8 @@ class _$SignInWithGooglePressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
   }) {
     return signInWithGooglePressed?.call(this);
   }
@@ -1330,6 +1404,8 @@ class _$SignInWithGooglePressed
     TResult Function(SignInWithEmailAndPasswordPressed value)?
         signInWithEmailAndPasswordPressed,
     TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
     required TResult orElse(),
   }) {
     if (signInWithGooglePressed != null) {
@@ -1341,6 +1417,172 @@ class _$SignInWithGooglePressed
 
 abstract class SignInWithGooglePressed implements SignInFormEvent {
   const factory SignInWithGooglePressed() = _$SignInWithGooglePressed;
+}
+
+/// @nodoc
+abstract class $SwitchBetweenSignInAndRegisterCopyWith<$Res> {
+  factory $SwitchBetweenSignInAndRegisterCopyWith(
+          SwitchBetweenSignInAndRegister value,
+          $Res Function(SwitchBetweenSignInAndRegister) then) =
+      _$SwitchBetweenSignInAndRegisterCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SwitchBetweenSignInAndRegisterCopyWithImpl<$Res>
+    extends _$SignInFormEventCopyWithImpl<$Res>
+    implements $SwitchBetweenSignInAndRegisterCopyWith<$Res> {
+  _$SwitchBetweenSignInAndRegisterCopyWithImpl(
+      SwitchBetweenSignInAndRegister _value,
+      $Res Function(SwitchBetweenSignInAndRegister) _then)
+      : super(_value, (v) => _then(v as SwitchBetweenSignInAndRegister));
+
+  @override
+  SwitchBetweenSignInAndRegister get _value =>
+      super._value as SwitchBetweenSignInAndRegister;
+}
+
+/// @nodoc
+
+class _$SwitchBetweenSignInAndRegister
+    with DiagnosticableTreeMixin
+    implements SwitchBetweenSignInAndRegister {
+  const _$SwitchBetweenSignInAndRegister();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'SignInFormEvent.switchBetweenSignInAndRegister()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'SignInFormEvent.switchBetweenSignInAndRegister'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SwitchBetweenSignInAndRegister);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String emailStr) emailChanged,
+    required TResult Function(String nameStr) nameChanged,
+    required TResult Function(String phoneNumberChangedStr) phoneNumberChanged,
+    required TResult Function(String passwordStr) passwordChanged,
+    required TResult Function() registerWithEmailAndPasswordPressed,
+    required TResult Function() signInWithEmailAndPasswordPressed,
+    required TResult Function() signInWithGooglePressed,
+    required TResult Function() switchBetweenSignInAndRegister,
+  }) {
+    return switchBetweenSignInAndRegister();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String nameStr)? nameChanged,
+    TResult Function(String phoneNumberChangedStr)? phoneNumberChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
+  }) {
+    return switchBetweenSignInAndRegister?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String emailStr)? emailChanged,
+    TResult Function(String nameStr)? nameChanged,
+    TResult Function(String phoneNumberChangedStr)? phoneNumberChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function()? registerWithEmailAndPasswordPressed,
+    TResult Function()? signInWithEmailAndPasswordPressed,
+    TResult Function()? signInWithGooglePressed,
+    TResult Function()? switchBetweenSignInAndRegister,
+    required TResult orElse(),
+  }) {
+    if (switchBetweenSignInAndRegister != null) {
+      return switchBetweenSignInAndRegister();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(NameChanged value) nameChanged,
+    required TResult Function(PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(RegisterWithEmailAndPasswordPressed value)
+        registerWithEmailAndPasswordPressed,
+    required TResult Function(SignInWithEmailAndPasswordPressed value)
+        signInWithEmailAndPasswordPressed,
+    required TResult Function(SignInWithGooglePressed value)
+        signInWithGooglePressed,
+    required TResult Function(SwitchBetweenSignInAndRegister value)
+        switchBetweenSignInAndRegister,
+  }) {
+    return switchBetweenSignInAndRegister(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(NameChanged value)? nameChanged,
+    TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function(SignInWithEmailAndPasswordPressed value)?
+        signInWithEmailAndPasswordPressed,
+    TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
+  }) {
+    return switchBetweenSignInAndRegister?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(NameChanged value)? nameChanged,
+    TResult Function(PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(RegisterWithEmailAndPasswordPressed value)?
+        registerWithEmailAndPasswordPressed,
+    TResult Function(SignInWithEmailAndPasswordPressed value)?
+        signInWithEmailAndPasswordPressed,
+    TResult Function(SignInWithGooglePressed value)? signInWithGooglePressed,
+    TResult Function(SwitchBetweenSignInAndRegister value)?
+        switchBetweenSignInAndRegister,
+    required TResult orElse(),
+  }) {
+    if (switchBetweenSignInAndRegister != null) {
+      return switchBetweenSignInAndRegister(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SwitchBetweenSignInAndRegister implements SignInFormEvent {
+  const factory SwitchBetweenSignInAndRegister() =
+      _$SwitchBetweenSignInAndRegister;
 }
 
 /// @nodoc

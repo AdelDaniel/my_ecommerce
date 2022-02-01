@@ -42,7 +42,7 @@ class IntroChooseLanguageAndThemeScreen extends StatelessWidget {
                 onPressed: () {
                   // the coming event will prevent the app to open this screen again
                   context.read<AuthBloc>().add(const ContinuePressed());
-                  Navigator.popAndPushNamed(
+                  Navigator.pushReplacementNamed(
                       context, IntroOverboardScreen.routeName);
                 },
                 buttonText: "Continue",

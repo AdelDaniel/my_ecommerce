@@ -10,6 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onChanged,
     this.validator,
     this.initialValue,
+    this.controller,
   }) : super(key: key);
 
   final String hint;
@@ -17,6 +18,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
   final String? initialValue;
+  final TextEditingController? controller;
 
   final void Function(String)? onChanged;
   final String? Function(String?)? validator;
@@ -27,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
       borderRadius: BorderRadius.circular(20.0),
       elevation: 10,
       child: TextFormField(
+        controller: controller,
         initialValue: initialValue,
         onChanged: onChanged,
         validator: validator,

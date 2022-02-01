@@ -12,26 +12,28 @@ class PhoneTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return CustomTextFormField(
-          initialValue: signInFormBloc.state.emailAddress.value
-              .fold((_) => null, (r) => r),
-          onChanged: (value) =>
-              signInFormBloc.add(SignInFormEvent.phoneNumberChanged(value)),
-          validator: (_) => signInFormBloc.state.phoneNumber.value.fold(
-            (fail) => fail.maybeMap(
-              emptyField: (value) => value.failMsg,
-              invalidPhoneNumber: (value) => value.failMsg,
-              orElse: () => null,
-            ),
-            (r) => null,
-          ),
-          keyboardType: TextInputType.number,
-          icon: Icons.phone,
-          hint: "Mobile Number",
-        );
-      },
+    return CustomTextFormField(
+      initialValue:
+          signInFormBloc.state.phoneNumber.value.fold((_) => null, (r) => r),
+      onChanged: (value) =>
+          signInFormBloc.add(SignInFormEvent.phoneNumberChanged(value)),
+      controller: signInFormBloc.state.phoneNumber.value.fold(
+        (failure) => failure.maybeMap(
+            emptyField: (failure) => TextEditingController()..clear(),
+            orElse: () => null),
+        (_) => null,
+      ),
+      validator: (_) => signInFormBloc.state.phoneNumber.value.fold(
+        (fail) => fail.maybeMap(
+          emptyField: (value) => value.failMsg,
+          invalidPhoneNumber: (value) => value.failMsg,
+          orElse: () => null,
+        ),
+        (r) => null,
+      ),
+      keyboardType: TextInputType.number,
+      icon: Icons.phone,
+      hint: "Mobile Number",
     );
   }
 }

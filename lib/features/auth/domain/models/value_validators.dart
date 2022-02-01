@@ -5,7 +5,9 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   const emailRegex =
       r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
 
-  if (RegExp(emailRegex).hasMatch(input)) {
+  if (input.isEmpty) {
+    return left(ValueFailure.emptyField(failedValue: input));
+  } else if (RegExp(emailRegex).hasMatch(input)) {
     return Right(input);
   } else {
     return Left(ValueFailure.invalidEmail(failedValue: input));

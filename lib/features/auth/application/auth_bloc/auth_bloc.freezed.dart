@@ -28,12 +28,6 @@ class _$AuthEventTearOff {
   ContinuePressed continuePressed() {
     return const ContinuePressed();
   }
-
-  UpdateSingedInUser updateSingedInUser({required Option<SignedInUser> user}) {
-    return UpdateSingedInUser(
-      user: user,
-    );
-  }
 }
 
 /// @nodoc
@@ -46,7 +40,6 @@ mixin _$AuthEvent {
     required TResult Function() authCheckRequested,
     required TResult Function() signOut,
     required TResult Function() continuePressed,
-    required TResult Function(Option<SignedInUser> user) updateSingedInUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +47,6 @@ mixin _$AuthEvent {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +54,6 @@ mixin _$AuthEvent {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -71,7 +62,6 @@ mixin _$AuthEvent {
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignOut value) signOut,
     required TResult Function(ContinuePressed value) continuePressed,
-    required TResult Function(UpdateSingedInUser value) updateSingedInUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,7 +69,6 @@ mixin _$AuthEvent {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -87,7 +76,6 @@ mixin _$AuthEvent {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,7 +140,6 @@ class _$AuthCheckRequested implements AuthCheckRequested {
     required TResult Function() authCheckRequested,
     required TResult Function() signOut,
     required TResult Function() continuePressed,
-    required TResult Function(Option<SignedInUser> user) updateSingedInUser,
   }) {
     return authCheckRequested();
   }
@@ -163,7 +150,6 @@ class _$AuthCheckRequested implements AuthCheckRequested {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
   }) {
     return authCheckRequested?.call();
   }
@@ -174,7 +160,6 @@ class _$AuthCheckRequested implements AuthCheckRequested {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
     required TResult orElse(),
   }) {
     if (authCheckRequested != null) {
@@ -189,7 +174,6 @@ class _$AuthCheckRequested implements AuthCheckRequested {
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignOut value) signOut,
     required TResult Function(ContinuePressed value) continuePressed,
-    required TResult Function(UpdateSingedInUser value) updateSingedInUser,
   }) {
     return authCheckRequested(this);
   }
@@ -200,7 +184,6 @@ class _$AuthCheckRequested implements AuthCheckRequested {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
   }) {
     return authCheckRequested?.call(this);
   }
@@ -211,7 +194,6 @@ class _$AuthCheckRequested implements AuthCheckRequested {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
     required TResult orElse(),
   }) {
     if (authCheckRequested != null) {
@@ -266,7 +248,6 @@ class _$SignOut implements SignOut {
     required TResult Function() authCheckRequested,
     required TResult Function() signOut,
     required TResult Function() continuePressed,
-    required TResult Function(Option<SignedInUser> user) updateSingedInUser,
   }) {
     return signOut();
   }
@@ -277,7 +258,6 @@ class _$SignOut implements SignOut {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
   }) {
     return signOut?.call();
   }
@@ -288,7 +268,6 @@ class _$SignOut implements SignOut {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -303,7 +282,6 @@ class _$SignOut implements SignOut {
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignOut value) signOut,
     required TResult Function(ContinuePressed value) continuePressed,
-    required TResult Function(UpdateSingedInUser value) updateSingedInUser,
   }) {
     return signOut(this);
   }
@@ -314,7 +292,6 @@ class _$SignOut implements SignOut {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
   }) {
     return signOut?.call(this);
   }
@@ -325,7 +302,6 @@ class _$SignOut implements SignOut {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
     required TResult orElse(),
   }) {
     if (signOut != null) {
@@ -382,7 +358,6 @@ class _$ContinuePressed implements ContinuePressed {
     required TResult Function() authCheckRequested,
     required TResult Function() signOut,
     required TResult Function() continuePressed,
-    required TResult Function(Option<SignedInUser> user) updateSingedInUser,
   }) {
     return continuePressed();
   }
@@ -393,7 +368,6 @@ class _$ContinuePressed implements ContinuePressed {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
   }) {
     return continuePressed?.call();
   }
@@ -404,7 +378,6 @@ class _$ContinuePressed implements ContinuePressed {
     TResult Function()? authCheckRequested,
     TResult Function()? signOut,
     TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
     required TResult orElse(),
   }) {
     if (continuePressed != null) {
@@ -419,7 +392,6 @@ class _$ContinuePressed implements ContinuePressed {
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignOut value) signOut,
     required TResult Function(ContinuePressed value) continuePressed,
-    required TResult Function(UpdateSingedInUser value) updateSingedInUser,
   }) {
     return continuePressed(this);
   }
@@ -430,7 +402,6 @@ class _$ContinuePressed implements ContinuePressed {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
   }) {
     return continuePressed?.call(this);
   }
@@ -441,7 +412,6 @@ class _$ContinuePressed implements ContinuePressed {
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignOut value)? signOut,
     TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
     required TResult orElse(),
   }) {
     if (continuePressed != null) {
@@ -456,164 +426,14 @@ abstract class ContinuePressed implements AuthEvent {
 }
 
 /// @nodoc
-abstract class $UpdateSingedInUserCopyWith<$Res> {
-  factory $UpdateSingedInUserCopyWith(
-          UpdateSingedInUser value, $Res Function(UpdateSingedInUser) then) =
-      _$UpdateSingedInUserCopyWithImpl<$Res>;
-  $Res call({Option<SignedInUser> user});
-}
-
-/// @nodoc
-class _$UpdateSingedInUserCopyWithImpl<$Res>
-    extends _$AuthEventCopyWithImpl<$Res>
-    implements $UpdateSingedInUserCopyWith<$Res> {
-  _$UpdateSingedInUserCopyWithImpl(
-      UpdateSingedInUser _value, $Res Function(UpdateSingedInUser) _then)
-      : super(_value, (v) => _then(v as UpdateSingedInUser));
-
-  @override
-  UpdateSingedInUser get _value => super._value as UpdateSingedInUser;
-
-  @override
-  $Res call({
-    Object? user = freezed,
-  }) {
-    return _then(UpdateSingedInUser(
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as Option<SignedInUser>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$UpdateSingedInUser implements UpdateSingedInUser {
-  const _$UpdateSingedInUser({required this.user});
-
-  @override
-  final Option<SignedInUser> user;
-
-  @override
-  String toString() {
-    return 'AuthEvent.updateSingedInUser(user: $user)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is UpdateSingedInUser &&
-            const DeepCollectionEquality().equals(other.user, user));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(user));
-
-  @JsonKey(ignore: true)
-  @override
-  $UpdateSingedInUserCopyWith<UpdateSingedInUser> get copyWith =>
-      _$UpdateSingedInUserCopyWithImpl<UpdateSingedInUser>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() authCheckRequested,
-    required TResult Function() signOut,
-    required TResult Function() continuePressed,
-    required TResult Function(Option<SignedInUser> user) updateSingedInUser,
-  }) {
-    return updateSingedInUser(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? authCheckRequested,
-    TResult Function()? signOut,
-    TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
-  }) {
-    return updateSingedInUser?.call(user);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? authCheckRequested,
-    TResult Function()? signOut,
-    TResult Function()? continuePressed,
-    TResult Function(Option<SignedInUser> user)? updateSingedInUser,
-    required TResult orElse(),
-  }) {
-    if (updateSingedInUser != null) {
-      return updateSingedInUser(user);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(AuthCheckRequested value) authCheckRequested,
-    required TResult Function(SignOut value) signOut,
-    required TResult Function(ContinuePressed value) continuePressed,
-    required TResult Function(UpdateSingedInUser value) updateSingedInUser,
-  }) {
-    return updateSingedInUser(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(AuthCheckRequested value)? authCheckRequested,
-    TResult Function(SignOut value)? signOut,
-    TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
-  }) {
-    return updateSingedInUser?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(AuthCheckRequested value)? authCheckRequested,
-    TResult Function(SignOut value)? signOut,
-    TResult Function(ContinuePressed value)? continuePressed,
-    TResult Function(UpdateSingedInUser value)? updateSingedInUser,
-    required TResult orElse(),
-  }) {
-    if (updateSingedInUser != null) {
-      return updateSingedInUser(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UpdateSingedInUser implements AuthEvent {
-  const factory UpdateSingedInUser({required Option<SignedInUser> user}) =
-      _$UpdateSingedInUser;
-
-  Option<SignedInUser> get user;
-  @JsonKey(ignore: true)
-  $UpdateSingedInUserCopyWith<UpdateSingedInUser> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 class _$AuthStateTearOff {
   const _$AuthStateTearOff();
 
   _AuthState call(
-      {required bool isAuthenticated,
-      required bool isFirstTimeOpenTheApp,
-      required Option<SignedInUser> signedInUser}) {
+      {required bool isAuthenticated, required bool isFirstTimeOpenTheApp}) {
     return _AuthState(
       isAuthenticated: isAuthenticated,
       isFirstTimeOpenTheApp: isFirstTimeOpenTheApp,
-      signedInUser: signedInUser,
     );
   }
 }
@@ -625,7 +445,6 @@ const $AuthState = _$AuthStateTearOff();
 mixin _$AuthState {
   bool get isAuthenticated => throw _privateConstructorUsedError;
   bool get isFirstTimeOpenTheApp => throw _privateConstructorUsedError;
-  Option<SignedInUser> get signedInUser => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthStateCopyWith<AuthState> get copyWith =>
@@ -636,10 +455,7 @@ mixin _$AuthState {
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
       _$AuthStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool isAuthenticated,
-      bool isFirstTimeOpenTheApp,
-      Option<SignedInUser> signedInUser});
+  $Res call({bool isAuthenticated, bool isFirstTimeOpenTheApp});
 }
 
 /// @nodoc
@@ -654,7 +470,6 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   $Res call({
     Object? isAuthenticated = freezed,
     Object? isFirstTimeOpenTheApp = freezed,
-    Object? signedInUser = freezed,
   }) {
     return _then(_value.copyWith(
       isAuthenticated: isAuthenticated == freezed
@@ -665,10 +480,6 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
           ? _value.isFirstTimeOpenTheApp
           : isFirstTimeOpenTheApp // ignore: cast_nullable_to_non_nullable
               as bool,
-      signedInUser: signedInUser == freezed
-          ? _value.signedInUser
-          : signedInUser // ignore: cast_nullable_to_non_nullable
-              as Option<SignedInUser>,
     ));
   }
 }
@@ -679,10 +490,7 @@ abstract class _$AuthStateCopyWith<$Res> implements $AuthStateCopyWith<$Res> {
           _AuthState value, $Res Function(_AuthState) then) =
       __$AuthStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {bool isAuthenticated,
-      bool isFirstTimeOpenTheApp,
-      Option<SignedInUser> signedInUser});
+  $Res call({bool isAuthenticated, bool isFirstTimeOpenTheApp});
 }
 
 /// @nodoc
@@ -698,7 +506,6 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   $Res call({
     Object? isAuthenticated = freezed,
     Object? isFirstTimeOpenTheApp = freezed,
-    Object? signedInUser = freezed,
   }) {
     return _then(_AuthState(
       isAuthenticated: isAuthenticated == freezed
@@ -709,10 +516,6 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
           ? _value.isFirstTimeOpenTheApp
           : isFirstTimeOpenTheApp // ignore: cast_nullable_to_non_nullable
               as bool,
-      signedInUser: signedInUser == freezed
-          ? _value.signedInUser
-          : signedInUser // ignore: cast_nullable_to_non_nullable
-              as Option<SignedInUser>,
     ));
   }
 }
@@ -721,20 +524,16 @@ class __$AuthStateCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
 
 class _$_AuthState implements _AuthState {
   const _$_AuthState(
-      {required this.isAuthenticated,
-      required this.isFirstTimeOpenTheApp,
-      required this.signedInUser});
+      {required this.isAuthenticated, required this.isFirstTimeOpenTheApp});
 
   @override
   final bool isAuthenticated;
   @override
   final bool isFirstTimeOpenTheApp;
-  @override
-  final Option<SignedInUser> signedInUser;
 
   @override
   String toString() {
-    return 'AuthState(isAuthenticated: $isAuthenticated, isFirstTimeOpenTheApp: $isFirstTimeOpenTheApp, signedInUser: $signedInUser)';
+    return 'AuthState(isAuthenticated: $isAuthenticated, isFirstTimeOpenTheApp: $isFirstTimeOpenTheApp)';
   }
 
   @override
@@ -745,17 +544,14 @@ class _$_AuthState implements _AuthState {
             const DeepCollectionEquality()
                 .equals(other.isAuthenticated, isAuthenticated) &&
             const DeepCollectionEquality()
-                .equals(other.isFirstTimeOpenTheApp, isFirstTimeOpenTheApp) &&
-            const DeepCollectionEquality()
-                .equals(other.signedInUser, signedInUser));
+                .equals(other.isFirstTimeOpenTheApp, isFirstTimeOpenTheApp));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isAuthenticated),
-      const DeepCollectionEquality().hash(isFirstTimeOpenTheApp),
-      const DeepCollectionEquality().hash(signedInUser));
+      const DeepCollectionEquality().hash(isFirstTimeOpenTheApp));
 
   @JsonKey(ignore: true)
   @override
@@ -766,15 +562,12 @@ class _$_AuthState implements _AuthState {
 abstract class _AuthState implements AuthState {
   const factory _AuthState(
       {required bool isAuthenticated,
-      required bool isFirstTimeOpenTheApp,
-      required Option<SignedInUser> signedInUser}) = _$_AuthState;
+      required bool isFirstTimeOpenTheApp}) = _$_AuthState;
 
   @override
   bool get isAuthenticated;
   @override
   bool get isFirstTimeOpenTheApp;
-  @override
-  Option<SignedInUser> get signedInUser;
   @override
   @JsonKey(ignore: true)
   _$AuthStateCopyWith<_AuthState> get copyWith =>

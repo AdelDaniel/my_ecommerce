@@ -16,4 +16,7 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.invalidEmailAndPasswordCombination({
     @Default("Invalid Email Or Password!") String failMsg,
   }) = InvalidEmailAndPasswordCombination;
+  const factory AuthFailure.userNotSavedInFireStoreDataBase({
+    @Default("User Not Saved Remotely!") String failMsg,
+  }) = UserNotSavedInFireStoreDataBase;
 }

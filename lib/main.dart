@@ -51,8 +51,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<CartBloc>(create: (_) => di.sl<CartBloc>()),
         BlocProvider<CategoryBloc>(create: (_) => di.sl<CategoryBloc>()),
         BlocProvider<SignInFormBloc>(create: (_) => di.sl<SignInFormBloc>()),
-        BlocProvider<AuthBloc>(
-            create: (_) => di.sl<AuthBloc>()..add(const AuthCheckRequested())),
+        BlocProvider<AuthBloc>(create: (_) => di.sl<AuthBloc>()),
         // TODO :: clean the coming next bloc product and checkout like the previous
         BlocProvider<ProductBloc>(
             create: (newContext) => ProductBloc(

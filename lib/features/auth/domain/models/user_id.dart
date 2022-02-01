@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:my_ecommerce/features/auth/domain/failures/value_failure.dart';
-import 'package:my_ecommerce/features/auth/domain/models/value_object.dart';
 
-class ID extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
+class ID {
+  final Option<String> value;
 
   factory ID.fromFirebaseUniqueId(String uniqueId) {
-    return ID._(Right(uniqueId));
+    return ID._(some(uniqueId));
+  }
+  String getIdOrCrash() {
+    return value.fold(() => throw Error(), id);
   }
 
   const ID._(this.value);

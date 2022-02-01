@@ -42,6 +42,13 @@ class _$AuthFailureTearOff {
       failMsg: failMsg,
     );
   }
+
+  UserNotSavedInFireStoreDataBase userNotSavedInFireStoreDataBase(
+      {String failMsg = "User Not Saved Remotely!"}) {
+    return UserNotSavedInFireStoreDataBase(
+      failMsg: failMsg,
+    );
+  }
 }
 
 /// @nodoc
@@ -58,6 +65,7 @@ mixin _$AuthFailure {
     required TResult Function(String failMsg) emailAlreadyInUse,
     required TResult Function(String failMsg)
         invalidEmailAndPasswordCombination,
+    required TResult Function(String failMsg) userNotSavedInFireStoreDataBase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,6 +74,7 @@ mixin _$AuthFailure {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +83,7 @@ mixin _$AuthFailure {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,6 +94,8 @@ mixin _$AuthFailure {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(UserNotSavedInFireStoreDataBase value)
+        userNotSavedInFireStoreDataBase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -93,6 +105,8 @@ mixin _$AuthFailure {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -102,6 +116,8 @@ mixin _$AuthFailure {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -213,6 +229,7 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function(String failMsg) emailAlreadyInUse,
     required TResult Function(String failMsg)
         invalidEmailAndPasswordCombination,
+    required TResult Function(String failMsg) userNotSavedInFireStoreDataBase,
   }) {
     return cancelledByUser(failMsg);
   }
@@ -224,6 +241,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
   }) {
     return cancelledByUser?.call(failMsg);
   }
@@ -235,6 +253,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -251,6 +270,8 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(UserNotSavedInFireStoreDataBase value)
+        userNotSavedInFireStoreDataBase,
   }) {
     return cancelledByUser(this);
   }
@@ -263,6 +284,8 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
   }) {
     return cancelledByUser?.call(this);
   }
@@ -275,6 +298,8 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -367,6 +392,7 @@ class _$ServerError implements ServerError {
     required TResult Function(String failMsg) emailAlreadyInUse,
     required TResult Function(String failMsg)
         invalidEmailAndPasswordCombination,
+    required TResult Function(String failMsg) userNotSavedInFireStoreDataBase,
   }) {
     return serverError(failMsg);
   }
@@ -378,6 +404,7 @@ class _$ServerError implements ServerError {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
   }) {
     return serverError?.call(failMsg);
   }
@@ -389,6 +416,7 @@ class _$ServerError implements ServerError {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -405,6 +433,8 @@ class _$ServerError implements ServerError {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(UserNotSavedInFireStoreDataBase value)
+        userNotSavedInFireStoreDataBase,
   }) {
     return serverError(this);
   }
@@ -417,6 +447,8 @@ class _$ServerError implements ServerError {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
   }) {
     return serverError?.call(this);
   }
@@ -429,6 +461,8 @@ class _$ServerError implements ServerError {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -522,6 +556,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(String failMsg) emailAlreadyInUse,
     required TResult Function(String failMsg)
         invalidEmailAndPasswordCombination,
+    required TResult Function(String failMsg) userNotSavedInFireStoreDataBase,
   }) {
     return emailAlreadyInUse(failMsg);
   }
@@ -533,6 +568,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
   }) {
     return emailAlreadyInUse?.call(failMsg);
   }
@@ -544,6 +580,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -560,6 +597,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(UserNotSavedInFireStoreDataBase value)
+        userNotSavedInFireStoreDataBase,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -572,6 +611,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -584,6 +625,8 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -684,6 +727,7 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function(String failMsg) emailAlreadyInUse,
     required TResult Function(String failMsg)
         invalidEmailAndPasswordCombination,
+    required TResult Function(String failMsg) userNotSavedInFireStoreDataBase,
   }) {
     return invalidEmailAndPasswordCombination(failMsg);
   }
@@ -695,6 +739,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
   }) {
     return invalidEmailAndPasswordCombination?.call(failMsg);
   }
@@ -706,6 +751,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(String failMsg)? serverError,
     TResult Function(String failMsg)? emailAlreadyInUse,
     TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -722,6 +768,8 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(UserNotSavedInFireStoreDataBase value)
+        userNotSavedInFireStoreDataBase,
   }) {
     return invalidEmailAndPasswordCombination(this);
   }
@@ -734,6 +782,8 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
   }) {
     return invalidEmailAndPasswordCombination?.call(this);
   }
@@ -746,6 +796,8 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -765,5 +817,176 @@ abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
   @JsonKey(ignore: true)
   $InvalidEmailAndPasswordCombinationCopyWith<
           InvalidEmailAndPasswordCombination>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserNotSavedInFireStoreDataBaseCopyWith<$Res>
+    implements $AuthFailureCopyWith<$Res> {
+  factory $UserNotSavedInFireStoreDataBaseCopyWith(
+          UserNotSavedInFireStoreDataBase value,
+          $Res Function(UserNotSavedInFireStoreDataBase) then) =
+      _$UserNotSavedInFireStoreDataBaseCopyWithImpl<$Res>;
+  @override
+  $Res call({String failMsg});
+}
+
+/// @nodoc
+class _$UserNotSavedInFireStoreDataBaseCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res>
+    implements $UserNotSavedInFireStoreDataBaseCopyWith<$Res> {
+  _$UserNotSavedInFireStoreDataBaseCopyWithImpl(
+      UserNotSavedInFireStoreDataBase _value,
+      $Res Function(UserNotSavedInFireStoreDataBase) _then)
+      : super(_value, (v) => _then(v as UserNotSavedInFireStoreDataBase));
+
+  @override
+  UserNotSavedInFireStoreDataBase get _value =>
+      super._value as UserNotSavedInFireStoreDataBase;
+
+  @override
+  $Res call({
+    Object? failMsg = freezed,
+  }) {
+    return _then(UserNotSavedInFireStoreDataBase(
+      failMsg: failMsg == freezed
+          ? _value.failMsg
+          : failMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UserNotSavedInFireStoreDataBase
+    implements UserNotSavedInFireStoreDataBase {
+  const _$UserNotSavedInFireStoreDataBase(
+      {this.failMsg = "User Not Saved Remotely!"});
+
+  @JsonKey()
+  @override
+  final String failMsg;
+
+  @override
+  String toString() {
+    return 'AuthFailure.userNotSavedInFireStoreDataBase(failMsg: $failMsg)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is UserNotSavedInFireStoreDataBase &&
+            const DeepCollectionEquality().equals(other.failMsg, failMsg));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failMsg));
+
+  @JsonKey(ignore: true)
+  @override
+  $UserNotSavedInFireStoreDataBaseCopyWith<UserNotSavedInFireStoreDataBase>
+      get copyWith => _$UserNotSavedInFireStoreDataBaseCopyWithImpl<
+          UserNotSavedInFireStoreDataBase>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failMsg) cancelledByUser,
+    required TResult Function(String failMsg) serverError,
+    required TResult Function(String failMsg) emailAlreadyInUse,
+    required TResult Function(String failMsg)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(String failMsg) userNotSavedInFireStoreDataBase,
+  }) {
+    return userNotSavedInFireStoreDataBase(failMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failMsg)? cancelledByUser,
+    TResult Function(String failMsg)? serverError,
+    TResult Function(String failMsg)? emailAlreadyInUse,
+    TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
+  }) {
+    return userNotSavedInFireStoreDataBase?.call(failMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failMsg)? cancelledByUser,
+    TResult Function(String failMsg)? serverError,
+    TResult Function(String failMsg)? emailAlreadyInUse,
+    TResult Function(String failMsg)? invalidEmailAndPasswordCombination,
+    TResult Function(String failMsg)? userNotSavedInFireStoreDataBase,
+    required TResult orElse(),
+  }) {
+    if (userNotSavedInFireStoreDataBase != null) {
+      return userNotSavedInFireStoreDataBase(failMsg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(UserNotSavedInFireStoreDataBase value)
+        userNotSavedInFireStoreDataBase,
+  }) {
+    return userNotSavedInFireStoreDataBase(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
+  }) {
+    return userNotSavedInFireStoreDataBase?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(UserNotSavedInFireStoreDataBase value)?
+        userNotSavedInFireStoreDataBase,
+    required TResult orElse(),
+  }) {
+    if (userNotSavedInFireStoreDataBase != null) {
+      return userNotSavedInFireStoreDataBase(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserNotSavedInFireStoreDataBase implements AuthFailure {
+  const factory UserNotSavedInFireStoreDataBase({String failMsg}) =
+      _$UserNotSavedInFireStoreDataBase;
+
+  @override
+  String get failMsg;
+  @override
+  @JsonKey(ignore: true)
+  $UserNotSavedInFireStoreDataBaseCopyWith<UserNotSavedInFireStoreDataBase>
       get copyWith => throw _privateConstructorUsedError;
 }

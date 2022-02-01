@@ -13,8 +13,9 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SignInFormBloc signInFormBloc = context.read<SignInFormBloc>();
+    final SignInFormBloc signInFormBloc = context.watch<SignInFormBloc>();
     return _CustomForm(
+      signInFormBloc: signInFormBloc,
       formFields: <Widget>[
         /// TextFormField for adding Name.
         NameTextFormField(signInFormBloc: signInFormBloc),
@@ -40,8 +41,9 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SignInFormBloc signInFormBloc = context.read<SignInFormBloc>();
+    final SignInFormBloc signInFormBloc = context.watch<SignInFormBloc>();
     return _CustomForm(
+      signInFormBloc: signInFormBloc,
       formFields: <Widget>[
         /// email Text Form Field
         EmailTextFormField(signInFormBloc: signInFormBloc),
@@ -56,14 +58,19 @@ class LoginForm extends StatelessWidget {
 }
 
 class _CustomForm extends StatelessWidget {
-  const _CustomForm({Key? key, required this.formFields}) : super(key: key);
+  const _CustomForm({
+    Key? key,
+    required this.formFields,
+    required this.signInFormBloc,
+  }) : super(key: key);
+  final SignInFormBloc signInFormBloc;
 
   final List<Widget> formFields;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(15),
-      child: BlocConsumer<SignInFormBloc, SignInFormState>(
+      child: BlocListener<SignInFormBloc, SignInFormState>(
         listener: (context, state) {
           log('message $state');
           state.authFailureOrSuccessOption.fold(
@@ -72,21 +79,25 @@ class _CustomForm extends StatelessWidget {
               (fail) {
                 return FlushbarHelper.createError(
                   message: fail.map(
-                      cancelledByUser: (f) => f.failMsg,
-                      serverError: (f) => f.failMsg,
-                      emailAlreadyInUse: (f) => f.failMsg,
-                      invalidEmailAndPasswordCombination: (f) => f.failMsg),
+                    cancelledByUser: (f) => f.failMsg,
+                    serverError: (f) => f.failMsg,
+                    emailAlreadyInUse: (f) => f.failMsg,
+                    invalidEmailAndPasswordCombination: (f) => f.failMsg,
+                    userNotSavedInFireStoreDataBase: (f) => f.failMsg,
+                  ),
                 ).show(context);
               },
               (r) {
-                context.read<AuthBloc>().add(const AuthCheckRequested());
+                context
+                    .read<AuthBloc>()
+                    .add(const AuthEvent.authCheckRequested());
                 Navigator.pushReplacementNamed(context, HomeScreen.routeName);
               },
             ),
           );
         },
-        builder: (context, state) => Form(
-          autovalidateMode: state.showErrorMessages
+        child: Form(
+          autovalidateMode: signInFormBloc.state.showErrorMessages
               ? AutovalidateMode.always
               : AutovalidateMode.disabled,
           child: Column(children: formFields),

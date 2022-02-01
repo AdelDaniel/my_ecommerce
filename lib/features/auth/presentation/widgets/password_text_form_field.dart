@@ -9,27 +9,27 @@ class PasswordTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return CustomTextFormField(
-          initialValue: signInFormBloc.state.emailAddress.value
-              .fold((_) => null, (r) => r),
-          onChanged: (value) =>
-              signInFormBloc.add(SignInFormEvent.passwordChanged(value)),
-          keyboardType: TextInputType.emailAddress,
-          icon: Icons.lock,
-          obscureText: true,
-          hint: "Password",
-          validator: (_) => signInFormBloc.state.password.value.fold(
-            (fail) => fail.maybeMap(
-              emptyField: (value) => value.failMsg,
-              shortPassword: (value) => value.failMsg,
-              orElse: () => null,
-            ),
-            (r) => null,
-          ),
-        );
-      },
+    return CustomTextFormField(
+      onChanged: (value) =>
+          signInFormBloc.add(SignInFormEvent.passwordChanged(value)),
+      controller: signInFormBloc.state.password.value.fold(
+        (failure) => failure.maybeMap(
+            emptyField: (failure) => TextEditingController()..clear(),
+            orElse: () => null),
+        (_) => null,
+      ),
+      keyboardType: TextInputType.emailAddress,
+      icon: Icons.lock,
+      obscureText: true,
+      hint: "Password",
+      validator: (_) => signInFormBloc.state.password.value.fold(
+        (fail) => fail.maybeMap(
+          emptyField: (value) => value.failMsg,
+          shortPassword: (value) => value.failMsg,
+          orElse: () => null,
+        ),
+        (r) => null,
+      ),
     );
   }
 }

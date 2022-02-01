@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:my_ecommerce/features/auth/application/auth_bloc/auth_bloc.dart';
 
 import 'package:my_ecommerce/features/auth/domain/failures/auth_failures.dart';
-import 'package:my_ecommerce/features/auth/domain/i_auth_facade.dart';
+import 'package:my_ecommerce/features/auth/domain/interfaces/i_logging_repository.dart';
 import 'package:my_ecommerce/features/auth/domain/models/email_address.dart';
 import 'package:my_ecommerce/features/auth/domain/models/name.dart';
 import 'package:my_ecommerce/features/auth/domain/models/password.dart';
@@ -21,18 +21,24 @@ part 'sign_in_form_event.dart';
 part 'sign_in_form_state.dart';
 
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
-  final IAuthFacade _authFacade;
+  final ILoggingRepository _loggingRepository;
   final AuthBloc _authBloc;
-  StreamSubscription? _authBlocSubscription;
-  SignInFormBloc({required IAuthFacade authFacade, required AuthBloc authBloc})
-      : _authFacade = authFacade,
+  SignInFormBloc({
+    required ILoggingRepository loggingRepository,
+    required AuthBloc authBloc,
+  })  : _loggingRepository = loggingRepository,
         _authBloc = authBloc,
         super(SignInFormState.initial()) {
-    _authBlocSubscription?.cancel();
-    _authBlocSubscription = _authBloc.stream.listen((authBlocState) {
-      if (!authBlocState.isAuthenticated) {
-        add(const PasswordChanged(""));
-      }
+    on<SwitchBetweenSignInAndRegister>((event, emit) {
+      emit(state.copyWith(
+        phoneNumber: PhoneNumber(""),
+        emailAddress: EmailAddress(""),
+        password: Password(""),
+        isSubmitting: false,
+        showErrorMessages: false,
+        name: Name(""),
+        authFailureOrSuccessOption: none(),
+      ));
     });
     on<PhoneNumberChanged>((phoneNumberChangedEvent, emit) {
       emit(state.copyWith(
@@ -64,7 +70,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         authFailureOrSuccessOption: none(),
       ));
       final Either<AuthFailure, SignedInUser> authFailureOrSuccess =
-          await _authFacade.signInWithGoogle();
+          await _loggingRepository.signInWithGoogle();
       emit(state.copyWith(
         isSubmitting: false,
         authFailureOrSuccessOption: some(authFailureOrSuccess),
@@ -84,7 +90,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             isPhoneNumberValid &&
             isNameValid,
         emit: emit,
-        actionMethod: _authFacade.registerWithEmailAndPassword,
+        actionMethod: _loggingRepository.registerWithEmailAndPassword,
       );
     });
     on<SignInWithEmailAndPasswordPressed>((event, emit) async {
@@ -93,7 +99,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
       await _performActionOnAuthFacadeWithEmailAndPassword(
         isDataValid: isEmailValid && isPasswordValid,
         emit: emit,
-        actionMethod: _authFacade.signInWithEmailAndPassword,
+        actionMethod: _loggingRepository.signInWithEmailAndPassword,
       );
     });
   }
@@ -122,6 +128,10 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         isSubmitting: false,
         authFailureOrSuccessOption: some(authFailureOrSuccess),
       ));
+      if (authFailureOrSuccess.isRight()) {
+        // if the user logged in clear the password
+        _resetPassword();
+      }
       _addSingedInUserToAuthBloc(
           user: authFailureOrSuccess.fold((l) => none(), (user) => some(user)));
     } else {
@@ -132,15 +142,16 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         isSubmitting: false,
         authFailureOrSuccessOption: none(),
       ));
-
       _addSingedInUserToAuthBloc(user: none());
     }
     log("showErrorMessages: ${state.showErrorMessages}");
-    _resetPassword();
   }
 
   // at the end of sign in or register after pressing >> it must clear the password field
   void _resetPassword() => add(const SignInFormEvent.passwordChanged(''));
   void _addSingedInUserToAuthBloc({required Option<SignedInUser> user}) =>
-      _authBloc.add(UpdateSingedInUser(user: user));
+      _authBloc.add(const AuthEvent.authCheckRequested());
+  // this will used for saving the user
+  // void _addSingedInUserToAuthBloc({required Option<SignedInUser> user}) =>
+  //     _authBloc.add(UpdateSingedInUser(user: user));
 }
