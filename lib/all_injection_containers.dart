@@ -1,14 +1,12 @@
 // getIt
 // https://resocoder.com/2019/10/21/flutter-tdd-clean-architecture-course-13-dependency-injection-user-interface/
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:get_it/get_it.dart';
-import 'package:my_ecommerce/core/networking/check_connection_using_url.dart';
-import 'package:my_ecommerce/core/networking/network.dart';
 import 'package:my_ecommerce/core/utils/date_coverter.dart';
 import 'package:my_ecommerce/features/auth/auth_injection_containers.dart';
 import 'package:my_ecommerce/features/category/category_injection_containers.dart';
 import 'package:my_ecommerce/features/checkout/checkout_injection_container.dart';
+import 'package:my_ecommerce/features/internet_connection/internet_connection_injection_containers.dart';
 import 'package:my_ecommerce/features/product/product_injection_containers.dart';
 import 'package:my_ecommerce/features/wish_list/wish_list_injection_containers.dart';
 
@@ -26,18 +24,10 @@ Future<void> setup() async {
 //! Core
   sl.registerLazySingleton(() => const CurrencyConverter());
   sl.registerLazySingleton(() => const DateConverter());
-  sl.registerLazySingleton(() => const CustomInterNetAddress());
-  sl.registerLazySingleton(
-      () => CheckConnectionUsingUrl(customInterNetAddress: sl()));
-
-  sl.registerLazySingleton<AbstractNetworkInfo>(() =>
-      ConnectivityPlusNetworkInfoImpl(
-          checkConnectionUsingUrl: sl(), connectivity: sl()));
-
-//! External -- packages
-  sl.registerLazySingleton<Connectivity>(() => Connectivity());
 
 //! other injection Containers
+
+  internetConnectionInjectionContainerSetup(sl);
   await wishListInjectionContainersetup(sl);
   await cartInjectionContainersetup(sl);
   await categoryInjectionContainersetup(sl);

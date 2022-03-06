@@ -1,9 +1,11 @@
+// import 'dart:io';
+
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:my_ecommerce/core/networking/check_connection_using_url.dart';
+import 'package:my_ecommerce/features/internet_connection/infrastructure/check_connection_using_url.dart';
 
 import 'check_connection_using_url_test.mocks.dart';
 

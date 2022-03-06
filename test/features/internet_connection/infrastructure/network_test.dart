@@ -2,8 +2,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:my_ecommerce/core/networking/check_connection_using_url.dart';
-import 'package:my_ecommerce/core/networking/network.dart';
+import 'package:my_ecommerce/features/internet_connection/infrastructure/check_connection_using_url.dart';
+import 'package:my_ecommerce/features/internet_connection/infrastructure/network.dart';
 import 'network_test.mocks.dart';
 
 // class MockConnectivity extends Mock implements Connectivity {}
@@ -11,12 +11,10 @@ import 'network_test.mocks.dart';
 // class MockCheckConnectionUsingUrl extends Mock
 //     implements CheckConnectionUsingUrl {}
 
-// TODO:: connection_check_cubit
-// class MockConnectionCheckCubit extends Mock implements ConnectionCheckCubit {}
-
 @GenerateMocks([Connectivity, CheckConnectionUsingUrl])
 void main() {
-  late ConnectivityPlusNetworkInfoImpl connectivityPlusNetworkInfoImpl;
+  late ConnectivityPlusNetworkInfoRepository
+      connectivityPlusNetworkInfoRepository;
   late MockConnectivity mockConnectivity;
   late MockCheckConnectionUsingUrl mockCheckConnectionUsingUrl;
   // TODO:: connection_check_cubit
@@ -26,13 +24,14 @@ void main() {
   setUp(() {
     mockCheckConnectionUsingUrl = MockCheckConnectionUsingUrl();
     mockConnectivity = MockConnectivity();
-    connectivityPlusNetworkInfoImpl = ConnectivityPlusNetworkInfoImpl(
+    connectivityPlusNetworkInfoRepository =
+        ConnectivityPlusNetworkInfoRepository(
       connectivity: mockConnectivity,
       checkConnectionUsingUrl: mockCheckConnectionUsingUrl,
     );
   });
 
-  group('ConnectivityPlusNetworkInfoImpl tests..', () {
+  group('connectivityPlusNetworkInfoRepository tests..', () {
     group('checkConnectionUsingUrl is true.. ', () {
       setUp(() {
         when(mockCheckConnectionUsingUrl.checkConnectionUsingUrl)
@@ -47,7 +46,8 @@ void main() {
         // NOTICE: We're NOT awaiting the result
         // we are test Future.value(true) ::: not testing true or false
         // (true or false) is a bool value :::  (Future.value(true)) is address value
-        final actualResult = await connectivityPlusNetworkInfoImpl.isConnected;
+        final actualResult =
+            await connectivityPlusNetworkInfoRepository.isConnected;
         // assert
         verify(mockConnectivity.checkConnectivity());
         // Utilizing Dart's default referential equality.
@@ -62,7 +62,8 @@ void main() {
         // NOTICE: We're NOT awaiting the result
         // we are test Future.value(true) ::: not testing true or false
         // (true or false) is a bool value :::  (Future.value(true)) is address value
-        final actualResult = await connectivityPlusNetworkInfoImpl.isConnected;
+        final actualResult =
+            await connectivityPlusNetworkInfoRepository.isConnected;
         // assert
         verify(mockConnectivity.checkConnectivity());
         // Utilizing Dart's default referential equality.
@@ -75,7 +76,8 @@ void main() {
         when(mockConnectivity.checkConnectivity())
             .thenAnswer((_) => Future.value(ConnectivityResult.none));
         // act
-        final actualResult = await connectivityPlusNetworkInfoImpl.isConnected;
+        final actualResult =
+            await connectivityPlusNetworkInfoRepository.isConnected;
         // assert
         verify(mockConnectivity.checkConnectivity());
         expect(actualResult, false);
@@ -93,7 +95,8 @@ void main() {
         when(mockConnectivity.checkConnectivity())
             .thenAnswer((_) async => ConnectivityResult.mobile);
         // act
-        final actualResult = await connectivityPlusNetworkInfoImpl.isConnected;
+        final actualResult =
+            await connectivityPlusNetworkInfoRepository.isConnected;
         // assert
         verify(mockConnectivity.checkConnectivity());
         expect(actualResult, false);
@@ -103,7 +106,8 @@ void main() {
         when(mockConnectivity.checkConnectivity())
             .thenAnswer((_) => Future.value(ConnectivityResult.wifi));
         // act
-        final actualResult = await connectivityPlusNetworkInfoImpl.isConnected;
+        final actualResult =
+            await connectivityPlusNetworkInfoRepository.isConnected;
         // assert
         verify(mockConnectivity.checkConnectivity());
         expect(actualResult, false);
@@ -114,7 +118,8 @@ void main() {
         when(mockConnectivity.checkConnectivity())
             .thenAnswer((_) => Future.value(ConnectivityResult.none));
         // act
-        final actualResult = await connectivityPlusNetworkInfoImpl.isConnected;
+        final actualResult =
+            await connectivityPlusNetworkInfoRepository.isConnected;
         // assert
         verify(mockConnectivity.checkConnectivity());
         expect(actualResult, false);

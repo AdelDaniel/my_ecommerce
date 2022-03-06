@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 class CheckConnectionUsingUrl {
@@ -8,11 +9,11 @@ class CheckConnectionUsingUrl {
     try {
       final result = await customInterNetAddress.lookup;
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('_checkConnectionUsingUrl :: connected');
+        log('_checkConnectionUsingUrl :: connected');
         return true;
       }
     } on SocketException catch (_) {
-      print('_checkConnectionUsingUrl :: not connected');
+      log('_checkConnectionUsingUrl :: not connected');
       return false;
     }
     return false;
