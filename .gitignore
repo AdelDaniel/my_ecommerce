@@ -1,5 +1,6 @@
 # My Ignores
 *.mocks.dart
+*.freezed.dart
 test/features/wish_list
 android/app/google-services.json
 
