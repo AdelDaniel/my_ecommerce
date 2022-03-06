@@ -1,45 +1,56 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class Failure extends Equatable {
-  // If the subclasses have some properties, they'll get passed to this constructor
-  // so that Equatable can perform value comparison.
+part 'failure.freezed.dart';
 
-  const Failure([this.detailedMsg = ""]);
-  final String detailedMsg;
+abstract class IFailure {
+  const IFailure();
+  String get detailedMsg;
   String get mainMessage;
-
-  @override
-  List<String> get props => [mainMessage, detailedMsg];
 }
 
-// Remember, the Repository will catch the Exceptions and return them using the Either type as Failures.
-// For this reason, Failure types usually exactly map to Exception types.
-
-// General failures
-class ServerFailure extends Failure {
-  const ServerFailure({required String detailedMsg}) : super(detailedMsg);
-
-  @override
-  String get mainMessage => "Oops! Server Failure!";
+enum messages {
+  loginInOrSignUp,
 }
+const Map<messages, String> getMessage = {
+  messages.loginInOrSignUp: "please Login Or SignUp"
+};
 
-class CacheFailure extends Failure {
-  const CacheFailure({String detailedMsg = ""}) : super(detailedMsg);
+@freezed
+abstract class Failure with _$Failure {
+  @Implements<IFailure>()
+  const factory Failure.serverFailure({
+    @Default("Oops! Server Failure!") String mainMessage,
+    required String detailedMsg,
+  }) = ServerFailure;
 
-  @override
-  String get mainMessage => "Oops! Cache Failure!";
-}
+  @Implements<IFailure>()
+  const factory Failure.cacheFailure({
+    @Default("Oops! Cache Failure!") String mainMessage,
+    required String detailedMsg,
+  }) = CacheFailure;
 
-class LocalFailure extends Failure {
-  const LocalFailure({String detailedMsg = ""}) : super(detailedMsg);
+  @Implements<IFailure>()
+  const factory Failure.localFailure({
+    @Default("Oops! Local Failure!") String mainMessage,
+    required String detailedMsg,
+  }) = LocalFailure;
 
-  @override
-  String get mainMessage => "Oops! Local Failure!";
-}
+  @Implements<IFailure>()
+  const factory Failure.noInternetFailure({
+    @Default("Oops! No Internet Connection!") String mainMessage,
+    @Default("Check Your Internet Connection! and try again")
+        String detailedMsg,
+  }) = NoInternetFailure;
 
-class NoInternetFailure extends Failure {
-  const NoInternetFailure({String detailedMsg = ""}) : super(detailedMsg);
+  @Implements<IFailure>()
+  const factory Failure.userAuthenticationFailure({
+    @Default("Oops! Authentication Failure!") String mainMessage,
+    required String detailedMsg,
+  }) = UserAuthenticationFailure;
 
-  @override
-  String get mainMessage => "Oops! No Internet eConnection!";
+  @Implements<IFailure>()
+  const factory Failure.unExpectedFailure({
+    @Default("Oops! Something Unexpected Happen!!") String mainMessage,
+    required String detailedMsg,
+  }) = UnExpectedFailure;
 }

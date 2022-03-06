@@ -11,3 +11,11 @@ class UnExceptedValueError extends Error {
     return Error.safeToString("$explanation Failure was: $valueFailure");
   }
 }
+
+class UnExceptedError extends Error {
+  final String detailedMsg;
+  UnExceptedError({this.detailedMsg = ""});
+
+  @override
+  String toString() => Error.safeToString('UnExpected: $detailedMsg');
+}
