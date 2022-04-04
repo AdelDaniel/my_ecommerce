@@ -2,6 +2,45 @@
 
 An E-Commerce App Developed by Flutter.
 
+<table>
+    <tr>
+        <td><img src="readme_files/app/login_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/login_light_mode.jpeg"></td>
+        <td><img src="readme_files/app/sign_up_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/sign_up_light_mode.jpeg"></td>
+    </tr>
+    <tr>
+        <td><img src="readme_files/app/main_screen_dark_mode_upper.jpeg"></td>
+        <td><img src="readme_files/app/main_screen_light_mode_upper.jpeg"></td>
+        <td><img src="readme_files/app/product_details_dartk_mode_see_less.jpeg"></td>
+        <td><img src="readme_files/app/product_details_dartk_mode_see_more.jpeg"></td>
+    </tr>
+    <tr>
+        <td><img src="readme_files/app/main_screen_dark_mode_lower.jpeg"></td>
+        <td><img src="readme_files/app/main_screen_light_mode_lower.jpeg"></td>
+        <td><img src="readme_files/app/cart_screen_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/cart_screen_light_mode.jpeg"></td>
+    </tr>
+    <tr>
+        <td><img src="readme_files/app/checkout_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/checkout_light_mode.jpeg"></td>
+        <td><img src="readme_files/app/whislist_screen_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/whislist_screen_light_mode.jpeg"></td>
+    </tr>
+    <tr>
+        <td><img src="readme_files/app/overboard.jpeg"></td>
+        <td><img src="readme_files/app/overboard_dark.jpeg"></td>
+        <td><img src="readme_files/app/not_auth_error.jpeg"></td>
+        <td><img src="readme_files/app/no_internet_light_mode.jpeg"></td>
+    </tr>
+    <tr>
+        <td><img src="readme_files/app/empty_cart_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/empty_cart_light_mode.jpeg"></td>
+        <td><img src="readme_files/app/settings_dark_mode.jpeg"></td>
+        <td><img src="readme_files/app/settings_light_mode.jpeg"></td>
+    </tr>
+</table>
+
 ---
 
 ## Dependencies
