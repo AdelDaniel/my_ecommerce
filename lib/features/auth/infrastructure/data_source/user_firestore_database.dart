@@ -29,23 +29,17 @@ class UserFirestoreDatabase implements IUserFirestoreDatabase {
   @override
   Future<Either<AuthFailure, SignedInUser>> getUserData(
       {required String id}) async {
-    try {
-      final documentSnapshot = await _usersCollectionReference.doc(id).get();
-      if (documentSnapshot.data() != null) {
-        return Right(SignedInUser.fromFireStore(
-            id: id, map: documentSnapshot.data()! as Map<String, dynamic>));
-      } else {
-        return Right(SignedInUser.fromFireStore(id: id, map: {}));
-      }
-    } catch (e) {
-      log("error :$e");
-      return const Left(AuthFailure.userNotSavedInFireStoreDataBase());
+    // try {
+    final documentSnapshot = await _usersCollectionReference.doc(id).get();
+    if (documentSnapshot.data() != null) {
+      return Right(SignedInUser.fromFireStore(
+          id: id, map: documentSnapshot.data()! as Map<String, dynamic>));
+    } else {
+      return Right(SignedInUser.fromFireStore(id: id, map: {}));
     }
-  }
-
-  @override
-  Future<void> updateUserData({required String id}) {
-    // TODO: implement updateUserData
-    throw UnimplementedError();
+    // } catch (e) {
+    //   log("error signIN :$e");
+    //   return const Left(AuthFailure.userNotSavedInFireStoreDataBase());
+    // }
   }
 }

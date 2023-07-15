@@ -8,8 +8,9 @@ import 'package:my_ecommerce/models/models.dart';
 abstract class ProductBaseFirebaseDataSource {
   const ProductBaseFirebaseDataSource();
   Stream<List<Product>> getAllProducts();
-  FutureOr<DocumentReference<Map<String, dynamic>>> addProduct(
-      {required Product product});
+  FutureOr<DocumentReference<Map<String, dynamic>>> addProduct({
+    required Product product,
+  });
 }
 
 class ProductFirebaseDataSource extends ProductBaseFirebaseDataSource {
@@ -25,12 +26,10 @@ class ProductFirebaseDataSource extends ProductBaseFirebaseDataSource {
           .collection(_productsCollectionName)
           .snapshots()
           .map((snapshot) {
-        final returndList = snapshot.docs
+        return snapshot.docs
             .map((DocumentSnapshot doc) =>
                 Product.fromDocumentSnapshot(doc).copyWith(id: doc.id))
             .toList();
-        log("products List: $returndList");
-        return returndList;
       });
     } catch (e) {
       log('firebase error : $e');
@@ -39,7 +38,8 @@ class ProductFirebaseDataSource extends ProductBaseFirebaseDataSource {
   }
 
   @override
-  FutureOr<DocumentReference<Map<String, dynamic>>> addProduct(
-          {required Product product}) =>
+  FutureOr<DocumentReference<Map<String, dynamic>>> addProduct({
+    required Product product,
+  }) =>
       _firestore.collection(_productsCollectionName).add(product.toMap());
 }

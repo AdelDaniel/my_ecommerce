@@ -1,14 +1,14 @@
 import 'package:dartz/dartz.dart';
 
-class ID {
+class UserID {
   final Option<String> value;
 
-  factory ID.fromFirebaseUniqueId(String uniqueId) {
-    return ID._(some(uniqueId));
+  factory UserID.fromFirebaseUniqueUserId(String uniqueUserId) {
+    return UserID._(some(uniqueUserId));
   }
-  String getIdOrCrash() {
+  String getUserIdOrCrash() {
     return value.fold(() => throw Error(), id);
   }
 
-  const ID._(this.value);
+  const UserID._(this.value);
 }

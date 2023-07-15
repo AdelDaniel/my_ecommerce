@@ -7,7 +7,7 @@ import '../constants/hive_constants.dart';
 Future<void> hiveInit() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  Hive.registerAdapter(WishListIDAdapter());
-  await Hive.openBox<WishListID>(idsWishListBoxName);
+  // Hive.registerAdapter(WishListIDAdapter());
+  // await Hive.openBox<String>(idsWishListBoxName);
   await Hive.openBox(productsWishListBoxName);
 }

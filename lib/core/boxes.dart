@@ -4,8 +4,9 @@ import '../features/wish_list/domain/entities/wish_list_id.dart';
 import 'constants/hive_constants.dart';
 
 // class Boxes {
-// static  Box<WishListID> geWishListIDBox   =>  Hive.box<WishListID>(wishListboxName);
+// static  Box<String> geWishListIDBox   =>  Hive.box<String>(wishListboxName);
 // }
 
-Box<WishListID> getWishListIDBox() => Hive.box<WishListID>(idsWishListBoxName);
+// TODO may be you will remove hive not necessary
+// Box<String> getWishListIDBox() => Hive.box<String>(idsWishListBoxName);
 Box getProductOfWishListBox() => Hive.box(productsWishListBoxName);

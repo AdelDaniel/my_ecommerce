@@ -18,14 +18,12 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     on<AuthCheckRequested>(_onAuthCheckRequested);
     on<SignOut>(_onSignOut);
     on<ContinuePressed>(_onContinuePressed);
-    // on<UpdateSingedInUser>(_onUpdateSingedInUser);
   }
 
   Future<void> _onAuthCheckRequested(event, Emitter emit) async {
     final Option<SignedInUser> userOption =
         await _loggingRepository.getSignedInUser();
     // if there is user then he is authenticated
-    log("state.isFirstTimeOpenTheApp is ${state.isFirstTimeOpenTheApp}");
     emit(
       AuthState(
         isAuthenticated: userOption.isSome(),
@@ -48,28 +46,9 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
     emit(const AuthState(isAuthenticated: false, isFirstTimeOpenTheApp: false));
   }
 
-  // Future<void> _onUpdateSingedInUser(
-  //   UpdateSingedInUser event,
-  //   Emitter emit,
-  // ) async {
-  //   emit(
-  //     AuthState(
-  //         signedInUser: event.user,
-  //         isAuthenticated: false,
-  //         isFirstTimeOpenTheApp: false),
-  //   );
-  // }
-
   @override
   AuthState fromJson(Map<String, dynamic> json) {
     return AuthState(
-      // signedInUser: json["signedInUser"] != null
-      //     ? none()
-      //     : some(
-      //         SignedInUser.fromMap(
-      //           json["signedInUser"] as Map<String, dynamic>,
-      //         ),
-      //       ),
       isAuthenticated: (json["isAuthenticated"] ?? false) as bool,
       isFirstTimeOpenTheApp: (json["isFirstTimeOpenTheApp"] ?? true) as bool,
     );
@@ -78,8 +57,6 @@ class AuthBloc extends HydratedBloc<AuthEvent, AuthState> {
   @override
   Map<String, dynamic> toJson(AuthState state) {
     return {
-      // "signedInUser":
-      //     state.signedInUser.fold(() => null, (user) => user.toMap()),
       "isAuthenticated": state.isAuthenticated,
       "isFirstTimeOpenTheApp": state.isFirstTimeOpenTheApp,
     };

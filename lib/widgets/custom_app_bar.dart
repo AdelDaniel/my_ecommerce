@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../screens/wish_list_screen.dart';
 import '../settings/settings_screen.dart';
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   const CustomAppBar({Key? key, required this.title}) : super(key: key);
 

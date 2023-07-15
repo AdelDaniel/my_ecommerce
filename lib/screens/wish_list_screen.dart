@@ -31,9 +31,11 @@ class WishListScreen extends StatelessWidget {
 
           if (wishListState is LoadingWishListState) {
             return const Center(child: CircularProgressIndicator());
-          } else if (wishListState is LoadedWishListProductsState) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (wishListState is LoadedWishListIdsState &&
+          }
+          //  else if (wishListState is LoadedWishListProductsState) {
+          //   return const Center(child: CircularProgressIndicator());
+          // }
+          else if (wishListState is LoadedWishListIdsState &&
               productState is LoadedProductState) {
             // TODO :Clean this
             final wishListedProducts = productState.products
@@ -42,7 +44,15 @@ class WishListScreen extends StatelessWidget {
             return CustomPoductCardsUsingStaggeredGridView(
                 products: wishListedProducts);
           } else if (wishListState is ErrorWishListState) {
-            return const Center(child: Text('some thing went wrong'));
+            return Center(
+                child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('some thing went wrong'),
+                Text(wishListState.failure.mainMessage),
+                Text(wishListState.failure.detailedMsg),
+              ],
+            ));
           } else if (wishListState is EmptyWishListState) {
             return const Center(
                 child:

@@ -2,6 +2,8 @@
 *.mocks.dart
 *.freezed.dart
 test/features/wish_list
+lib/core/config/firebase_keys.dart
+web/firebase_config.js
 android/app/google-services.json
 
 # Miscellaneous
