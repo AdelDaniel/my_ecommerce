@@ -3,8 +3,9 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus_windows
+  connectivity_plus
   firebase_core
+  rive_common
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

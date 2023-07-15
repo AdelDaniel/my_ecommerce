@@ -51,7 +51,7 @@ class _IntroOverboardCarouselSliderState
         ),
         DotsIndicator(
           dotsCount: 3,
-          position: _current.toDouble(),
+          position: _current,
           decorator: DotsDecorator(
             activeSize: const Size(18.0, 9.0),
             activeShape: RoundedRectangleBorder(
