@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_ecommerce/core/error/failure.dart';
 
 import '../features/wish_list/presentation/bloc/wishlist_bloc.dart';
 import '../models/models.dart';
@@ -35,7 +36,8 @@ class AddToWishListButton extends StatelessWidget {
           // at errorState and contains the same product
           // at any other state
           if (currentState is ErrorWishListState) {
-            return currentState.product == product;
+            return currentState.product == product ||
+                currentState.product != null;
           } else if (currentState is! ErrorWishListState) {
             return true;
           } else {
@@ -54,9 +56,8 @@ class AddToWishListButton extends StatelessWidget {
                     dialogType: DialogType.ERROR,
                     animType: AnimType.RIGHSLIDE,
                     isDense: true,
-                    title: 'Oops! something went wrong..',
-                    desc:
-                        '${state.failure.mainMessage} \n ${state.failure.detailedMsg}',
+                    title: '${state.failure.mainMessage}..',
+                    desc: ' ${state.failure.detailedMsg}',
                     showCloseIcon: true,
                     btnCancelOnPress: () {},
                     btnCancelText: 'Cancel',
@@ -83,7 +84,15 @@ class AddToWishListButton extends StatelessWidget {
           }
           if (state is ErrorWishListState) {
             /// Error Icon when error happen
-            return WishListIcon(icon: Icons.error, size: size);
+            // if the user not authenticated yet just show an empty icon
+            if (state.failure is UserAuthenticationFailure) {
+              return WishListIcon(
+                  icon: product.isWishListed
+                      ? Icons.favorite_rounded
+                      : Icons.favorite_outline_rounded,
+                  size: size);
+            }
+            // return WishListIcon(icon: Icons.error, size: size);
           }
 
           /// (state is EmptyWishListState || LoadedWishListProductsState || LoadedWishListIdsState )

@@ -25,12 +25,7 @@ Strap Inner Circumference: 200+/- 5MM Battery Type: SR920SW
     "https://fossil.scene7.com/is/image/FossilPartners/FS5855_9L?\$sfcc_lifestyle_large\$",
   ],
   price: 149.00,
-  categories: [
-    const Category(
-        name: "watch ",
-        imgUrl:
-            "https://hips.hearstapps.com/amv-prod-gp.s3.amazonaws.com/gearpatrol/wp-content/uploads/2018/02/10-Great-Horween-Watch-Straps-gear-patrol-lead-full-1.jpg?crop=1.00xw:0.749xh;0,0.131xh&resize=1200:*")
-  ],
+  categoriesId: ["watch "],
   soldTimes: 5,
   isRecommended: true,
   isAvalible: true,

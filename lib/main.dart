@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,6 +10,7 @@ import 'package:my_ecommerce/features/auth/application/sign_in_form_bloc/sign_in
 import 'package:my_ecommerce/features/category/presentation/bloc/category_bloc.dart';
 import 'package:my_ecommerce/features/checkout/presentation/bloc/checkout_bloc.dart';
 import 'package:my_ecommerce/features/checkout/repositories/base_checkout_repository.dart';
+import 'package:my_ecommerce/features/internet_connection/bloc/internet_connection_bloc.dart';
 import 'package:my_ecommerce/features/product/data/repositories/product_repository_impl.dart';
 import 'package:my_ecommerce/features/product/presentation/bloc/product_bloc.dart';
 import 'package:my_ecommerce/screens/splash_screen.dart';
@@ -31,13 +33,12 @@ FutureOr<void> main() async {
   await di.setup();
   await firebase.firebaseInit();
 
-  final storage = await HydratedStorage.build(
-    storageDirectory: await getTemporaryDirectory(),
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getTemporaryDirectory(),
   );
-  HydratedBlocOverrides.runZoned(
-    () => runApp(const MyApp()),
-    storage: storage,
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -45,19 +46,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("running");
     return MultiBlocProvider(
       providers: [
+        BlocProvider<InternetConnectionBloc>(
+            create: (_) => di.sl<InternetConnectionBloc>()),
+        BlocProvider<AuthBloc>(create: (_) => di.sl<AuthBloc>()),
         BlocProvider<WishlistBloc>(create: (_) => di.sl<WishlistBloc>()),
         BlocProvider<CartBloc>(create: (_) => di.sl<CartBloc>()),
         BlocProvider<CategoryBloc>(create: (_) => di.sl<CategoryBloc>()),
         BlocProvider<SignInFormBloc>(create: (_) => di.sl<SignInFormBloc>()),
-        BlocProvider<AuthBloc>(create: (_) => di.sl<AuthBloc>()),
+
         // TODO :: clean the coming next bloc product and checkout like the previous
-        BlocProvider<ProductBloc>(
-            create: (newContext) => ProductBloc(
-                  wishlistBloc: newContext.read<WishlistBloc>(),
-                  productRepository: di.sl<ProductRepository>(),
-                )..add(const LoadProductEvent())),
+        BlocProvider<ProductBloc>(create: (_) => di.sl<ProductBloc>()),
         BlocProvider<CheckoutBloc>(
             create: (newContext) => CheckoutBloc(
                 cartBloc: newContext.read<CartBloc>(),

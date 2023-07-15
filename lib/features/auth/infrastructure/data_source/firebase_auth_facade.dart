@@ -19,7 +19,7 @@ class FirebaseAuthFacade implements IAuthFacade {
         _googleSignIn = googleSignIn;
 
   @override
-  Future<Either<AuthFailure, ID>> registerWithEmailAndPassword({
+  Future<Either<AuthFailure, UserID>> registerWithEmailAndPassword({
     required String emailAddressString,
     required String passwordString,
   }) async {
@@ -28,7 +28,7 @@ class FirebaseAuthFacade implements IAuthFacade {
           await _firebaseAuth.createUserWithEmailAndPassword(
               email: emailAddressString, password: passwordString);
       if (userCredential.user != null) {
-        return Right(ID.fromFirebaseUniqueId(userCredential.user!.uid));
+        return Right(UserID.fromFirebaseUniqueUserId(userCredential.user!.uid));
       } else {
         return const Left(AuthFailure.serverError());
       }
@@ -44,7 +44,7 @@ class FirebaseAuthFacade implements IAuthFacade {
   }
 
   @override
-  Future<Either<AuthFailure, ID>> signInWithEmailAndPassword({
+  Future<Either<AuthFailure, UserID>> signInWithEmailAndPassword({
     required String emailAddressString,
     required String passwordString,
   }) async {
@@ -53,7 +53,7 @@ class FirebaseAuthFacade implements IAuthFacade {
           await _firebaseAuth.signInWithEmailAndPassword(
               email: emailAddressString, password: passwordString);
       if (userCredential.user != null) {
-        return Right(ID.fromFirebaseUniqueId(userCredential.user!.uid));
+        return Right(UserID.fromFirebaseUniqueUserId(userCredential.user!.uid));
       } else {
         return const Left(AuthFailure.serverError());
       }
@@ -98,6 +98,7 @@ class FirebaseAuthFacade implements IAuthFacade {
           phoneNumber: "",
           //TODO get check for the display name and then return the name or the first part of the user email before @
           name: googleUser.displayName!,
+          allWishListIds: [],
         ),
       );
     } catch (e) {

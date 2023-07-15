@@ -4,13 +4,16 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:my_ecommerce/features/auth/application/auth_bloc/auth_bloc.dart';
 import 'package:my_ecommerce/features/auth/application/sign_in_form_bloc/sign_in_form_bloc.dart';
+import 'package:my_ecommerce/features/auth/application/user_bloc/user_bloc.dart';
 import 'package:my_ecommerce/features/auth/domain/interfaces/i_auth_facade.dart';
 import 'package:my_ecommerce/features/auth/domain/interfaces/i_logging_repository.dart';
+import 'package:my_ecommerce/features/auth/domain/interfaces/i_update_user_firestore_data.dart';
 import 'package:my_ecommerce/features/auth/domain/interfaces/i_user_firestore_database.dart';
 import 'package:my_ecommerce/features/auth/firebase_injectable_module.dart';
 import 'package:my_ecommerce/features/auth/infrastructure/data_source/firebase_auth_facade.dart';
 import 'package:my_ecommerce/features/auth/infrastructure/data_source/user_firestore_database.dart';
 import 'package:my_ecommerce/features/auth/infrastructure/repositories/logging_repository.dart';
+import 'package:my_ecommerce/features/auth/infrastructure/repositories/update_user_firestore_data.dart';
 
 // TODO :: implement all injection containers Using Injectable package >> reso coder
 Future<void> authInjectionContainerSetup(GetIt sl) async {
@@ -21,6 +24,10 @@ Future<void> authInjectionContainerSetup(GetIt sl) async {
   sl.registerLazySingleton<AuthBloc>(() =>
       AuthBloc(loggingRepository: sl<ILoggingRepository>())
         ..add(const AuthEvent.authCheckRequested()));
+  sl.registerLazySingleton<UserBloc>(() => UserBloc(
+      loggingRepository: sl<ILoggingRepository>(),
+      updateUserFirestoreData: sl<IUpdateUserFirestoreData>(),
+      authBloc: sl<AuthBloc>()));
 
   // Repository
   sl.registerLazySingleton<ILoggingRepository>(() => LoggingRepository(
@@ -31,6 +38,10 @@ Future<void> authInjectionContainerSetup(GetIt sl) async {
         googleSignIn: sl<GoogleSignIn>(),
         firebaseAuth: sl<FirebaseAuth>(),
       ));
+  sl.registerLazySingleton<IUpdateUserFirestoreData>(
+      () => UpdateUserFirestoreData(
+            userCollectionRef: sl<CollectionReference<Object?>>(),
+          ));
   sl.registerLazySingleton<IUserFirestoreDatabase>(() => UserFirestoreDatabase(
       usersCollectionReference: sl<CollectionReference<Object?>>()));
 

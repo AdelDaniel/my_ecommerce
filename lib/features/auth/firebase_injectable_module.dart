@@ -9,4 +9,5 @@ abstract class FirebaseInjectableModule {
   static FirebaseAuth get firebaseAuth => FirebaseAuth.instance;
   static CollectionReference get userCollectionReference =>
       FirebaseFirestore.instance.collection(_usersCollectionName);
+  //  static DocumentReference get userDoc =>   FirebaseFirestore.instance.collection(_usersCollectionName).doc(userId)
 }

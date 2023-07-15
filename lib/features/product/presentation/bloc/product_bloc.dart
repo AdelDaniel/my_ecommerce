@@ -18,19 +18,21 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final WishlistBloc _wishlistBloc;
   StreamSubscription? productSubscription;
 
-  ProductBloc(
-      {required ProductRepository productRepository,
-      required WishlistBloc wishlistBloc})
-      : _productRepository = productRepository,
+  ProductBloc({
+    required ProductRepository productRepository,
+    required WishlistBloc wishlistBloc,
+  })  : _productRepository = productRepository,
         _wishlistBloc = wishlistBloc,
         super(const LoadingProductState()) {
-    _wishlistBloc.stream.listen((WishlistState wihsListState) {
-      if (wihsListState is LoadedWishListIdsState ||
-          wihsListState is EmptyWishListState) {
+    //TODO ::
+    _wishlistBloc.stream.listen((WishlistState wishListState) {
+      if (wishListState is LoadedWishListIdsState) {
         if (state is LoadedProductState) {
+          log("wishListState is LoadedWishListIdsState)  ");
           add(
             UpdateProductsEvent(
-                products: (state as LoadedProductState).products),
+              products: (state as LoadedProductState).products,
+            ),
           );
         }
       }
@@ -63,9 +65,11 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     }
   }
 
-// this is  called only in first time and when data added from the server
+  // this is  called only in first time and when new data added from the server
   FutureOr<void> _onLoadProductEvent(
-      LoadProductEvent event, Emitter emit) async {
+    LoadProductEvent event,
+    Emitter emit,
+  ) async {
     try {
       await productSubscription?.cancel();
       productSubscription =
@@ -73,13 +77,35 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         add(UpdateProductsEvent(products: products));
       });
     } catch (e) {
-      log('error is:$e');
-      emit(const ErrorProductState(
+      emit(
+        const ErrorProductState(
           failure: ServerFailure(
-              detailedMsg: "cannot get the Products from the server")));
+            detailedMsg: "cannot get the Products from the server",
+          ),
+        ),
+      );
     }
   }
 
+  void productAddedToWishList(Product product) =>
+      _wishListUpdated(product, true);
+
+  void productRemovedFromWishList(Product product) =>
+      _wishListUpdated(product, false);
+
+  void _wishListUpdated(Product product, bool value) {
+    if (state is LoadedProductState) {
+      final List<Product> allProducts = (state as LoadedProductState).products;
+      final int productIndexInList = allProducts.indexOf(product);
+      final Product updatedProduct = allProducts
+          .removeAt(productIndexInList)
+          .copyWith(isWishListed: value);
+      allProducts.insert(productIndexInList, updatedProduct);
+      add(UpdateProductsEvent(products: allProducts));
+    }
+  }
+
+//TODO add new product
   FutureOr<void> _onAddProductEvent(AddProductEvent event, Emitter emit) async {
     try {} catch (e) {
       log('error is:$e');

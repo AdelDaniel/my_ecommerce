@@ -33,7 +33,7 @@ class LoggingRepository implements ILoggingRepository {
       final String nameString = valueObjects.name.getValueOrCrash();
 
       // create user with mail and password and return uid
-      final Either<AuthFailure, ID> eitherAuthFailureOrID =
+      final Either<AuthFailure, UserID> eitherAuthFailureOrID =
           await _authFacade.registerWithEmailAndPassword(
               emailAddressString: emailAddressString,
               passwordString: passwordString);
@@ -43,13 +43,14 @@ class LoggingRepository implements ILoggingRepository {
           await eitherAuthFailureOrID
               .fold<Future<Either<AuthFailure, SignedInUser>>>(
         (failure) => Future.value(Left(failure)),
-        (ID id) async {
+        (UserID id) async {
           return _userFirestoreDatabase.createNewUserData(
             signedInUser: SignedInUser(
+              allWishListIds: [],
               email: emailAddressString,
               name: nameString,
               phoneNumber: phoneNumberString,
-              id: id.getIdOrCrash(),
+              id: id.getUserIdOrCrash(),
             ),
           );
         },
@@ -73,7 +74,7 @@ class LoggingRepository implements ILoggingRepository {
       final String passwordString = valueObjects.password.getValueOrCrash();
 
       // get user id with mail and password and return uid
-      final Either<AuthFailure, ID> eitherAuthFailureOrID =
+      final Either<AuthFailure, UserID> eitherAuthFailureOrID =
           await _authFacade.signInWithEmailAndPassword(
               emailAddressString: emailAddressString,
               passwordString: passwordString);
@@ -83,8 +84,8 @@ class LoggingRepository implements ILoggingRepository {
           await eitherAuthFailureOrID
               .fold<Future<Either<AuthFailure, SignedInUser>>>(
         (failure) => Future.value(Left(failure)),
-        (ID id) async =>
-            _userFirestoreDatabase.getUserData(id: id.getIdOrCrash()),
+        (UserID id) async =>
+            _userFirestoreDatabase.getUserData(id: id.getUserIdOrCrash()),
       );
       return eitherAuthFailureOrSignedInUser.fold(
         (failure) => Left(failure),

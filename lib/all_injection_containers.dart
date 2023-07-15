@@ -28,7 +28,7 @@ Future<void> setup() async {
 //! other injection Containers
 
   internetConnectionInjectionContainerSetup(sl);
-  await wishListInjectionContainersetup(sl);
+  await wishListInjectionContainerSetup(sl);
   await cartInjectionContainersetup(sl);
   await categoryInjectionContainersetup(sl);
   await productInjectionContainersetup(sl);
